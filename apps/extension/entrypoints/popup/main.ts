@@ -1,6 +1,5 @@
 import { browser } from 'wxt/browser';
 import type { Analysis } from '@hireaware/engine';
-import { extractPageText } from '@/lib/page';
 import { renderAnalysis, STYLES } from '@/lib/render';
 
 const result = document.getElementById('result')!;
@@ -28,10 +27,11 @@ scanPage.addEventListener('click', async () => {
   try {
     const [tab] = await browser.tabs.query({ active: true, currentWindow: true });
     if (!tab?.id) throw new Error('No active tab');
-    const [injection] = await browser.scripting.executeScript({ target: { tabId: tab.id }, func: extractPageText });
-    const text = (injection?.result as string | undefined) ?? '';
-    textarea.value = text.slice(0, 2000);
-    await show(text);
+    const res = (await browser.runtime.sendMessage({ type: 'hireaware:scan-tab', tabId: tab.id })) as { text?: string; analysis?: Analysis | null; error?: string };
+    if (res.error) throw new Error(res.error);
+    textarea.value = (res.text ?? '').slice(0, 2000);
+    if (!res.analysis) await show('');
+    else result.innerHTML = renderAnalysis(res.analysis);
   } catch {
     result.innerHTML = '<p class="error">This page can\'t be read (browser pages and the Web Store are off-limits). Paste the text instead.</p>';
   } finally {

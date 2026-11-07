@@ -25,12 +25,29 @@ export interface AnalyzeOptions {
   maxQuestions?: number;
 }
 
+/**
+ * Whether the text is about a job or recruitment. The classifier was trained on job ads; on other text
+ * (bank receipts, personal SMS) it over-fires, so on its own it only raises a flag for job-related text.
+ * Found on real Mozambican and Bengali SMS (docs/research/datasets.md). Rules still apply to everything.
+ */
+const JOB_CONTEXT = new RegExp([
+  'jobs?', 'hiring', 'hire[ds]?', 'vacanc\\w*', 'positions?', 'salary', 'wages?', 'recruit\\w*', 'applicants?', 'apply', 'interview\\w*',
+  'employ\\w*', 'careers?', 'shifts?', 'internship', 'part[- ]?time', 'full[- ]?time', 'work from home', 'wfh', 'agency', 'overseas', 'abroad',
+  'work visa', 'trabaho', 'sahod', 'raket', 'empleo', 'trabajo', 'sueldo', 'vacante', 'puesto', 'emprego', 'vaga', 'trabalho', 'sal[aá]rio',
+  'emploi', 'recrut\\w*', 'salaire', 'kazi', 'ajira', 'mshahara', 'nafasi', 'lowongan', 'kerja', 'gaji', 'loker', 'naukri', 'bharti', 'kaam',
+  'नौकरी', 'वेतन', 'চাকরি', 'বেতন', 'tasks?', 'commission',
+].map((w) => `(?<![\\p{L}\\p{N}])${w}(?![\\p{L}\\p{N}])`).join('|'), 'iu');
+
+export function hasJobContext(text: string): boolean {
+  return JOB_CONTEXT.test(text.normalize('NFKC'));
+}
+
 function has(hits: RuleHit[], ...ids: string[]) {
   return ids.some((id) => hits.some((h) => h.id === id));
 }
 
 function scoreCategory(category: Category, hits: RuleHit[], reassuring: RuleHit[], prediction: Prediction | null,
-  classifier: RiskClassifier | null | undefined): CategoryRisk {
+  classifier: RiskClassifier | null | undefined, jobContext: boolean): CategoryRisk {
   const mine = hits.filter((h) => h.category === category);
   const core = mine.filter((h) => h.strength === 'strong' || h.strength === 'medium');
   // Weak and context signals only count alongside a real red flag in the same category.
@@ -70,7 +87,7 @@ function scoreCategory(category: Category, hits: RuleHit[], reassuring: RuleHit[
     const topRisk = prediction.top === category;
     if (modelScore >= t.high && topRisk) {
       if (score >= 2) level = maxLevel(level, 'high');
-      else if (relief < 2) level = maxLevel(level, 'medium');
+      else if (relief < 2 && jobContext) level = maxLevel(level, 'medium');
     } else if (modelScore >= t.medium && score >= 2 && topRisk) {
       level = maxLevel(level, 'medium');
     }
@@ -138,7 +155,8 @@ export function analyze(text: string, options: AnalyzeOptions = {}): Analysis {
   const prediction = options.classifier ? options.classifier.predict(text) : null;
 
   const categories = {} as Record<Category, CategoryRisk>;
-  for (const c of CATEGORIES) categories[c] = scoreCategory(c, redHits, reassuring, prediction, options.classifier);
+  const jobContext = hasJobContext(text);
+  for (const c of CATEGORIES) categories[c] = scoreCategory(c, redHits, reassuring, prediction, options.classifier, jobContext);
 
   const ranked = [...CATEGORIES].sort((a, b) => LEVEL_RANK[categories[b].level] - LEVEL_RANK[categories[a].level]
     || categories[b].ruleScore - categories[a].ruleScore || (categories[b].modelScore ?? 0) - (categories[a].modelScore ?? 0));

@@ -117,9 +117,11 @@ cd .. && npm run eval                           # scores the shipped system (rul
 | India held-out (120 / 75 fake) | 90.8% acc | 93.3% acc, 75/75 caught |
 | Challenge v1, classifier alone (4 classes) | n/a | 77.5% accuracy |
 | Challenge v1, full system (rules + model) | n/a | 97.5% category accuracy; 88/90 risky flagged; 1/30 legit flagged |
-| **Challenge v2, full system (fresh)** | n/a | **95% category accuracy; 42/45 risky flagged; 0/15 legit flagged** |
+| Challenge v1, full system after the job-context gate | n/a | 98.3% category accuracy; 88/90 risky flagged; 0/30 legit flagged |
+| **Challenge v2, full system (fresh), after the gate** | n/a | **91.7% category accuracy; 40/45 risky flagged; 0/15 legit flagged** |
+| Real SMS (Mozambique, Bangladesh), legitimate messages flagged | n/a | 0.0–1.2% after the gate (2–44% before); see `docs/research/datasets.md` |
 
 Caveats: the trafficking and influence classes are trained on synthetic data, and both challenge sets were
 written by the project team. Rules were written after challenge v1 was seen, so v2 is the more honest figure.
-The v2 misses were subtle influence ads ("a phone with 8 logged-in profiles"). Real labelled examples are
+Before the job-context gate the full system scored 95% on v2 (42/45 flagged); the gate cut real-world false alarms from up to 44% to at most 1.2% but cost two v2 misses. The remaining misses are subtle influence ads ("a phone with 8 logged-in profiles") and a "send your Mobile Money PIN" request. Real labelled examples are
 the next step.

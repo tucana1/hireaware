@@ -10,34 +10,12 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { analyze, type Category } from '../src/index';
 import { getDefaultClassifier } from '../src/default-classifier';
+import { parseCsv } from './csv';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const dataDir = path.resolve(here, '../../../trial-modeling-news/risk_data');
 const LABELS = ['legit', 'scam', 'trafficking', 'influence'] as const;
 type Label = (typeof LABELS)[number];
-
-function parseCsv(text: string): Record<string, string>[] {
-  const rows: string[][] = [];
-  let row: string[] = [];
-  let field = '';
-  let quoted = false;
-  for (let i = 0; i < text.length; i++) {
-    const c = text[i]!;
-    if (quoted) {
-      if (c === '"' && text[i + 1] === '"') { field += '"'; i++; }
-      else if (c === '"') quoted = false;
-      else field += c;
-    } else if (c === '"') quoted = true;
-    else if (c === ',') { row.push(field); field = ''; }
-    else if (c === '\n' || c === '\r') {
-      if (c === '\r' && text[i + 1] === '\n') i++;
-      row.push(field); rows.push(row); row = []; field = '';
-    } else field += c;
-  }
-  if (field || row.length) { row.push(field); rows.push(row); }
-  const [header, ...body] = rows.filter((r) => r.length > 1);
-  return body.map((r) => Object.fromEntries(header!.map((h, i) => [h, r[i] ?? ''])));
-}
 
 const classifier = getDefaultClassifier();
 const report: Record<string, unknown> = {};

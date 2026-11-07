@@ -14,6 +14,35 @@ Kept deliberately small: only what the model needs (research scope narrowed on 7
 No public labelled dataset of troll-farm or scam-compound job ads exists. Searches for the trafficking and
 influence classes found reports and takedown notices, not datasets.
 
+## Real-world external check (downloaded 8 Nov 2026, never trained on)
+
+| Dataset | Licence | Contents |
+|---|---|---|
+| [MOZNLP/MOZ-Smishing](https://huggingface.co/datasets/MOZNLP/MOZ-Smishing) | CreativeML OpenRAIL-M | Real Portuguese SMS from Mozambique: 2,009 legitimate (mostly M-Pesa receipts and personal messages), 552 smishing |
+| [shariul-islam/bengali-sms-smishing-dataset](https://huggingface.co/datasets/shariul-islam/bengali-sms-smishing-dataset) | MIT | 7,005 SMS in Bengali, English, Banglish and code-mixed text; smish / promo / normal. The card does not say whether messages are real or generated |
+
+Prepare with `trial-modeling-news/.venv/bin/python -I trial-modeling-news/risk_data/prepare_external.py`
+(files go to the gitignored `risk_data/downloads/`), then run `npm run eval:external`.
+
+These are SMS phishing sets, not job ads, so they mainly measure **false alarms on real everyday messages**.
+
+- **First run** (rules + classifier as shipped earlier): 1,459 of 6,205 legitimate messages flagged "be careful", including 44% of Mozambican messages. None were flagged "high".
+  - 1,455 of those flags came from the classifier on its own; the rules misfired only 4 times (0.06%).
+  - Cause: the classifier learned job-scam money vocabulary and was allowed to flag any text.
+- **Change:** the classifier can now raise a flag on its own only when the text is about a job or recruitment (`hasJobContext` in `packages/engine/src/analyze.ts`). Rules still apply to all text.
+- **After the change**, flagged legitimate messages:
+
+  | Dataset | Flagged |
+  |---|---|
+  | Mozambique | 0.3% |
+  | Bengali | 0.0% |
+  | Banglish | 0.3% |
+  | Code-mixed | 0.6% |
+  | English | 1.2% |
+
+  Smishing flagged: 0–10%. That is expected, since most smishing isn't a job offer.
+- **Honesty note:** the change was made after seeing these datasets, so the after-figures are optimistic. On the fresh v2 challenge set it cost two misses (42 → 40 of 45 risky ads flagged), still with no legitimate ads flagged. Both were known gaps: an influence ad that names no job words, and a PIN request worded "send your Mobile Money PIN".
+
 ## Recommended next (real-world check for the scam class)
 
 **PH Spam + Marketing SMS dataset (Kaggle).** About 1,475 pre-labelled SMS messages from the Philippines,

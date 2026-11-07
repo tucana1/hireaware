@@ -67,8 +67,9 @@ export async function sendMetaMessages(to: string, messages: string[]): Promise<
   const phoneId = process.env.WHATSAPP_PHONE_NUMBER_ID;
   if (!token || !phoneId) throw new Error('WHATSAPP_ACCESS_TOKEN and WHATSAPP_PHONE_NUMBER_ID are required');
   const version = process.env.WHATSAPP_GRAPH_VERSION || 'v23.0';
+  const base = process.env.WHATSAPP_API_BASE || 'https://graph.facebook.com';
   for (const body of messages) {
-    const res = await fetch(`https://graph.facebook.com/${version}/${phoneId}/messages`, {
+    const res = await fetch(`${base}/${version}/${phoneId}/messages`, {
       method: 'POST',
       headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({ messaging_product: 'whatsapp', to: to.replace(/^\+/, ''), type: 'text', text: { body, preview_url: false } }),

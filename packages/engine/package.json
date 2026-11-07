@@ -12,7 +12,8 @@
   "scripts": {
     "test": "vitest run",
     "typecheck": "tsc --noEmit -p .",
-    "eval": "tsx scripts/eval.ts"
+    "eval": "tsx scripts/eval.ts",
+    "eval:external": "tsx scripts/eval-external.ts"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",

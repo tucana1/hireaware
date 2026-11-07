@@ -1,0 +1,52 @@
+{
+  "moz": {
+    "legit": 2009,
+    "legitFlagged": 7,
+    "legitHigh": 0,
+    "risky": 552,
+    "riskyFlagged": 0,
+    "riskyAsScam": 0,
+    "false_alarm_rate": "0.3%",
+    "smishing_flagged_rate": "0.0%"
+  },
+  "bengali/CodeMix": {
+    "legit": 991,
+    "legitFlagged": 6,
+    "legitHigh": 2,
+    "risky": 688,
+    "riskyFlagged": 41,
+    "riskyAsScam": 41,
+    "false_alarm_rate": "0.6%",
+    "smishing_flagged_rate": "6.0%"
+  },
+  "bengali/Banglish": {
+    "legit": 1093,
+    "legitFlagged": 3,
+    "legitHigh": 1,
+    "risky": 708,
+    "riskyFlagged": 34,
+    "riskyAsScam": 34,
+    "false_alarm_rate": "0.3%",
+    "smishing_flagged_rate": "4.8%"
+  },
+  "bengali/Bengali": {
+    "legit": 1083,
+    "legitFlagged": 0,
+    "legitHigh": 0,
+    "risky": 707,
+    "riskyFlagged": 6,
+    "riskyAsScam": 5,
+    "false_alarm_rate": "0.0%",
+    "smishing_flagged_rate": "0.8%"
+  },
+  "bengali/English": {
+    "legit": 1029,
+    "legitFlagged": 12,
+    "legitHigh": 0,
+    "risky": 706,
+    "riskyFlagged": 73,
+    "riskyAsScam": 67,
+    "false_alarm_rate": "1.2%",
+    "smishing_flagged_rate": "10.3%"
+  }
+}

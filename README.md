@@ -27,8 +27,11 @@ npm run dev            # website on http://localhost:3000
 npm test               # engine + website tests
 npm run build          # production builds of the website and the extension
 npm run eval           # scores the shipped rules + model on the hand-written challenge sets
-npm run test:extension # loads the built extension in Chromium (Playwright) and checks the popup
+npm run eval:external  # false-alarm check on real SMS from Mozambique and Bangladesh (see docs/research/datasets.md)
+npm run test:e2e       # Chromium end-to-end: website (incl. WhatsApp + Claude via local stand-ins) and extension
 ```
+
+The end-to-end tests need Playwright's Chromium once: `npx playwright install chromium`.
 
 Load the extension: `npm run build:extension`, then open `chrome://extensions`, turn on Developer mode,
 click **Load unpacked** and choose `apps/extension/.output/chrome-mv3`.
@@ -49,8 +52,9 @@ click **Load unpacked** and choose `apps/extension/.output/chrome-mv3`.
 3. **Questions to ask** (`questions.ts`): each red flag maps to strict, verifiable questions. A real
    employer can answer them in writing.
 
-Results on a fresh, hand-written held-out set (60 ads, 8 languages, written after everything was frozen):
-95% correct category, 42 of 45 risky ads flagged, 0 of 15 legitimate look-alikes flagged. Details and
+Results on a fresh, hand-written held-out set (60 ads, 8 languages): 91.7% correct category, 40 of 45
+risky ads flagged, 0 of 15 legitimate look-alikes flagged. On 6,205 real legitimate SMS messages from
+Mozambique and Bangladesh, at most 1.2% get a "be careful" flag. Details and
 caveats are in [`trial-modeling-news/README.md`](trial-modeling-news/README.md).
 
 ## Repository map
