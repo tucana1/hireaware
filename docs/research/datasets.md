@@ -10,6 +10,7 @@ Kept deliberately small: only what the model needs (research scope narrowed on 7
 | Aioshi/smolified-fakejob (`india_synthetic_jobs.csv`) | 597 AI-generated Indian job ads (Hugging Face) | `legit` / `scam`; India held-out split | Metadata says Apache-2.0; the card also calls it the owner's asset, so check before redistributing |
 | Global South synthetic set (`risk_data/synthetic_train.csv`) | 9,198 examples in 8 languages, written from the documented patterns in `facts.md` and the regional notes | `trafficking` and `influence` classes plus look-alike legitimate jobs; training only | Ours |
 | Challenge sets v1 and v2 (`risk_data/challenge_set.csv`, `challenge_v2.csv`) | 120 + 60 hand-written examples | Evaluation only (v2 never tuned on) | Ours |
+| Documented cases (`risk_data/documented_cases.csv`) | 24 real, sourced cases (12 trafficking, 12 influence), each restating what recruits were told, with the source link | Evaluation only. Frozen system: 18/24 flagged. After 3 general rule fixes ("N personas", attacks on named offices, Spanish "etiqueta del día"): 20/24. Misses that the ads simply don't reveal (e.g. the troll factory's "thematic posts and monitoring" ad) are why the chatbot asks about the situation | Our wording of public reports |
 
 No public labelled dataset of troll-farm or scam-compound job ads exists. Searches for the trafficking and
 influence classes found reports and takedown notices, not datasets.

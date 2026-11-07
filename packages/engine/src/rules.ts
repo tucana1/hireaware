@@ -48,6 +48,7 @@ export const RULES: RuleDef[] = [
       "(?:accounts?|profiles?) (?:that )?(?:look|appear|seem)s? (?:to be )?(?:real|like (?:real|ordinary|regular|local))",
       "(?:build|create|grow)\\w* (?:personas?|ordinary[- ]citizen accounts|community voices accounts)",
       "persona[- ]building|under (?:assigned )?personas?|local-sounding names|names and photos are provided|photos and names are provided",
+      "(?:up to |at least |around )?\\d+ (?:fake |different |online )?personas?|personas? each|(?:run|handl|manag|operat|control)\\w* (?:\\S+ ){0,3}personas",
       "(?:from|using|with|under) (?:\\d+(?:-\\d+)?|multiple|several|many|different|other) (?:dummy|dummies|accounts|ids|profiles|handles|names)",
       "(?:different|other) names(?: and (?:photos|pictures))?",
       "(?:never|don't|do not|not) (?:use )?your (?:own |real )(?:name|account|profile|identity)",
@@ -61,7 +62,7 @@ export const RULES: RuleDef[] = [
     unless: [COUNTER_WORK, `${NEG} (?:\\S+ ){0,4}(?:create|provide|give|use|ask)`, 'we never ask you to create'],
     questions: ['Q_OWN_ACCOUNTS', 'Q_PLATFORM_RULES', 'Q_END_CLIENT'],
     examples: {
-      hit: ["You'll be handed 4 ready-made profiles and a daily brief", 'create and manage 10 dummy accounts', 'Pakai akun samaran untuk komentar', 'Manejarás perfiles falsos', 'post from different accounts so it looks natural', 'magco-comment gamit ang 3 account na ibibigay namin'],
+      hit: ["You'll be handed 4 ready-made profiles and a daily brief", 'Work in shifts handling up to 120 personas each', 'create and manage 10 dummy accounts', 'Pakai akun samaran untuk komentar', 'Manejarás perfiles falsos', 'post from different accounts so it looks natural', 'magco-comment gamit ang 3 account na ibibigay namin'],
       miss: ['Review content and remove fake accounts according to policy', 'Investigate fake account networks', 'We never ask you to create extra accounts', 'Manage the official brand accounts'],
     },
   },
@@ -86,11 +87,12 @@ export const RULES: RuleDef[] = [
     patterns: [
       "(?:attack|bash|harass|troll|discredit|silence|pressure|flood|swarm|drown out|counter|push back on|reply to|respond to|tag|go after|mass[- ]?report|report)\\w*(?: and \\w+)? (?:\\S+ ){0,4}(?:critics?|journalists?|reporters?|opposition|opponents?|rivals?|activists?|haters?|bashers?|fact[- ]?checkers?|other (?:camp|party|side)|detractors|hostile accounts|critical pages|pages critical)",
       "mass[- ]?report|report (?:hostile|critical) (?:accounts|pages)|in bulk|brigad\\w+",
+      "(?:attack|bash|discredit|smear)\\w* (?:\\S+ ){0,3}(?:vice[- ]?president|president|senators?|mayor|governor|candidates?|politicians?|ministers?|the government|the opposition)",
       "desacreditar|(?:atacar|desmentir) a (?:los )?(?:cr[ií]ticos|periodistas|opositores)|atacar os cr[ií]ticos|attaquer les (?:opposants|journalistes)|washambulie|kuwajibu wapinzani|serang (?:pengkritik|lawan)|lawan narasi|serbu kolom komentar|sagutin ang mga kritiko|sa mga basher|troll karna|(?:opposition|doosri party)\\w* (?:\\S+ ){0,3}(?:reply|jawab)",
     ],
     unless: [COUNTER_WORK, "answer constituents|customer (?:comments|complaints|questions)"],
     questions: ['Q_TARGETS', 'Q_REFUSE', 'Q_END_CLIENT'],
-    examples: { hit: ['push back on haters in the comments', 'mass-report the pages on our list', 'serbu kolom komentar media online'], miss: ['Respond to customer comments on our official page', 'Monitor and report on disinformation narratives'] },
+    examples: { hit: ['push back on haters in the comments', 'mass-report the pages on our list', 'serbu kolom komentar media online', 'comments praising the mayor and attacking the governor'], miss: ['Respond to customer comments on our official page', 'Monitor and report on disinformation narratives'] },
   },
   {
     id: 'INF_FAKE_NEWS_PAGES', category: 'influence', strength: 'strong', weight: 4,
@@ -130,10 +132,11 @@ export const RULES: RuleDef[] = [
       "talking points|tweet ?sheets?|content (?:sheet|pack|brief)|engagement brief|daily (?:brief|content pack|missions?)|comment templates?|templates? (?:for|of) comments|copy[- ]?paste",
       "(?:we|our (?:media )?team|the team|coordinator|team leader) (?:will )?(?:send|give|provide|share|drop)s? (?:you )?(?:the |daily )?(?:content|posts|tweets|hashtags|memes|scripts|captions|trending topic)",
       "(?:content|posts|memes|articles|material)(?: and memes)? (?:is |are |will be )?(?:prepared|provided|supplied|sent daily)|post them as your own|hashtag of the day|trending topic and tweets",
+      "(?:la )?(?:etiqueta|hashtag|tendencia) del d[ií]a|hashtag do dia|etiquetas? oficiales|hashtag ya siku",
       "guiones|te (?:mandamos|enviamos) los|etiquetas oficiales|roteiros?|material vem pronto|messages pr[eé]par[eé]s|(?:messages|articles|hashtags) (?:et hashtags )?sont fournis|tutakutumia hashtag|naskah|template komentar|konten disiapkan|may script|kopyahin|ibibigay (?:namin|ng tl)|content (?:aur memes )?humari team degi|ipapadala namin ang mga sasabihin",
     ],
     questions: ['Q_SAMPLE_TASKS', 'Q_REFUSE'],
-    examples: { hit: ['You will receive talking points each morning', 'Konten disiapkan tim pusat'], miss: ['Write original blog posts about our products'] },
+    examples: { hit: ['You will receive talking points each morning', 'Konten disiapkan tim pusat', 'publica cada día la etiqueta del día desde tu cuenta'], miss: ['Write original blog posts about our products'] },
   },
   {
     id: 'INF_TRENDING', category: 'influence', strength: 'weak', weight: 1,

@@ -119,6 +119,8 @@ cd .. && npm run eval                           # scores the shipped system (rul
 | Challenge v1, full system (rules + model) | n/a | 97.5% category accuracy; 88/90 risky flagged; 1/30 legit flagged |
 | Challenge v1, full system after the job-context gate | n/a | 98.3% category accuracy; 88/90 risky flagged; 0/30 legit flagged |
 | **Challenge v2, full system (fresh), after the gate** | n/a | **91.7% category accuracy; 40/45 risky flagged; 0/15 legit flagged** |
+| **Documented real cases** (24 sourced cases, `risk_data/documented_cases.py`), frozen system | n/a | **18/24 flagged (75%)**; 62.5% right category |
+| Documented real cases after 3 general rule fixes (optimistic) | n/a | 20/24 flagged; 70.8% right category |
 | Real SMS (Mozambique, Bangladesh), legitimate messages flagged | n/a | 0.0–1.2% after the gate (2–44% before); see `docs/research/datasets.md` |
 
 Caveats: the trafficking and influence classes are trained on synthetic data, and both challenge sets were

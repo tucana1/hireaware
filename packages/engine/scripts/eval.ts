@@ -20,7 +20,7 @@ type Label = (typeof LABELS)[number];
 const classifier = getDefaultClassifier();
 const report: Record<string, unknown> = {};
 
-for (const [name, file] of [['challenge_v1', 'challenge_set.csv'], ['challenge_v2', 'challenge_v2.csv']] as const) {
+for (const [name, file] of [['challenge_v1', 'challenge_set.csv'], ['challenge_v2', 'challenge_v2.csv'], ['documented_cases', 'documented_cases.csv']] as const) {
   const rows = parseCsv(readFileSync(path.join(dataDir, file), 'utf8'));
   const confusion: Record<Label, Record<Label, number>> = Object.fromEntries(LABELS.map((t) => [t, Object.fromEntries(LABELS.map((p) => [p, 0]))])) as never;
   let flaggedRisky = 0, risky = 0, flaggedLegit = 0, legit = 0, exact = 0, highOnLegit = 0;

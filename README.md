@@ -54,7 +54,9 @@ click **Load unpacked** and choose `apps/extension/.output/chrome-mv3`.
 
 Results on a fresh, hand-written held-out set (60 ads, 8 languages): 91.7% correct category, 40 of 45
 risky ads flagged, 0 of 15 legitimate look-alikes flagged. On 6,205 real legitimate SMS messages from
-Mozambique and Bangladesh, at most 1.2% get a "be careful" flag. Details and
+Mozambique and Bangladesh, at most 1.2% get a "be careful" flag. On 24 documented real recruitment
+cases it flagged 18 before and 20 after three general rule fixes. The misses are ads that reveal nothing
+("thematic posts and monitoring"), which is why the risk-check chatbot asks about the situation instead. Details and
 caveats are in [`trial-modeling-news/README.md`](trial-modeling-news/README.md).
 
 ## Repository map
