@@ -103,7 +103,7 @@ export const FAQ: FaqEntry[] = [
     question: 'Why does this matter for misinformation?',
     keywords: ['why', 'matter', 'misinformation', 'democracy', 'elections', 'harm', 'society', 'mission'],
     answer: 'Disinformation is now a hired service, and it needs workers. Paid networks fake public opinion during elections, harass journalists and judges into silence, and let foreign actors exploit local divisions using outsourced labour. In the 2025 Philippine midterms, one study found fake profiles behind roughly a third of election-related X profiles it sampled. Many workers do not know what they joined. Helping people recognise these jobs before they say yes cuts off that supply.',
-    sources: [{ title: 'Freedom House, Freedom on the Net 2025: Philippines', url: 'https://freedomhouse.org/country/philippines/freedom-net/2025' }],
+    sources: [{ title: 'The Star / Reuters on the Cyabra study (Apr 2025)', url: 'https://thestar.com.my/aseanplus/aseanplus-news/2025/04/15/duterte-praise-philippine-election-spin-driven-by-fake-accounts-study' }, { title: 'Oxford Internet Institute (2021)', url: 'https://demtech.oii.ox.ac.uk/research/posts/industrialized-disinformation/' }],
   },
   {
     id: 'privacy',

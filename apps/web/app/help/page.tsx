@@ -46,7 +46,7 @@ export default function HelpPage() {
       <h2 className="text-2xl font-semibold mt-12 mb-4">Hotlines and recruiter checks</h2>
       <p className="text-sm text-muted mb-6">Numbers marked verified were seen on an official government site in November 2026. Always double-check before relying on a number.</p>
       <div className="space-y-8">
-        {REGION_ORDER.map((region) => (
+        {REGION_ORDER.filter((region) => COUNTRIES.some((c) => c.region === region)).map((region) => (
           <section key={region}>
             <h3 className="font-semibold text-lg mb-3">{region}</h3>
             <div className="grid gap-4 sm:grid-cols-2">

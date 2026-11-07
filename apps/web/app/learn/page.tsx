@@ -38,7 +38,7 @@ const CASES = [
   },
   {
     title: 'Philippines: POGO raids and the ban (2023–2025)',
-    text: 'Raids on scam hubs in Clark, Bamban and Porac freed more than 2,000 people, many of them foreign workers. The Philippines banned offshore gaming operators in 2024 and passed the Anti-POGO Act in 2025.',
+    text: 'Raids on scam hubs in Clark (2023), Bamban and Porac (2024) involved more than 2,000 workers, many of them foreign. The Philippines banned offshore gaming operators in 2024 and passed the Anti-POGO Act in October 2025.',
     source: 'IJM; Philstar; SunStar', url: 'https://www.ijm.org/our-work/trafficking-slavery/forced-scamming',
   },
 ];

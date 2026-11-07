@@ -9,13 +9,15 @@
     "build": "wxt build",
     "build:firefox": "wxt build -b firefox",
     "zip": "wxt zip",
-    "typecheck": "wxt prepare && tsc --noEmit"
+    "typecheck": "wxt prepare && tsc --noEmit",
+    "test:e2e": "node test/e2e.mjs"
   },
   "dependencies": {
     "@hireaware/engine": "*"
   },
   "devDependencies": {
     "@types/chrome": "^0.3.7",
+    "playwright": "^1.65.0",
     "typescript": "~5.9.3",
     "wxt": "^0.21.5"
   }

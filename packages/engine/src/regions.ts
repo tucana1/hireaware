@@ -31,7 +31,6 @@ export const COUNTRIES: Country[] = [
       { name: '1343 Actionline Against Human Trafficking (24/7)', phone: '1343', url: 'https://1343actionline.ph/', verified: true },
       { name: 'Department of Migrant Workers (DMW) hotline', phone: '1348', url: 'https://dmw.gov.ph/', verified: true },
       { name: 'National Bureau of Investigation', phone: '(02) 8523-8231', url: 'https://nbi.gov.ph/contact/', verified: true },
-      { name: 'CICC Inter-Agency Response Center (scams)', phone: '1326', note: 'Widely reported anti-scam line; not confirmed on an official site.', verified: false },
     ],
     verify: [
       { name: 'DMW licensed recruitment agencies', url: 'https://dmw.gov.ph/inquiry/licensed-recruitment-agencies', verified: true },
@@ -42,7 +41,7 @@ export const COUNTRIES: Country[] = [
   {
     code: 'IN', name: 'India', dial: '91', region: 'South Asia',
     help: [{ name: 'National Cyber Crime Helpline', phone: '1930', url: 'https://cybercrime.gov.in', verified: true }],
-    verify: [{ name: 'eMigrate: list of active registered recruiting agents', url: 'https://emigrate.gov.in', note: 'Unregistered agents work through Facebook, WhatsApp and SMS.', verified: false }],
+    verify: [{ name: 'eMigrate: list of active registered recruiting agents', url: 'https://emigrate.gov.in', note: 'Unregistered agents work through Facebook, WhatsApp and SMS.', verified: true }],
   },
   {
     code: 'KE', name: 'Kenya', dial: '254', region: 'Africa',
@@ -77,7 +76,7 @@ export const COUNTRIES: Country[] = [
   {
     code: 'ID', name: 'Indonesia', dial: '62', region: 'Southeast Asia',
     help: [{ name: 'Indonesian Embassy in Phnom Penh (for citizens in Cambodia)', phone: '+855 12 813 282', note: 'Also +855 23 217 934', verified: true }],
-    verify: [{ name: 'KP2MI (migrant worker protection agency)', url: 'https://kp2mi.go.id', verified: false }],
+    verify: [{ name: 'KP2MI (Ministry for the Protection of Indonesian Migrant Workers)', url: 'https://kp2mi.go.id', verified: true }],
   },
   {
     code: 'UG', name: 'Uganda', dial: '256', region: 'Africa',
@@ -87,7 +86,7 @@ export const COUNTRIES: Country[] = [
   {
     code: 'ET', name: 'Ethiopia', dial: '251', region: 'Africa',
     help: [{ name: 'National anti-trafficking hotline (toll-free; Amharic, Afan Oromo, English, Tigrigna)', phone: '8797', verified: true }, { name: 'Police', phone: '991', verified: true }],
-    verify: [{ name: 'E-LMIS: only licensed agencies can register you', verified: false }],
+    verify: [],
   },
   {
     code: 'ZA', name: 'South Africa', dial: '27', region: 'Africa',
@@ -101,12 +100,12 @@ export const COUNTRIES: Country[] = [
   },
   {
     code: 'BD', name: 'Bangladesh', dial: '880', region: 'South Asia',
-    help: [{ name: 'National emergency service', phone: '999', verified: false }],
+    help: [],
     verify: [{ name: 'BMET (Bureau of Manpower, Employment and Training)', url: 'https://bmet.gov.bd/', verified: true }],
   },
   {
     code: 'PK', name: 'Pakistan', dial: '92', region: 'South Asia',
-    help: [{ name: 'FIA anti-trafficking hotline', phone: '111-247-786', note: 'Reported in the news; not confirmed on an official site.', verified: false }],
+    help: [],
     verify: [{ name: 'Bureau of Emigration & Overseas Employment: licensed promoters', url: 'https://beoe.gov.pk/', verified: true }],
   },
   {
@@ -123,11 +122,6 @@ export const COUNTRIES: Country[] = [
     code: 'CO', name: 'Colombia', dial: '57', region: 'Latin America',
     help: [{ name: 'Línea gratuita nacional contra la trata (24/7, with IOM)', phone: '01 8000 52 20 20', note: 'From abroad +57 1 600 10 35', verified: true }],
     verify: [{ name: 'Only authorised transnational agencies may place you abroad, and they may not charge you', verified: true }],
-  },
-  {
-    code: 'EG', name: 'Egypt', dial: '20', region: 'Middle East & North Africa',
-    help: [{ name: 'Online crime reporting', phone: '108', verified: false }, { name: 'Police', phone: '122', verified: false }],
-    verify: [{ name: 'Ministry of Labour licence check and suspended-company list', verified: false }],
   },
 ];
 

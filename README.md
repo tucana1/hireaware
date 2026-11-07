@@ -7,7 +7,7 @@ to reduce misinformation at its source.
 
 | Tool | What it does | Where |
 |---|---|---|
-| **Website** | Warning signs, real cases, region-by-region guidance, a help directory for 19 countries | `apps/web` |
+| **Website** | Warning signs, real cases, region-by-region guidance, a help directory for 18 countries | `apps/web` |
 | **Risk-check chatbot** | Asks about the person's situation (job type, destination, visa, accounts, money, whether they're already inside) and returns risk levels, reasons, "it would look safer if…", strict questions and local hotlines. Answers typed questions from a local knowledge base, or with Claude when a key is set | `/check` |
 | **Message scanner** | Paste a job ad or recruiter message in 8 languages; see red flags, evidence and questions to ask | `/scan`, `POST /api/analyze` |
 | **WhatsApp tipline** | Forward a recruiter's message; get the risk, the reasons and strict questions to put back to the recruiter, plus hotlines for the sender's country | `/api/whatsapp` (Twilio), `/api/whatsapp/meta` (Meta Cloud API), simulator at `/tipline` |
@@ -27,6 +27,7 @@ npm run dev            # website on http://localhost:3000
 npm test               # engine + website tests
 npm run build          # production builds of the website and the extension
 npm run eval           # scores the shipped rules + model on the hand-written challenge sets
+npm run test:extension # loads the built extension in Chromium (Playwright) and checks the popup
 ```
 
 Load the extension: `npm run build:extension`, then open `chrome://extensions`, turn on Developer mode,
@@ -79,7 +80,7 @@ PLAN.md                Original build plan (India-first), kept for history; see 
 - Nothing typed into the risk check, scanner or tipline is stored or logged.
 - The extension never sends page content anywhere.
 - The site has a "Leave quickly" button (or press Esc twice).
-- Hotline numbers are marked verified only if seen on an official site. Unverified ones are labelled.
+- Every hotline and link shown was confirmed on an official government site; numbers that couldn't be confirmed were left out (see `docs/research/site-facts-check.md`).
 - Guidance only, not legal advice. Forced-scam victims are victims: the site says so, and says to beware of
   paid "rescuers".
 

@@ -13,7 +13,8 @@
     "build:extension": "npm run build -w @hireaware/extension",
     "test": "npm run test -w @hireaware/engine && npm run test -w @hireaware/web",
     "typecheck": "npm run typecheck --workspaces --if-present",
-    "eval": "npm run eval -w @hireaware/engine"
+    "eval": "npm run eval -w @hireaware/engine",
+    "test:extension": "npm run build -w @hireaware/extension && npm run test:e2e -w @hireaware/extension"
   },
   "engines": {
     "node": ">=22"

@@ -2,7 +2,7 @@
 > Global South focus on deceptive recruitment into troll farms / covert propaganda and scam-compound
 > trafficking, plus job scams. Built so far, all working without API keys: website + risk-check chatbot,
 > message scanner, WhatsApp tipline (Twilio + Meta webhooks + simulator), browser extension, the
-> 4-class fine-tuned classifier, and a 19-country help directory. Working name is now **HireAware**. See
+> 4-class fine-tuned classifier, and a 18-country help directory. Working name is now **HireAware**. See
 > `README.md` for the current architecture and `trial-modeling-news/README.md` for model results.
 
 # JobJaanch: build plan
