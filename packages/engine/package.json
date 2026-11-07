@@ -1,0 +1,23 @@
+{
+  "name": "@hireaware/engine",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Shared, browser-safe analysis engine: red-flag rules, the exported text classifier, score fusion, questions to ask, the risk-check chatbot flow and the tipline replies.",
+  "exports": {
+    ".": "./src/index.ts",
+    "./default-classifier": "./src/default-classifier.ts",
+    "./model/risk-model.json": "./model/risk-model.json"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit -p .",
+    "eval": "tsx scripts/eval.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "tsx": "^4.20.0",
+    "typescript": "~5.9.3",
+    "vitest": "^5.1.0"
+  }
+}

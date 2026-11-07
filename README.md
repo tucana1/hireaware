@@ -1,88 +1,92 @@
-# hack-humanity — job recruitment fraud detection
+# HireAware
 
-Flags likely-fraudulent job postings, with extra coverage for Indian/South Asian scam patterns.
-All code lives in [`trial-modeling-news/`](trial-modeling-news/).
+**Check the job behind the job offer.** HireAware helps job seekers across the Global South spot offers
+that would make them unknowing workers for troll farms and covert propaganda, traffic them into online-scam
+compounds, or simply scam them, before they say yes. Cutting off the supply of unwitting workers is a way
+to reduce misinformation at its source.
 
-## Setup (Python 3.12)
-
-```bash
-cd trial-modeling-news
-python3.12 -m venv .venv
-source .venv/bin/activate          # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-# Only needed for model-embeddings.py (adds PyTorch, ~1 GB):
-pip install -r requirements-embeddings.txt
-```
-
-Run every command below from `trial-modeling-news/` with the environment active.
-
-## Files
-
-| File | What it is |
-|---|---|
-| `model-testing1.py` | **Main model.** TF-IDF + logistic regression, trained on the US/global dataset plus 80% of the Indian data. Writes `job_fraud_results/`. |
-| `model-embeddings.py` | Comparison model: TF-IDF vs. sentence embeddings (all-MiniLM-L6-v2) vs. both, with separate thresholds for Indian postings. Writes `job_fraud_results_embed/`. |
-| `scam_rules.py` | Hand-written India-specific red flags (upfront fees, WhatsApp/Telegram contact, Aadhaar/PAN/bank requests, guaranteed jobs). Any hit forces an alert. |
-| `convert_hf_india.py` | Downloads the Indian dataset from Hugging Face, converts it to `india_synthetic_jobs.csv`, and with `--score` scores the held-out part with the saved model. |
-| `fake_job_postings.csv` | EMSCAD: 17,880 real (mostly US/UK, 2012–14) postings, ~5% fraudulent. |
-| `india_synthetic_jobs.csv` | 597 **AI-generated** Indian-context postings (373 fake) from `Aioshi/smolified-fakejob`. |
-| `job_fraud_results/` | Current main model (`job_fraud_baseline.joblib`), metrics and graphs. |
-| `job_fraud_results_embed/` | Embedding comparison results and saved model. |
-| `job_fraud_results_baseline/`, `job_fraud_results_v2/` | Older runs, kept for comparison. |
-
-## Datasets
-
-Both CSVs are included in this repo, so no download is needed to run the models.
-
-| File | Source | Notes |
+| Tool | What it does | Where |
 |---|---|---|
-| `fake_job_postings.csv` | **EMSCAD** (Employment Scam Aegean Dataset), University of the Aegean. Kaggle copy: [Real / Fake Job Posting Prediction](https://www.kaggle.com/datasets/shivamb/real-or-fake-fake-jobposting-prediction) | 17,880 real postings, 866 fraudulent, mostly US/UK, 2012–14. Paper: Vidros et al., ["Automatic Detection of Online Recruitment Frauds: Characteristics, Methods, and a Public Dataset"](https://www.mdpi.com/1999-5903/9/1/6), *Future Internet* 9(1):6, 2017. |
-| `india_synthetic_jobs.csv` | [Aioshi/smolified-fakejob](https://huggingface.co/datasets/Aioshi/smolified-fakejob) on Hugging Face, converted by `convert_hf_india.py` | 597 **AI-generated** Indian-context postings (373 fake). The metadata says Apache-2.0, but the dataset card also calls it the owner's "sovereign asset", so check with the owner before redistributing. |
+| **Website** | Warning signs, real cases, region-by-region guidance, a help directory for 19 countries | `apps/web` |
+| **Risk-check chatbot** | Asks about the person's situation (job type, destination, visa, accounts, money, whether they're already inside) and returns risk levels, reasons, "it would look safer if…", strict questions and local hotlines. Answers typed questions from a local knowledge base, or with Claude when a key is set | `/check` |
+| **Message scanner** | Paste a job ad or recruiter message in 8 languages; see red flags, evidence and questions to ask | `/scan`, `POST /api/analyze` |
+| **WhatsApp tipline** | Forward a recruiter's message; get the risk, the reasons and strict questions to put back to the recruiter, plus hotlines for the sender's country | `/api/whatsapp` (Twilio), `/api/whatsapp/meta` (Meta Cloud API), simulator at `/tipline` |
+| **Browser extension** | "Scan this page", right-click "Check with HireAware", or paste text. The classifier runs locally; nothing is sent anywhere | `apps/extension` |
+| **Classifier** | The team's TF-IDF + logistic-regression job-fraud model, fine-tuned into 4 classes (legit, scam, trafficking, influence) and exported to run in TypeScript | `trial-modeling-news/`, `packages/engine` |
 
-Check each source's license before using the data outside this project.
+Everything works **without API keys**. Keys only switch on extras (Claude answers in the chatbot, real
+WhatsApp delivery). See `.env.example`.
 
-## Common commands
+## Quick start
+
+Needs Node 22+ (Python 3.12+ only to retrain the model).
 
 ```bash
-python model-testing1.py                       # retrain main model (~5 min), opens graphs
-python model-testing1.py --quick --no-show     # faster, no graph windows
-python convert_hf_india.py --score             # score Indian held-out postings with saved model
-python model-embeddings.py                     # embedding comparison (~10 min first run)
+npm install
+npm run dev            # website on http://localhost:3000
+npm test               # engine + website tests
+npm run build          # production builds of the website and the extension
+npm run eval           # scores the shipped rules + model on the hand-written challenge sets
 ```
 
-Useful flags for `model-testing1.py`: `--target-precision 0.7` (fewer false alarms, less fraud
-caught), `--no-rules`, `--no-extra`, `--no-desc-aug`, `--extra-weight N`.
+Load the extension: `npm run build:extension`, then open `chrome://extensions`, turn on Developer mode,
+click **Load unpacked** and choose `apps/extension/.output/chrome-mv3`.
 
-## Using the saved model
+## How it decides
 
-```python
-import joblib
-bundle = joblib.load('job_fraud_results/job_fraud_baseline.joblib')
-score = bundle['pipeline'].predict_proba(['lowercased title + company profile + description ...'])[0, 1]
-flag = score >= bundle['threshold']   # also flag if scam_rules.scam_flags(text) is non-empty
+1. **Red-flag rules** (`packages/engine/src/rules.ts`): about 30 explainable rules in English,
+   Filipino/Taglish, Bahasa Indonesia, Hindi/Hinglish, Swahili, Spanish, Portuguese and French. They
+   target behaviours, never parties or politics:
+   - fake or borrowed accounts, scripts and talking points, a hidden client, attacks on critics, foreign personas, fake news pages
+   - tourist visas for work, coaching for immigration, passports held, debts, border crossings by land, Russia war-economy lures
+   - fees, task scams, OTP/PIN/e-wallet requests, money mules
+
+   Reassuring signals (licences, work visas, "#ad" disclosures, moderator and fact-checker roles) lower
+   scores but never cancel a strong red flag.
+2. **Classifier** (`packages/engine/src/classifier.ts`): runs the exported model. It adds weight when it
+   agrees and can raise "be careful" on its own, but can't lower a rule's floor.
+3. **Questions to ask** (`questions.ts`): each red flag maps to strict, verifiable questions. A real
+   employer can answer them in writing.
+
+Results on a fresh, hand-written held-out set (60 ads, 8 languages, written after everything was frozen):
+95% correct category, 42 of 45 risky ads flagged, 0 of 15 legitimate look-alikes flagged. Details and
+caveats are in [`trial-modeling-news/README.md`](trial-modeling-news/README.md).
+
+## Repository map
+
+```
+apps/web/              Next.js 16 website + API routes (analyze, chat, tipline, WhatsApp webhooks)
+apps/extension/        WXT (Manifest V3) browser extension; model runs in the service worker
+packages/engine/       Shared TypeScript engine: rules, classifier, fusion, questions, chatbot flow,
+                       knowledge base, tipline replies, country help directory, region guides
+trial-modeling-news/   Python models: the original fraud model + the 4-class recruitment-risk model,
+                       synthetic data generators and challenge sets
+docs/research/         Sourced fact sheet and Global South regional research (Nov 2026)
+PLAN.md                Original build plan (India-first), kept for history; see its status note
 ```
 
-Text must be cleaned the same way as in training (`clean_text` / `combine_fields` in `model-testing1.py`).
+## Deploying
 
-## Current results
+- **Website:** any Node host. On Vercel, set the root directory to `apps/web`; it builds with no secrets.
+- **WhatsApp, demo:** in the Twilio console's WhatsApp sandbox, set "When a message comes in" to
+  `https://<domain>/api/whatsapp`, and set `TWILIO_AUTH_TOKEN` (requests are signature-checked).
+- **WhatsApp, production:** Meta WhatsApp Cloud API. Callback `https://<domain>/api/whatsapp/meta`;
+  set `WHATSAPP_VERIFY_TOKEN`, `META_APP_SECRET`, `WHATSAPP_ACCESS_TOKEN` and `WHATSAPP_PHONE_NUMBER_ID`.
+- **Claude answers in the chatbot:** set `ANTHROPIC_API_KEY` (model `claude-opus-5-5` by default).
 
-| Held-out set | Accuracy | Fraud caught | False alarms |
-|---|---|---|---|
-| US/global test (3,213 postings, 203 fraud) | 96.7% | 55% | 15 |
-| Indian held-out (120 postings, 75 fake) — main model | 90.8% | 99% | 10 |
-| Indian held-out — TF-IDF, India-specific threshold (`model-embeddings.py`) | 92.5% | 97% | 7 |
-| Indian held-out — TF-IDF + embeddings, India threshold | 94.2% | 95% | 3 |
+## Privacy and safety
 
-## Caveats
+- Nothing typed into the risk check, scanner or tipline is stored or logged.
+- The extension never sends page content anywhere.
+- The site has a "Leave quickly" button (or press Esc twice).
+- Hotline numbers are marked verified only if seen on an official site. Unverified ones are labelled.
+- Guidance only, not legal advice. Forced-scam victims are victims: the site says so, and says to beware of
+  paid "rescuers".
 
-- The Indian data is AI-generated; real-world accuracy on Indian scams is unknown until tested on
-  real labeled postings.
-- The Indian held-out set is only 120 postings (±~5 points).
-- Scores are uncalibrated and are not fraud probabilities. A posting below the threshold is not
-  guaranteed safe.
+## Limits
 
-## Next steps
-
-1. Collect 100–200 real Indian postings with labels (cybercrime.gov.in reports, Reddit, Naukri)
-   and evaluate on them.
-2. If the TF-IDF + embeddings model also wins on real data, make it the main model.
+- The trafficking and influence classes are trained on synthetic examples, because no public dataset of
+  troll-farm or scam-compound job ads exists.
+- Challenge sets were written by the team. Real labelled examples are the most important next step.
+- Replies are in English for now. Detection works in 8 languages.
+- Voice notes and screenshots on the tipline are not read yet; the bot asks for pasted text.

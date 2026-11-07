@@ -1,0 +1,78 @@
+{
+  "challenge_v1": {
+    "rows": 120,
+    "category_accuracy": 0.975,
+    "risky_flagged": "88/90",
+    "legit_flagged": "1/30",
+    "legit_marked_high": 0,
+    "confusion_rows_true_cols_pred": {
+      "legit": {
+        "legit": 29,
+        "scam": 1,
+        "trafficking": 0,
+        "influence": 0
+      },
+      "scam": {
+        "legit": 0,
+        "scam": 30,
+        "trafficking": 0,
+        "influence": 0
+      },
+      "trafficking": {
+        "legit": 0,
+        "scam": 0,
+        "trafficking": 30,
+        "influence": 0
+      },
+      "influence": {
+        "legit": 2,
+        "scam": 0,
+        "trafficking": 0,
+        "influence": 28
+      }
+    },
+    "misses": [
+      "C013 influence -> legit (low)",
+      "C021 influence -> legit (low)",
+      "C115 legit -> scam (caution)"
+    ]
+  },
+  "challenge_v2": {
+    "rows": 60,
+    "category_accuracy": 0.95,
+    "risky_flagged": "42/45",
+    "legit_flagged": "0/15",
+    "legit_marked_high": 0,
+    "confusion_rows_true_cols_pred": {
+      "legit": {
+        "legit": 15,
+        "scam": 0,
+        "trafficking": 0,
+        "influence": 0
+      },
+      "scam": {
+        "legit": 0,
+        "scam": 15,
+        "trafficking": 0,
+        "influence": 0
+      },
+      "trafficking": {
+        "legit": 0,
+        "scam": 0,
+        "trafficking": 15,
+        "influence": 0
+      },
+      "influence": {
+        "legit": 3,
+        "scam": 0,
+        "trafficking": 0,
+        "influence": 12
+      }
+    },
+    "misses": [
+      "V001 influence -> legit (low)",
+      "V003 influence -> legit (low)",
+      "V004 influence -> legit (low)"
+    ]
+  }
+}

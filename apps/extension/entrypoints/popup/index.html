@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HireAware</title>
+    <meta name="manifest.type" content="browser_action" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header>
+      <span class="logo">H</span>
+      <div>
+        <p class="title">HireAware</p>
+        <p class="sub">Check a job post or recruiter message</p>
+      </div>
+    </header>
+    <button id="scan-page" class="primary">Scan this page</button>
+    <p class="or">or paste a message</p>
+    <textarea id="text" rows="5" placeholder="Paste a job ad or a WhatsApp / Telegram message…"></textarea>
+    <button id="scan-text" class="secondary">Check text</button>
+    <div id="result" aria-live="polite"></div>
+    <p class="foot">Runs on your device. Nothing you check is sent anywhere.</p>
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>

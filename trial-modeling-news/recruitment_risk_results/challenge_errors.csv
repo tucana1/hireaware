@@ -1,0 +1,28 @@
+id,label,predicted,score,lang,region,raw
+C001,influence,legit,0.888,en,PH,"Part-time Digital Ambassador needed for a public affairs firm in Pasig. You'll be handed 4 ready-made profiles and a daily engagement brief. Main job: keep the comment threads under the Governor's livestreams positive and push back on haters. ₱450 a night, paid every Saturday. Discretion is a must."
+C005,influence,legit,0.75,en,NG,"We are recruiting digital foot soldiers across the 36 states. Create at least 5 accounts each with local-sounding names, build followers, and amplify the content our media team drops. Monthly stipend ₦80,000. Do not reveal the principal."
+C006,influence,legit,0.825,en,GH,"International human-rights NGO seeks young writers in Accra. You'll run Facebook and Instagram pages addressed to Americans, writing as if you live in the US. Training provided by our foreign partners. Salary paid in cash."
+C008,influence,legit,0.498,en,IN,Hiring Online Reputation Executives (remote). Work involves operating multiple pseudonymous handles to counter anti-national narratives and report hostile accounts in bulk. Daily target: 300 interactions. Salary ₹18k.
+C010,influence,scam,0.548,pt,BR,"Renda extra nas eleições: precisamos de pessoas para administrar grupos de WhatsApp e perfis de apoio. O material vem pronto da coordenação, você só encaminha e comenta. Pagamento semanal no Pix. Nada de falar da campanha em público."
+C011,influence,legit,0.469,es,MX,"Empresa de comunicación busca operadores digitales para el estado. Cada operador maneja cuentas de X y TikTok con nombres de ciudadanos comunes y posiciona las tendencias que indique el coordinador. 8,000 MXN mensuales. Confidencialidad absoluta."
+C013,influence,legit,0.733,es,VE,Gana bonos tuiteando: cada día te asignamos las etiquetas oficiales y debes publicar 50 tuits desde tus cuentas. Recompensa por cumplir la meta.
+C016,influence,legit,0.531,en,UG,"Paid bloggers wanted ahead of the elections. You will receive talking points from the ministry's media desk, post them as your own views, and mass-report pages critical of the government. UGX 30,000 per week."
+C021,influence,legit,0.908,en,MM,Content team for a peace and stability page network. You'll post under assigned personas and flag terrorist supporters for removal. Accommodation provided at the base.
+C028,influence,legit,0.623,en,ET,Digital diaspora engagement officers: post supportive content about the government's operations under multiple profiles and counter propaganda by activists abroad. Paid in birr.
+C029,influence,legit,0.526,pt,BR,Precisamos de influenciadores para postar vídeos elogiando o prefeito sem marcar como publicidade. Roteiro enviado pela agência. R$ 300 por vídeo.
+C030,influence,legit,0.528,en,PH,Write 20 testimonials a day from different accounts praising the new reclamation project in barangay groups. Photos and names are provided. ₱600/day. Don't say you're paid.
+C033,trafficking,legit,0.957,en,PH,"Exit via Zamboanga is easier for applicants without OEC. Our guide will take you by ferry to Sandakan, then you'll fly to our office in Kota Kinabalu and later transfer."
+C037,trafficking,legit,0.528,en,ET,"Job opportunity in Thailand for Ethiopians who speak English. Free air ticket, food and housing. You go first as a visitor, then the company fixes the papers."
+C038,trafficking,legit,0.652,en,NG,Hello! You've been shortlisted for Digital Sales Executive in Dubai (then our Asia branch). Visit visa provided. Your role: chat with foreign clients on dating apps and guide them to our crypto platform. Targets apply.
+C040,trafficking,scam,0.526,en,IN,"Golden opportunity in the Laos SEZ: digital marketing executive for a foreign company. No experience required. Salary $1,000. Contract 1 year; early exit penalty $5,000."
+C047,trafficking,scam,0.754,en,VN,"High-salary job in Cambodia for Vietnamese youth: online sales, 20 million dong per month, free food and lodging. We cross by road at Moc Bai. No contract needed."
+C053,trafficking,legit,0.921,en,GLOBAL,Translator job (English/Chinese) in a tech park near Myawaddy. Salary negotiable. Free accommodation inside the park. Phones are collected at the start of each shift.
+C057,trafficking,legit,0.593,en,MY,Work in Sihanoukville as a game operator. Basic computer skills. No work permit required. Your boss will keep the passport so it doesn't get lost.
+C066,scam,legit,0.928,en,NG,"Federal agency recruitment 2026: buy the application form for ₦7,500 at our portal to be considered."
+C068,scam,influence,0.738,hi,IN,"Work from home: YouTube video like karo, har like ka ₹50. Pehle ₹1,000 ka task karna hoga, refund ke saath ₹1,300 milenge."
+C075,scam,legit,0.662,es,CO,Te ofrecemos trabajo como agente de pagos: recibes transferencias en tu cuenta y las envías a nuestro proveedor. Te quedas con el 10%.
+C083,scam,influence,0.581,taglish,PH,"Pwede ba namin hiramin ang SIM mo? Iparerehistro lang namin sa pangalan mo, ₱200 kada SIM."
+C087,scam,legit,0.539,en,GLOBAL,"Mystery shopper job: we'll send you a cheque; deposit it, keep $300, and wire the rest to our agent."
+C095,legit,scam,0.348,en,PH,"Hiring Nurses for Saudi Arabia (MOH). DMW License No. 012-LB-02152023-R. Free airfare, housing and transport per contract. No placement fee. Process: interview, medical, visa, OEC, PDOS, then deployment."
+C114,legit,scam,0.503,en,GLOBAL,"Data Annotator (remote). Label text and images for AI safety research through our platform. Weekly pay to your bank. No fees, ever. Use only your own single account."
+C115,legit,scam,0.676,en,GLOBAL,"Virtual Assistant for a Canadian real estate agent. Schedule posts on the agent's own pages, manage email and calendar. Paid via Wise. Contract through a freelancing platform."

@@ -1,9 +1,34 @@
-# Python virtual environments and caches
+# ── Secrets: only the template is committed
+.env
+.env.*
+!.env.example
+
+# ── Python virtual environments and caches
 .venv/
 .venv-*/
 __pycache__/
 *.pyc
-.DS_Store
 
 # Regenerable embedding cache (48 MB)
 embedding_cache.joblib
+
+# ── Node dependencies and build output
+node_modules/
+.next/
+.output/
+.wxt/
+.turbo/
+dist/
+*.tsbuildinfo
+next-env.d.ts
+
+# ── Local data the apps write in development (reports, tipline sessions)
+apps/web/.data/
+
+# ── Raw, unredacted research data and downloaded registries (re-fetch with scripts/)
+research/corpus/raw/
+scripts/downloads/
+trial-modeling-news/risk_data/downloads/
+
+# ── OS / editor
+.DS_Store

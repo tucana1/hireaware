@@ -1,0 +1,21 @@
+{
+  "name": "hireaware",
+  "private": true,
+  "description": "HireAware: check a job offer before it turns you into a troll-farm worker or a trafficking victim.",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w @hireaware/web",
+    "build": "npm run build -w @hireaware/web && npm run build -w @hireaware/extension",
+    "build:web": "npm run build -w @hireaware/web",
+    "build:extension": "npm run build -w @hireaware/extension",
+    "test": "npm run test -w @hireaware/engine && npm run test -w @hireaware/web",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "eval": "npm run eval -w @hireaware/engine"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

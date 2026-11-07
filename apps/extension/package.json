@@ -1,0 +1,22 @@
+{
+  "name": "@hireaware/extension",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "HireAware browser extension: checks job posts and recruiter messages on the page, locally, with the recruitment-risk model.",
+  "scripts": {
+    "dev": "wxt",
+    "build": "wxt build",
+    "build:firefox": "wxt build -b firefox",
+    "zip": "wxt zip",
+    "typecheck": "wxt prepare && tsc --noEmit"
+  },
+  "dependencies": {
+    "@hireaware/engine": "*"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.3.7",
+    "typescript": "~5.9.3",
+    "wxt": "^0.21.5"
+  }
+}

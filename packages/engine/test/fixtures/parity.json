@@ -1,0 +1,2361 @@
+{
+ "classes": [
+  "legit",
+  "scam",
+  "trafficking",
+  "influence"
+ ],
+ "max_abs_diff_json_vs_sklearn": 2.817825298251364e-05,
+ "cases": [
+  {
+   "text": "Part-time Digital Ambassador needed for a public affairs firm in Pasig. You'll be handed 4 ready-made profiles and a daily engagement brief. Main job: keep the comment threads under the Governor's livestreams positive and push back on haters. ₱450 a night, paid every Saturday. Discretion is a must.",
+   "json_proba": [
+    0.8882874437033692,
+    0.019247873454512537,
+    0.0018777866975719217,
+    0.09058689614454622
+   ],
+   "sklearn_proba": [
+    0.8882880609005481,
+    0.0192472341671972,
+    0.0018777349042337036,
+    0.09058697002802087
+   ]
+  },
+  {
+   "text": "Sideline para sa mga estudyante: magco-comment ka lang sa mga FB live ng partido gamit ang 3 account na ibibigay namin. ₱150 kada live. Walang pangalan ng kumpanya, basta sa GC lang tayo mag-uusap.",
+   "json_proba": [
+    0.010569359086307321,
+    0.0044598213791552325,
+    0.07096213738775152,
+    0.9140086821467859
+   ],
+   "sklearn_proba": [
+    0.01056934989188919,
+    0.0044601169975127565,
+    0.07096516114036155,
+    0.9140053719702366
+   ]
+  },
+  {
+   "text": "Kailangan ng mga taga-sagot sa mga nagrereklamo tungkol sa proyekto ng munisipyo. Huwag gamitin ang personal mong FB. Ipapadala namin ang mga sasabihin mo. ₱500 bawat araw.",
+   "json_proba": [
+    0.011504509544191525,
+    0.004277413067792239,
+    0.02362672149440064,
+    0.9605913558936157
+   ],
+   "sklearn_proba": [
+    0.011504737859378479,
+    0.004277613120722206,
+    0.02362761672988304,
+    0.9605900322900163
+   ]
+  },
+  {
+   "text": "Do you have an active X account with 2k+ followers? Join our campaign team for the by-election. We share the trending topic and tweets in the group every 6am; you post, quote and reply to opponents' supporters. KES 700/day via M-Pesa. Keep the group confidential.",
+   "json_proba": [
+    0.2583808097364657,
+    0.02076140009836582,
+    0.0005510551968019925,
+    0.7203067349683665
+   ],
+   "sklearn_proba": [
+    0.25838138658116794,
+    0.0207608231350707,
+    0.0005510345113744044,
+    0.720306755772387
+   ]
+  },
+  {
+   "text": "We are recruiting digital foot soldiers across the 36 states. Create at least 5 accounts each with local-sounding names, build followers, and amplify the content our media team drops. Monthly stipend ₦80,000. Do not reveal the principal.",
+   "json_proba": [
+    0.7504357054555936,
+    0.04465705082754685,
+    0.004453193523139339,
+    0.20045405019372028
+   ],
+   "sklearn_proba": [
+    0.7504399994963838,
+    0.04465683756627854,
+    0.004453228283442013,
+    0.2004499346538958
+   ]
+  },
+  {
+   "text": "International human-rights NGO seeks young writers in Accra. You'll run Facebook and Instagram pages addressed to Americans, writing as if you live in the US. Training provided by our foreign partners. Salary paid in cash.",
+   "json_proba": [
+    0.8246903685431856,
+    0.04653614609635078,
+    0.0049603746503629545,
+    0.12381311071010065
+   ],
+   "sklearn_proba": [
+    0.8246876901751886,
+    0.04653630407269633,
+    0.004960496974984603,
+    0.12381550877713039
+   ]
+  },
+  {
+   "text": "Election season job! Har constituency ke liye 10 social media warriors chahiye. Roz ka content aur memes humari team degi, aapko apne alag-alag ID se share karna hai aur opposition ke posts pe reply. ₹600/din. Bahar kisi ko kuch nahi batana.",
+   "json_proba": [
+    0.054112650374261134,
+    0.006362396652690414,
+    0.003994379608529026,
+    0.9355305733645195
+   ],
+   "sklearn_proba": [
+    0.05411441169747942,
+    0.006362120566431272,
+    0.0039941969505334855,
+    0.9355292707855559
+   ]
+  },
+  {
+   "text": "Hiring Online Reputation Executives (remote). Work involves operating multiple pseudonymous handles to counter anti-national narratives and report hostile accounts in bulk. Daily target: 300 interactions. Salary ₹18k.",
+   "json_proba": [
+    0.4979149375230335,
+    0.28648713844148593,
+    0.01399085588315858,
+    0.20160706815232185
+   ],
+   "sklearn_proba": [
+    0.4979290892490897,
+    0.28647502943790143,
+    0.013990195337468226,
+    0.20160568597554068
+   ]
+  },
+  {
+   "text": "Dicari tim medsos untuk pilkada. Tugas: pegang 10 akun samaran, ramaikan tagar pasangan calon, dan lawan narasi negatif. Konten disiapkan tim pusat. Honor Rp 3 juta/bulan. Wajib jaga kerahasiaan.",
+   "json_proba": [
+    0.3203488801833853,
+    0.10079297906442147,
+    0.03362778005429088,
+    0.5452303606979023
+   ],
+   "sklearn_proba": [
+    0.3203501838807019,
+    0.10079471212464176,
+    0.03362700848304166,
+    0.5452280955116147
+   ]
+  },
+  {
+   "text": "Renda extra nas eleições: precisamos de pessoas para administrar grupos de WhatsApp e perfis de apoio. O material vem pronto da coordenação, você só encaminha e comenta. Pagamento semanal no Pix. Nada de falar da campanha em público.",
+   "json_proba": [
+    0.10488074330672205,
+    0.5479486659517162,
+    0.04049250256731202,
+    0.30667808817424974
+   ],
+   "sklearn_proba": [
+    0.10488122737584188,
+    0.5479556972381318,
+    0.04049312745172806,
+    0.30666994793429825
+   ]
+  },
+  {
+   "text": "Empresa de comunicación busca operadores digitales para el estado. Cada operador maneja cuentas de X y TikTok con nombres de ciudadanos comunes y posiciona las tendencias que indique el coordinador. 8,000 MXN mensuales. Confidencialidad absoluta.",
+   "json_proba": [
+    0.4685199000205466,
+    0.13348875728017673,
+    0.052290038801801705,
+    0.34570130389747494
+   ],
+   "sklearn_proba": [
+    0.46851218001227884,
+    0.13348679389583012,
+    0.052291352672180665,
+    0.3457096734197103
+   ]
+  },
+  {
+   "text": "Se necesitan jóvenes para bodegas digitales: comentar en noticias regionales a favor del alcalde y desmentir a los críticos con capturas que te enviamos. Pago diario por Nequi.",
+   "json_proba": [
+    0.12503442241051488,
+    0.003254870800587043,
+    0.009272154581185202,
+    0.8624385522077128
+   ],
+   "sklearn_proba": [
+    0.12503306130762232,
+    0.0032547495067563534,
+    0.009271962708659768,
+    0.8624402264769615
+   ]
+  },
+  {
+   "text": "Gana bonos tuiteando: cada día te asignamos las etiquetas oficiales y debes publicar 50 tuits desde tus cuentas. Recompensa por cumplir la meta.",
+   "json_proba": [
+    0.7329864159777799,
+    0.036010620490783886,
+    0.013953596272202228,
+    0.2170493672592339
+   ],
+   "sklearn_proba": [
+    0.7329859127500278,
+    0.03601082987911422,
+    0.013953763163080415,
+    0.21704949420777753
+   ]
+  },
+  {
+   "text": "Agence de communication recrute 20 web-activistes à Bamako. Vous publierez chaque jour des messages préparés par notre équipe sur plusieurs comptes Facebook, et vous soutiendrez le partenaire étranger dans les commentaires. 75 000 FCFA par mois. Discrétion obligatoire.",
+   "json_proba": [
+    0.18243463410180613,
+    0.06142989227734517,
+    0.03830263584394512,
+    0.7178328377769035
+   ],
+   "sklearn_proba": [
+    0.18243039517841658,
+    0.06143331537139196,
+    0.03830150949029176,
+    0.7178347799598997
+   ]
+  },
+  {
+   "text": "Recherche jeunes pour animer des pages d'actualité indépendantes. Les articles sont fournis, il suffit de les publier sous différents noms. Paiement Wave chaque vendredi.",
+   "json_proba": [
+    0.08579391666248762,
+    0.0638442585201847,
+    0.010165222194437268,
+    0.8401966026228905
+   ],
+   "sklearn_proba": [
+    0.0857898614326331,
+    0.06384281984860793,
+    0.010164110714390166,
+    0.8402032080043689
+   ]
+  },
+  {
+   "text": "Paid bloggers wanted ahead of the elections. You will receive talking points from the ministry's media desk, post them as your own views, and mass-report pages critical of the government. UGX 30,000 per week.",
+   "json_proba": [
+    0.5307394993187111,
+    0.057193929603775465,
+    0.007377465639773009,
+    0.4046891054377404
+   ],
+   "sklearn_proba": [
+    0.5307442321205953,
+    0.05719691521718315,
+    0.007377732580721344,
+    0.40468112008150026
+   ]
+  },
+  {
+   "text": "Marketing internship: grow a network of community voices accounts that comment on economic news, steering conversation toward our client's talking points. Client identity withheld. Stipend R4,500.",
+   "json_proba": [
+    0.32138536694447883,
+    0.020848991013944718,
+    0.0013845925609402478,
+    0.6563810494806362
+   ],
+   "sklearn_proba": [
+    0.3213891791854738,
+    0.020849537409177943,
+    0.001384578355521856,
+    0.6563767050498264
+   ]
+  },
+  {
+   "text": "Social media team ke liye log chahiye. Har banda 6 accounts chalayega, trend ko top pe lana hai aur doosri party ke supporters ko jawab dena hai. Roz ka 1,500 rupay. Kisi ko batana nahi.",
+   "json_proba": [
+    0.038373147485234585,
+    0.01599491520498237,
+    0.010637210495585735,
+    0.9349947268141974
+   ],
+   "sklearn_proba": [
+    0.038372831480050586,
+    0.015994331188509583,
+    0.010636278245830735,
+    0.9349965590856092
+   ]
+  },
+  {
+   "text": "Need cyber volunteers for the ruling coalition's online cell. Tasks: like, share and comment from multiple IDs, report critical pages, write positive comments about development projects. 15,000 BDT monthly via bKash. Strict secrecy.",
+   "json_proba": [
+    0.3106924650421511,
+    0.02176510728084528,
+    0.0029236279048161207,
+    0.6646187997721875
+   ],
+   "sklearn_proba": [
+    0.3107012597504259,
+    0.02176519316009267,
+    0.0029235941133413054,
+    0.6646099529761401
+   ]
+  },
+  {
+   "text": "Opportunity for undergraduates: manage fan pages for a national movement and post the daily content pack. Profiles will be supplied. Don't mention the organisation.",
+   "json_proba": [
+    0.4408784391805668,
+    0.029829049093889417,
+    0.00566384157773106,
+    0.5236286701478127
+   ],
+   "sklearn_proba": [
+    0.4408777188623292,
+    0.02982854654256442,
+    0.005663942563990392,
+    0.5236297920311159
+   ]
+  },
+  {
+   "text": "Content team for a peace and stability page network. You'll post under assigned personas and flag terrorist supporters for removal. Accommodation provided at the base.",
+   "json_proba": [
+    0.90796158928893,
+    0.015886723325885248,
+    0.007116914072044004,
+    0.06903477331314077
+   ],
+   "sklearn_proba": [
+    0.9079607241260935,
+    0.015886596396486718,
+    0.007116895947031032,
+    0.0690357835303888
+   ]
+  },
+  {
+   "text": "Online opinion team: build ordinary citizen accounts and correct wrong views about state policy in comment sections. Training in persona building provided.",
+   "json_proba": [
+    0.3976075212550234,
+    0.020892660410653595,
+    0.0043555156446448764,
+    0.5771443026896781
+   ],
+   "sklearn_proba": [
+    0.39761482587741837,
+    0.020893211018320135,
+    0.00435542357974671,
+    0.5771365395245147
+   ]
+  },
+  {
+   "text": "Social listening and engagement internship. Use the provided Facebook profiles (not your own) to join barangay groups and share news links from our partner pages. Brief sent daily. Allowance ₱7,000/month. NDA.",
+   "json_proba": [
+    0.032018995785968576,
+    0.020810096024262974,
+    0.0013149594550764328,
+    0.945855948734692
+   ],
+   "sklearn_proba": [
+    0.03201958699179937,
+    0.020808889110784736,
+    0.0013149068760325863,
+    0.9458566170213832
+   ]
+  },
+  {
+   "text": "Freelance community moderators wanted for a geopolitical news aggregator. You'll comment from accounts that appear to be local residents of the target countries, using VPN locations we specify.",
+   "json_proba": [
+    0.13399799742808516,
+    0.03193135988306486,
+    0.0017605623914830196,
+    0.832310080297367
+   ],
+   "sklearn_proba": [
+    0.13400095346768712,
+    0.03193301798977136,
+    0.0017606234627263366,
+    0.8323054050798153
+   ]
+  },
+  {
+   "text": "Hiring reactors! Mag-react at mag-share lang ng mga post ng aming kliyente gamit ang 5-10 dummy, ₱1 per react, ₱3 per share. Payout every Friday via GCash. Walang kailangang alamin tungkol sa kliyente.",
+   "json_proba": [
+    0.018800303993702364,
+    0.026278487358578597,
+    0.013340736802603882,
+    0.9415804718451151
+   ],
+   "sklearn_proba": [
+    0.0188000604198376,
+    0.026278176173462585,
+    0.013341372229274036,
+    0.9415803911774258
+   ]
+  },
+  {
+   "text": "Kazi ya mtandaoni: tunahitaji vijana 50 kutumia akaunti zetu za Twitter kusukuma hashtag ya chama kila jioni na kuwajibu wapinzani. Malipo KES 300 kila siku. Siri kabisa.",
+   "json_proba": [
+    0.05279440034463516,
+    0.015879020940423882,
+    0.011881391160248281,
+    0.9194451875546926
+   ],
+   "sklearn_proba": [
+    0.052794216703360666,
+    0.015879707495281777,
+    0.011881989325852845,
+    0.9194440864755048
+   ]
+  },
+  {
+   "text": "Butuh pasukan komentar untuk isu RUU. Pakai akun yang kami sediakan, ikuti template komentar, dan serbu kolom komentar media online. Bayaran per 100 komentar.",
+   "json_proba": [
+    0.08817017131655028,
+    0.01621067773397866,
+    0.0056705175231410564,
+    0.8899486334263299
+   ],
+   "sklearn_proba": [
+    0.08816896416859328,
+    0.01621148431949629,
+    0.005670546237678903,
+    0.8899490052742315
+   ]
+  },
+  {
+   "text": "Digital diaspora engagement officers: post supportive content about the government's operations under multiple profiles and counter propaganda by activists abroad. Paid in birr.",
+   "json_proba": [
+    0.6227371190621501,
+    0.0030228081868109,
+    0.0029378219636496143,
+    0.37130225078738927
+   ],
+   "sklearn_proba": [
+    0.6227274933470769,
+    0.003022685732554873,
+    0.002937823339921736,
+    0.37131199758044653
+   ]
+  },
+  {
+   "text": "Precisamos de influenciadores para postar vídeos elogiando o prefeito sem marcar como publicidade. Roteiro enviado pela agência. R$ 300 por vídeo.",
+   "json_proba": [
+    0.5256830642195807,
+    0.3909471658641121,
+    0.012455333985687735,
+    0.07091443593061951
+   ],
+   "sklearn_proba": [
+    0.5256650641230838,
+    0.39096027426918073,
+    0.012456136087443241,
+    0.07091852552029228
+   ]
+  },
+  {
+   "text": "Write 20 testimonials a day from different accounts praising the new reclamation project in barangay groups. Photos and names are provided. ₱600/day. Don't say you're paid.",
+   "json_proba": [
+    0.5282406439250614,
+    0.020010457902674462,
+    0.007928995917054918,
+    0.4438199022552091
+   ],
+   "sklearn_proba": [
+    0.5282268377461318,
+    0.02001039154486806,
+    0.007929081838518473,
+    0.44383368887048164
+   ]
+  },
+  {
+   "text": "Good evening! Our gaming company near Bangkok needs English-speaking CSRs. ₱75k monthly, free dormitory. Since processing a work visa takes months, you'll leave as a tourist and our coordinator will assist you at the airport. Please keep this between us until you land.",
+   "json_proba": [
+    0.41200992261450536,
+    0.003523255064856777,
+    0.5827434730333318,
+    0.0017233492873060146
+   ],
+   "sklearn_proba": [
+    0.41200998980921993,
+    0.0035232967007813223,
+    0.5827433524810351,
+    0.0017233610089634963
+   ]
+  },
+  {
+   "text": "Sis may opening sa Cambodia, typing job lang, 70k ang sahod. Wala nang agency agency, ticket at hotel sagot ng boss. Turista ka lang muna sa papel. Pag sa immigration, sabihin mo pupunta ka sa birthday ng pinsan mo.",
+   "json_proba": [
+    0.002579155274213648,
+    0.0013125572832997684,
+    0.9938607135814412,
+    0.002247573861045293
+   ],
+   "sklearn_proba": [
+    0.002579231194750255,
+    0.0013125551727252694,
+    0.9938607869987736,
+    0.002247426633751072
+   ]
+  },
+  {
+   "text": "Exit via Zamboanga is easier for applicants without OEC. Our guide will take you by ferry to Sandakan, then you'll fly to our office in Kota Kinabalu and later transfer.",
+   "json_proba": [
+    0.95701136440805,
+    0.008691098063131878,
+    0.03262793923761125,
+    0.0016695982912067998
+   ],
+   "sklearn_proba": [
+    0.9570135447964101,
+    0.008690425742444434,
+    0.03262652114870496,
+    0.001669508312440413
+   ]
+  },
+  {
+   "text": "Thailand jobs!! Customer care agents needed, salary $1,500 + commission. Requirements: good English, computer literate, passport. Agency fee KES 120,000 covers ticket and visa. Interview via Zoom tomorrow; departure in 10 days.",
+   "json_proba": [
+    0.0099322760704941,
+    0.35953702962417805,
+    0.62943125390253,
+    0.0010994404027978946
+   ],
+   "sklearn_proba": [
+    0.009931845402155299,
+    0.35952700319906433,
+    0.6294417472429717,
+    0.0010994041558085536
+   ]
+  },
+  {
+   "text": "Nafasi za kazi Bangkok: kazi ya kompyuta, mshahara mzuri. Tiketi tunalipa, utarudisha kutoka mshahara. Usiseme ni kazi ukifika uwanja wa ndege, sema ni likizo.",
+   "json_proba": [
+    0.06282551023392656,
+    0.005280979806394893,
+    0.9116984336356727,
+    0.02019507632400591
+   ],
+   "sklearn_proba": [
+    0.06282203162818918,
+    0.005280462803295557,
+    0.9117042392120758,
+    0.020193266356439494
+   ]
+  },
+  {
+   "text": "Ugandan graduates wanted for IT support in Laos. We arrange everything: flight via Bangkok, then road transfer. Your passport will be held by HR for work permit processing.",
+   "json_proba": [
+    0.09578211830410815,
+    0.020535564409105367,
+    0.8827667445988766,
+    0.0009155726879099419
+   ],
+   "sklearn_proba": [
+    0.09578142655491848,
+    0.02053557340765021,
+    0.882767461478537,
+    0.0009155385588943569
+   ]
+  },
+  {
+   "text": "Job opportunity in Thailand for Ethiopians who speak English. Free air ticket, food and housing. You go first as a visitor, then the company fixes the papers.",
+   "json_proba": [
+    0.5284294996849667,
+    0.011198332537921721,
+    0.4549899706379807,
+    0.005382197139130844
+   ],
+   "sklearn_proba": [
+    0.5284013214319842,
+    0.011198912291170258,
+    0.45501776401173555,
+    0.005382002265110073
+   ]
+  },
+  {
+   "text": "Hello! You've been shortlisted for Digital Sales Executive in Dubai (then our Asia branch). Visit visa provided. Your role: chat with foreign clients on dating apps and guide them to our crypto platform. Targets apply.",
+   "json_proba": [
+    0.6520267491071295,
+    0.02170600225419237,
+    0.3232687418251202,
+    0.0029985068135578797
+   ],
+   "sklearn_proba": [
+    0.652022830958352,
+    0.021706074799738358,
+    0.3232724715698324,
+    0.0029986226720772296
+   ]
+  },
+  {
+   "text": "Bhai Thailand mein data entry ki job hai, 90k mahina. Agent ko 1 lakh dena hoga, baaki company dekhegi. Tourist visa pe jao, wahan pahunch ke kaam ka visa ban jayega. Airport pe ghoomne ka bolna.",
+   "json_proba": [
+    0.0006001322079014516,
+    0.0006676262606889309,
+    0.9981875397581772,
+    0.0005447017732325266
+   ],
+   "sklearn_proba": [
+    0.000600147266138814,
+    0.0006676366112902879,
+    0.9981875028059528,
+    0.0005447133166180272
+   ]
+  },
+  {
+   "text": "Golden opportunity in the Laos SEZ: digital marketing executive for a foreign company. No experience required. Salary $1,000. Contract 1 year; early exit penalty $5,000.",
+   "json_proba": [
+    0.1743114752073605,
+    0.5255697046037917,
+    0.28812451431255626,
+    0.011994305876291446
+   ],
+   "sklearn_proba": [
+    0.17431652982835918,
+    0.5255614275476479,
+    0.2881276448586521,
+    0.011994397765340867
+   ]
+  },
+  {
+   "text": "Work in Cambodia: online customer service, 1,10,000 taka monthly, free flight. Go as tourist. Company keeps passport for security.",
+   "json_proba": [
+    0.00571206502644033,
+    0.026739144326062735,
+    0.9670825361851431,
+    0.00046625446235393095
+   ],
+   "sklearn_proba": [
+    0.00571135576846349,
+    0.02673813074242627,
+    0.9670842792462152,
+    0.00046623424289505834
+   ]
+  },
+  {
+   "text": "Manpower opportunity: IT jobs in Myanmar via Thailand. No labour permit needed, we send you on visit visa. Pay 3 lakh NPR to the agent.",
+   "json_proba": [
+    0.05138218394099238,
+    0.430598445771273,
+    0.5113547857762434,
+    0.006664584511491196
+   ],
+   "sklearn_proba": [
+    0.05138254070144312,
+    0.43059971751678894,
+    0.5113531344043922,
+    0.006664607377375701
+   ]
+  },
+  {
+   "text": "IT data entry posts in Thailand for Sri Lankan youth, salary USD 1,200. Travel on a tourist visa; our representative will take you across to the office.",
+   "json_proba": [
+    0.029281280486326406,
+    0.015186882106645098,
+    0.9532825672715219,
+    0.0022492701355065012
+   ],
+   "sklearn_proba": [
+    0.029280005962211877,
+    0.015186960707314082,
+    0.9532838344549502,
+    0.0022491988755238106
+   ]
+  },
+  {
+   "text": "Call center jobs in Bangkok! Free visa and ticket. Must be ready to fly within a week. Don't inform the Bureau of Emigration, it causes delays.",
+   "json_proba": [
+    0.268948714100043,
+    0.018307689601038738,
+    0.7112787507818468,
+    0.001464845517071542
+   ],
+   "sklearn_proba": [
+    0.2689488380856801,
+    0.018308389269574205,
+    0.7112779128653953,
+    0.0014648597793503815
+   ]
+  },
+  {
+   "text": "Lowongan admin customer service di Kamboja. Gaji 1.000 USD. Tiket ditanggung. Berangkat pakai visa wisata, tanpa lewat agen resmi. Paspor nanti disimpan kantor.",
+   "json_proba": [
+    0.014923369724357156,
+    0.004149223595044852,
+    0.9785922263408908,
+    0.0023351803397071258
+   ],
+   "sklearn_proba": [
+    0.014922209614346049,
+    0.004148935721614852,
+    0.9785939163417596,
+    0.0023349383222793924
+   ]
+  },
+  {
+   "text": "Kerja di Myanmar perbatasan Thailand, posisi marketing online. Tugas chatting dengan orang luar negeri. Tidak bisa pulang sebelum kontrak habis kecuali bayar denda.",
+   "json_proba": [
+    0.0700726654053511,
+    0.015459172355150699,
+    0.9055711184443587,
+    0.008897043795139451
+   ],
+   "sklearn_proba": [
+    0.0700747694704228,
+    0.015459997200395668,
+    0.90556746561766,
+    0.008897767711521459
+   ]
+  },
+  {
+   "text": "High-salary job in Cambodia for Vietnamese youth: online sales, 20 million dong per month, free food and lodging. We cross by road at Moc Bai. No contract needed.",
+   "json_proba": [
+    0.036893183268334406,
+    0.753513118195431,
+    0.20673720886711436,
+    0.0028564896691201857
+   ],
+   "sklearn_proba": [
+    0.036891215615018895,
+    0.7535182172525553,
+    0.2067341188032542,
+    0.002856448329171609
+   ]
+  },
+  {
+   "text": "Vaga de atendimento em inglês na Tailândia! Salário em dólar, passagem e moradia pagas. Você entra como turista e lá a empresa resolve. Não comente com a família o endereço exato por segurança.",
+   "json_proba": [
+    0.19197156488138054,
+    0.028655384844646945,
+    0.7175052716021283,
+    0.06186777867184427
+   ],
+   "sklearn_proba": [
+    0.19196927930198923,
+    0.028653921765415185,
+    0.717505553159942,
+    0.0618712457726535
+   ]
+  },
+  {
+   "text": "Oferta: soporte al cliente bilingüe en Bangkok. Pasajes pagos desde Bogotá. Viaje como turista; en el aeropuerto alguien te espera y te lleva a la empresa cerca de la frontera.",
+   "json_proba": [
+    0.4042536798786248,
+    0.002895633892905608,
+    0.5808477777808442,
+    0.012002908447625409
+   ],
+   "sklearn_proba": [
+    0.40425272749934343,
+    0.002895784582355758,
+    0.58084829166161,
+    0.012003196256690727
+   ]
+  },
+  {
+   "text": "Trabajo en Asia para jóvenes con inglés, 2,000 USD. No necesitas visa de trabajo. La empresa guarda los pasaportes para los trámites.",
+   "json_proba": [
+    0.29685292184228607,
+    0.014976674030299,
+    0.6679100028117005,
+    0.020260401315714487
+   ],
+   "sklearn_proba": [
+    0.29685607754291116,
+    0.014977099427531837,
+    0.6679054347699388,
+    0.020261388259618145
+   ]
+  },
+  {
+   "text": "Opportunité en Thaïlande pour des jeunes francophones et anglophones: service client en ligne, 1 500 USD. Billet payé. Partez avec un visa touristique; une fois sur place, plus de démarches.",
+   "json_proba": [
+    0.09463627151364674,
+    0.0056996227062814635,
+    0.8788998850180378,
+    0.02076422076203382
+   ],
+   "sklearn_proba": [
+    0.09463899844089264,
+    0.005699551455518568,
+    0.878895768350735,
+    0.02076568175285384
+   ]
+  },
+  {
+   "text": "Travail en Asie: chat avec des clients pour vendre des placements. Logement gratuit dans l'enceinte de l'entreprise. Sortie non autorisée sans permission.",
+   "json_proba": [
+    0.3797751033829181,
+    0.034059926958056604,
+    0.5309485319243965,
+    0.05521643773462885
+   ],
+   "sklearn_proba": [
+    0.37978406563571304,
+    0.0340613717927802,
+    0.5309348628966468,
+    0.05521969967485996
+   ]
+  },
+  {
+   "text": "Translator job (English/Chinese) in a tech park near Myawaddy. Salary negotiable. Free accommodation inside the park. Phones are collected at the start of each shift.",
+   "json_proba": [
+    0.9211098603848376,
+    0.020484732936653715,
+    0.04310005398268947,
+    0.015305352695819171
+   ],
+   "sklearn_proba": [
+    0.9211102208105842,
+    0.02048537138919054,
+    0.043098783439770263,
+    0.015305624360454784
+   ]
+  },
+  {
+   "text": "We will provide you a dummy return ticket and hotel booking so immigration believes you're a tourist. Once in Bangkok, our van brings you to the workplace.",
+   "json_proba": [
+    0.4287062238548046,
+    0.023547301526379155,
+    0.5326471842669427,
+    0.01509929035187359
+   ],
+   "sklearn_proba": [
+    0.4287047620878711,
+    0.023548694531874987,
+    0.5326470772425564,
+    0.015099466137697411
+   ]
+  },
+  {
+   "text": "Direct hire po tayo sa Laos, no need POEA/DMW. Basic English lang, encoding. Wag mo nang sabihin sa family mo kung saan exactly, basta abroad ka.",
+   "json_proba": [
+    0.007337770932685063,
+    0.0031883731624736764,
+    0.9874199717231451,
+    0.002053884181696158
+   ],
+   "sklearn_proba": [
+    0.007337774485073614,
+    0.003188522629974434,
+    0.9874198332049524,
+    0.0020538696799995717
+   ]
+  },
+  {
+   "text": "If you can't pay the agent fee upfront, the company will deduct it from your salary. You'll repay the ticket, visa and accommodation before receiving full pay. Departure to Thailand next Friday.",
+   "json_proba": [
+    0.027100964518736902,
+    0.043435206706629016,
+    0.9289609555257604,
+    0.0005028732488736497
+   ],
+   "sklearn_proba": [
+    0.027100753046207637,
+    0.04343417914347872,
+    0.92896219920804,
+    0.000502868602273684
+   ]
+  },
+  {
+   "text": "Work in Sihanoukville as a game operator. Basic computer skills. No work permit required. Your boss will keep the passport so it doesn't get lost.",
+   "json_proba": [
+    0.5931360626065953,
+    0.25999791932121513,
+    0.12527740869016168,
+    0.0215886093820278
+   ],
+   "sklearn_proba": [
+    0.593145877911647,
+    0.25999062517113214,
+    0.1252749822832897,
+    0.021588514633931292
+   ]
+  },
+  {
+   "text": "Exciting role in Asia: Customer Retention Officer. Build friendships with clients online and encourage deposits on our investment app. Flight paid, visa on arrival.",
+   "json_proba": [
+    0.42358913635628664,
+    0.042520764223765106,
+    0.5258975976615121,
+    0.007992501758436112
+   ],
+   "sklearn_proba": [
+    0.42359523509667163,
+    0.04252097915062761,
+    0.5258914652016097,
+    0.007992320551091118
+   ]
+  },
+  {
+   "text": "May trabaho sa Myanmar bilang chat support. Libre ang lahat. Pero bawal ka umalis hangga't hindi tapos ang isang taon, kung hindi magbabayad ka ng 300k.",
+   "json_proba": [
+    0.05724930323163444,
+    0.0007670519941119827,
+    0.8910690419743247,
+    0.05091460279992887
+   ],
+   "sklearn_proba": [
+    0.05724972176981881,
+    0.0007670567379052804,
+    0.8910700659697877,
+    0.05091315552248815
+   ]
+  },
+  {
+   "text": "Hotel job in Dubai; after two weeks of training you'll be transferred to our sister company in Laos. A tourist visa is enough.",
+   "json_proba": [
+    0.4160310500020218,
+    0.03209470568556432,
+    0.5491482020003683,
+    0.0027260423120455974
+   ],
+   "sklearn_proba": [
+    0.416032666168571,
+    0.0320940945723439,
+    0.5491472643427622,
+    0.002725974916322911
+   ]
+  },
+  {
+   "text": "Hi! This is Ms. Carla from the Digital Hiring Team. Earn ₱800–₱5,000 daily by liking TikTok videos. Add our mentor on Telegram to receive your first ₱120 bonus.",
+   "json_proba": [
+    0.011198640530708561,
+    0.9788256239703083,
+    0.004070383682970437,
+    0.005905351816012667
+   ],
+   "sklearn_proba": [
+    0.011198100913945085,
+    0.9788261838700323,
+    0.004070441244651424,
+    0.005905273971371272
+   ]
+  },
+  {
+   "text": "Need ka ng extra? Rate ka lang ng hotels, may commission. Pero kailangan mo munang mag-deposit ng ₱1,500 para ma-unlock ang combo tasks.",
+   "json_proba": [
+    0.02532536718943504,
+    0.7622960053259519,
+    0.15846943621247742,
+    0.05390919127213561
+   ],
+   "sklearn_proba": [
+    0.02532675917835342,
+    0.7622890426644003,
+    0.15847520070095494,
+    0.05390899745629131
+   ]
+  },
+  {
+   "text": "Congratulations, you passed our online interview. Kindly settle the ₱2,450 medical and training fee to the account of our HR officer (GCash) so we can process your company ID.",
+   "json_proba": [
+    0.3689739226735748,
+    0.622223126955219,
+    0.004374735486159146,
+    0.004428214885047086
+   ],
+   "sklearn_proba": [
+    0.36897328520210376,
+    0.6222240924864841,
+    0.004374506535149498,
+    0.004428115776262561
+   ]
+  },
+  {
+   "text": "Supermarket jobs available in Nairobi! Pay KES 1,500 registration and get placed within 48 hours. Send to till number.",
+   "json_proba": [
+    0.0033596809471026735,
+    0.9935265602218876,
+    0.0004924221685315536,
+    0.0026213366624782074
+   ],
+   "sklearn_proba": [
+    0.003359891564549151,
+    0.993526313863037,
+    0.0004924221958103213,
+    0.002621372376603353
+   ]
+  },
+  {
+   "text": "Ajira za haraka: tuma KES 800 ya fomu kupitia M-Pesa ili upate interview.",
+   "json_proba": [
+    0.14218786421975604,
+    0.7667231643260151,
+    0.054153542341511096,
+    0.03693542911271776
+   ],
+   "sklearn_proba": [
+    0.14218655284290532,
+    0.7667252991203177,
+    0.054153653751933054,
+    0.03693449428484393
+   ]
+  },
+  {
+   "text": "Federal agency recruitment 2026: buy the application form for ₦7,500 at our portal to be considered.",
+   "json_proba": [
+    0.9284519107465425,
+    0.06553293199006492,
+    0.002385370126233442,
+    0.003629787137159066
+   ],
+   "sklearn_proba": [
+    0.9284542456011405,
+    0.06553093553246343,
+    0.002385158287033959,
+    0.003629660579361979
+   ]
+  },
+  {
+   "text": "Earn GHS 300 daily from your phone. You only need to subscribe to YouTube channels. A starter fee of GHS 100 is required.",
+   "json_proba": [
+    0.0018126123724938388,
+    0.9967243510626163,
+    0.00022132947259900104,
+    0.0012417070922908227
+   ],
+   "sklearn_proba": [
+    0.001812585418512851,
+    0.9967243046280575,
+    0.00022133895109215034,
+    0.0012417710023374141
+   ]
+  },
+  {
+   "text": "Work from home: YouTube video like karo, har like ka ₹50. Pehle ₹1,000 ka task karna hoga, refund ke saath ₹1,300 milenge.",
+   "json_proba": [
+    0.027006333646268695,
+    0.21739884931722098,
+    0.017222796618284925,
+    0.7383720204182254
+   ],
+   "sklearn_proba": [
+    0.027006578653190557,
+    0.21739638844346942,
+    0.01722254898793996,
+    0.7383744839154001
+   ]
+  },
+  {
+   "text": "Product review job. Pay ₹1,999 security deposit to start; earn ₹3,000/day.",
+   "json_proba": [
+    4.564353826315304e-05,
+    0.9999248084754754,
+    9.247542261499536e-06,
+    2.0300443999993346e-05
+   ],
+   "sklearn_proba": [
+    4.5642423772018366e-05,
+    0.9999248082084657,
+    9.247929945385525e-06,
+    2.0301437816935583e-05
+   ]
+  },
+  {
+   "text": "Online job: earn 2,000 taka daily. Registration 500 taka via bKash. No experience.",
+   "json_proba": [
+    1.943502961559067e-05,
+    0.999649425164883,
+    9.969678310939276e-05,
+    0.00023144302239198663
+   ],
+   "sklearn_proba": [
+    1.9435908188084957e-05,
+    0.999649406364319,
+    9.970132984555943e-05,
+    0.00023145639764740237
+   ]
+  },
+  {
+   "text": "Govt department jobs: pay Rs 2,500 test fee via JazzCash to the number below.",
+   "json_proba": [
+    0.000741795160602354,
+    0.998180883226778,
+    0.000341921429382333,
+    0.0007354001832373372
+   ],
+   "sklearn_proba": [
+    0.0007418049429364523,
+    0.9981808768505908,
+    0.0003419120997968388,
+    0.0007354061066759289
+   ]
+  },
+  {
+   "text": "Kerja paruh waktu: beri like ke video, komisi Rp 10.000 per tugas. Untuk tugas premium wajib top up Rp 500.000.",
+   "json_proba": [
+    0.05275491100740267,
+    0.8679632050954512,
+    0.021773853413196508,
+    0.05750803048394961
+   ],
+   "sklearn_proba": [
+    0.05275755382698292,
+    0.8679568043765982,
+    0.021773976687480986,
+    0.05751166510893777
+   ]
+  },
+  {
+   "text": "Vaga de avaliador de produtos: ganhe R$ 200 por dia. Para começar, pague a taxa de ativação de R$ 79 via Pix.",
+   "json_proba": [
+    0.054419697159735235,
+    0.8433876437740413,
+    0.008570914284183618,
+    0.09362174478203977
+   ],
+   "sklearn_proba": [
+    0.05442344658456731,
+    0.8433817933612432,
+    0.008571603123237173,
+    0.09362315693095245
+   ]
+  },
+  {
+   "text": "¡Gana 1,500 pesos al día! Solo sigue cuentas y comparte capturas. Para retirar, primero deposita 500 pesos de verificación.",
+   "json_proba": [
+    0.044533912974602075,
+    0.9272463662797135,
+    0.008148454089923275,
+    0.02007126665576129
+   ],
+   "sklearn_proba": [
+    0.04453626210584161,
+    0.9272424161729543,
+    0.008148998479486346,
+    0.020072323241717625
+   ]
+  },
+  {
+   "text": "Te ofrecemos trabajo como agente de pagos: recibes transferencias en tu cuenta y las envías a nuestro proveedor. Te quedas con el 10%.",
+   "json_proba": [
+    0.6621211022328248,
+    0.09557243095896069,
+    0.05790845015241949,
+    0.18439801665579506
+   ],
+   "sklearn_proba": [
+    0.6621321147143175,
+    0.09557147617277714,
+    0.057905588019634906,
+    0.18439082109327048
+   ]
+  },
+  {
+   "text": "Become a payment agent: receive client funds into your account and forward them after deducting 8% commission.",
+   "json_proba": [
+    0.12803490302351625,
+    0.8388698571721291,
+    0.011805606255539463,
+    0.021289633548815086
+   ],
+   "sklearn_proba": [
+    0.12804460872645324,
+    0.8388582436133064,
+    0.011806319178462159,
+    0.02129082848177821
+   ]
+  },
+  {
+   "text": "Earn ₱3,000/week by renting out your GCash. We just need your MPIN and the OTP once.",
+   "json_proba": [
+    0.014730690280419265,
+    0.9812186624576887,
+    0.0019447289473389243,
+    0.002105918314553071
+   ],
+   "sklearn_proba": [
+    0.014730030809016137,
+    0.9812191444904963,
+    0.0019447998727565982,
+    0.002106024827731225
+   ]
+  },
+  {
+   "text": "Urgent hiring: data encoders. ₱25,000 monthly. Reservation fee of ₱500 to secure your slot; refundable after training.",
+   "json_proba": [
+    0.0006436311167667627,
+    0.9986203754198072,
+    0.0004645984040688209,
+    0.00027139505935726467
+   ],
+   "sklearn_proba": [
+    0.0006436361175030479,
+    0.9986203319208015,
+    0.0004646118019975496,
+    0.00027142015969781387
+   ]
+  },
+  {
+   "text": "Your CV was selected for an oil company job abroad. Pay $250 for visa processing and $150 for medicals before the interview.",
+   "json_proba": [
+    0.2197757215924093,
+    0.6906417645893081,
+    0.0858997502530799,
+    0.003682763565202642
+   ],
+   "sklearn_proba": [
+    0.21977144464241066,
+    0.6906431304515298,
+    0.08590283923488655,
+    0.0036825856711729227
+   ]
+  },
+  {
+   "text": "Recrutement à la douane: frais de dossier 25 000 FCFA à verser par Orange Money avant le test.",
+   "json_proba": [
+    0.41618557145046964,
+    0.4410930434694569,
+    0.03945765897657441,
+    0.1032637261034991
+   ],
+   "sklearn_proba": [
+    0.41618525153721053,
+    0.44108861272909,
+    0.03945937553525775,
+    0.10326676019844172
+   ]
+  },
+  {
+   "text": "Data entry work, UGX 50,000 daily. Pay UGX 30,000 for training materials first.",
+   "json_proba": [
+    0.0002019992259392609,
+    0.9992683513148272,
+    0.0002451296651773253,
+    0.00028451979405632623
+   ],
+   "sklearn_proba": [
+    0.00020199739333783275,
+    0.9992683762541352,
+    0.000245125266367859,
+    0.00028450108615914475
+   ]
+  },
+  {
+   "text": "Hello, I'm a recruiter. Please send a photo of your ID front and back, and your M-Pesa PIN so we can pay your salary.",
+   "json_proba": [
+    0.020236019809828434,
+    0.9778222189096283,
+    0.0007689146765188778,
+    0.0011728466040245287
+   ],
+   "sklearn_proba": [
+    0.020236787270984817,
+    0.9778214031881114,
+    0.0007689514462277121,
+    0.0011728580946761033
+   ]
+  },
+  {
+   "text": "Pwede ba namin hiramin ang SIM mo? Iparerehistro lang namin sa pangalan mo, ₱200 kada SIM.",
+   "json_proba": [
+    0.0988675524466284,
+    0.21849815444698228,
+    0.1019288329281821,
+    0.5807054601782072
+   ],
+   "sklearn_proba": [
+    0.0988678031437337,
+    0.2185031718602032,
+    0.10192763286245927,
+    0.5807013921336038
+   ]
+  },
+  {
+   "text": "Butuh orang untuk buka rekening bank atas nama sendiri lalu serahkan ke kami. Imbalan Rp 1 juta per rekening.",
+   "json_proba": [
+    0.2513676203363169,
+    0.5500629244658066,
+    0.04440578715468346,
+    0.1541636680431931
+   ],
+   "sklearn_proba": [
+    0.2513590051175193,
+    0.5500704768138094,
+    0.0444044339267805,
+    0.1541660841418909
+   ]
+  },
+  {
+   "text": "Telegram task job: complete prepaid merchant tasks to earn 30% returns. Deposit increases with each level.",
+   "json_proba": [
+    0.00821386055651764,
+    0.988992753789757,
+    0.00129782532706324,
+    0.0014955603266621235
+   ],
+   "sklearn_proba": [
+    0.008213767295930702,
+    0.9889927389713373,
+    0.0012978592091402923,
+    0.0014956345235916748
+   ]
+  },
+  {
+   "text": "We have reviewed your profile and you are hired as a remote assistant. Buy the work laptop from our approved vendor ($450); we will reimburse it in your first paycheck.",
+   "json_proba": [
+    0.2929955947850369,
+    0.6841917635399087,
+    0.0058413881046075035,
+    0.016971253570446775
+   ],
+   "sklearn_proba": [
+    0.29298838979378106,
+    0.6841991217376342,
+    0.005841056920584506,
+    0.016971431548000238
+   ]
+  },
+  {
+   "text": "Mystery shopper job: we'll send you a cheque; deposit it, keep $300, and wire the rest to our agent.",
+   "json_proba": [
+    0.5392924340746974,
+    0.431375382154139,
+    0.010354232765765569,
+    0.018977951005397998
+   ],
+   "sklearn_proba": [
+    0.5392899886037232,
+    0.4313772347687404,
+    0.010354158418975277,
+    0.0189786182085609
+   ]
+  },
+  {
+   "text": "Part-time job: order boosting for online shops. Pay first, receive a refund with commission within 10 minutes.",
+   "json_proba": [
+    0.06926348643030653,
+    0.9241582291856565,
+    0.0027958511810509583,
+    0.0037824332029859796
+   ],
+   "sklearn_proba": [
+    0.0692636939715925,
+    0.9241577625170948,
+    0.0027959271949771565,
+    0.003782616316335447
+   ]
+  },
+  {
+   "text": "Seu CPF foi aprovado para vaga temporária! Envie uma selfie com documento e o código que receber por SMS.",
+   "json_proba": [
+    0.2392521307738494,
+    0.6761904740553955,
+    0.03446579704131173,
+    0.050091598129443325
+   ],
+   "sklearn_proba": [
+    0.23924093381431435,
+    0.6762021925925956,
+    0.034466494790732646,
+    0.050090378802357595
+   ]
+  },
+  {
+   "text": "Online typing job, earn NPR 2,000 per day. Pay NPR 1,000 to receive the software license.",
+   "json_proba": [
+    0.02269006589621793,
+    0.9594859674729039,
+    0.0041527217900262986,
+    0.013671244840851762
+   ],
+   "sklearn_proba": [
+    0.022689931564842943,
+    0.9594864035262002,
+    0.004152771267070401,
+    0.013670893641886632
+   ]
+  },
+  {
+   "text": "Social Media Manager, Sari-Sari Snacks Co. (Pasig). Own the brand's official Facebook, Instagram and TikTok accounts; plan content; reply to customer messages; brief influencers and ensure #ad disclosures. ₱35k–₱45k, HMO, 13th month. Apply via our website.",
+   "json_proba": [
+    0.98886920864104,
+    0.0008195656482743912,
+    0.00037280339413013326,
+    0.009938422316555482
+   ],
+   "sklearn_proba": [
+    0.988869334470896,
+    0.0008195272267119068,
+    0.00037279295363341257,
+    0.009938345348758813
+   ]
+  },
+  {
+   "text": "Content Moderator (night shift), BGC. Review flagged posts and accounts for hate speech, impersonation and misinformation according to client policy. Wellness breaks and psychological support. ₱26k + night differential.",
+   "json_proba": [
+    0.9173967538746617,
+    0.00506839061685922,
+    0.0018188339461346677,
+    0.0757160215623443
+   ],
+   "sklearn_proba": [
+    0.9173968573300029,
+    0.005068328706458488,
+    0.0018189060934300835,
+    0.07571590787010853
+   ]
+  },
+  {
+   "text": "Fact-check Intern for an independent newsroom. Verify viral posts about the elections, trace manipulated photos, and help document troll networks. Byline credit. Allowance ₱10,000/month.",
+   "json_proba": [
+    0.6336871297842539,
+    0.14923113180863856,
+    0.006409433794771753,
+    0.21067230461233577
+   ],
+   "sklearn_proba": [
+    0.6336895168751167,
+    0.14922890911228442,
+    0.006409411136063495,
+    0.2106721628765354
+   ]
+  },
+  {
+   "text": "Communications Assistant, Office of the Mayor of Iloilo City. Update the city's verified Facebook page, write advisories, and coordinate press releases. Plantilla position; apply through the city HR office.",
+   "json_proba": [
+    0.9773919233446088,
+    0.01606888638667003,
+    0.0008590570494707307,
+    0.005680133219250459
+   ],
+   "sklearn_proba": [
+    0.9773911212258379,
+    0.01606961657213254,
+    0.0008590839779410834,
+    0.005680178224088487
+   ]
+  },
+  {
+   "text": "Hiring Nurses for Saudi Arabia (MOH). DMW License No. 012-LB-02152023-R. Free airfare, housing and transport per contract. No placement fee. Process: interview, medical, visa, OEC, PDOS, then deployment.",
+   "json_proba": [
+    0.34090032550203775,
+    0.34773890861328394,
+    0.3068005961874254,
+    0.004560169697253013
+   ],
+   "sklearn_proba": [
+    0.3408980383864212,
+    0.3477503415499934,
+    0.3067912873426882,
+    0.004560332720897296
+   ]
+  },
+  {
+   "text": "Caregivers for Japan (Specified Skilled Worker). Japanese language training provided. Deployed through a DMW-licensed agency; you keep your passport; contract verified by the Migrant Workers Office in Tokyo.",
+   "json_proba": [
+    0.9949069725739145,
+    0.0005481772834627332,
+    0.003149402785976788,
+    0.0013954473566461208
+   ],
+   "sklearn_proba": [
+    0.9949069552901012,
+    0.0005481704935144521,
+    0.0031493968425216567,
+    0.001395477373862583
+   ]
+  },
+  {
+   "text": "Hiring Chat Support! Cebu IT Park. ₱22k + HMO + night diff. Walk-in tayo Mon–Fri, dala lang ng resume at 2 valid IDs. Walang bayad ang application at training.",
+   "json_proba": [
+    0.9441198305036215,
+    0.02083497314051995,
+    0.023593301482059736,
+    0.011451894873798892
+   ],
+   "sklearn_proba": [
+    0.9441211894554229,
+    0.020835474826903334,
+    0.023592549130402873,
+    0.011450786587271097
+   ]
+  },
+  {
+   "text": "English Teacher in Chiang Mai. The school provides a Non-Immigrant B visa and work permit before you start. Contract in English and Thai; you hold your own passport. Salary 35,000 THB.",
+   "json_proba": [
+    0.9147585463197856,
+    0.011794262926300562,
+    0.06950319113801802,
+    0.003943999615895704
+   ],
+   "sklearn_proba": [
+    0.9147646097148056,
+    0.011792834857736656,
+    0.0694987254894734,
+    0.0039438299379843
+   ]
+  },
+  {
+   "text": "Program Officer, child protection NGO in Phnom Penh. Work permit sponsored; office address listed on our website; references required. Salary USD 1,400.",
+   "json_proba": [
+    0.9481975093036011,
+    0.029507784585276302,
+    0.014269405266965596,
+    0.008025300844156964
+   ],
+   "sklearn_proba": [
+    0.9482026014600912,
+    0.02950459158606902,
+    0.014268134215174873,
+    0.008024672738664853
+   ]
+  },
+  {
+   "text": "Customer Experience Agent at a Nairobi BPO (Upper Hill). Written contract, NHIF and NSSF contributions. We never charge recruitment fees. Apply on our careers portal.",
+   "json_proba": [
+    0.9973802004117795,
+    0.0016843165810371825,
+    0.00039045607558984825,
+    0.000545026931593462
+   ],
+   "sklearn_proba": [
+    0.9973801895288762,
+    0.0016843161671179167,
+    0.0003904551058964151,
+    0.000545039198109486
+   ]
+  },
+  {
+   "text": "Nafasi: Msimamizi wa mitandao ya kijamii kwa kampuni ya maziwa. Utaendesha akaunti rasmi za kampuni. Mkataba wa maandishi, hakuna ada yoyote.",
+   "json_proba": [
+    0.9679426552661022,
+    0.0069925364852119485,
+    0.0037803579874661156,
+    0.02128445026121971
+   ],
+   "sklearn_proba": [
+    0.9679417939966505,
+    0.006992447100841022,
+    0.003780602203119117,
+    0.021285156699389265
+   ]
+  },
+  {
+   "text": "Social Media Executive for a fintech in Lagos. Manage the company's official pages, respond to customers, report on campaign analytics. HMO and pension. Interview at our Victoria Island office.",
+   "json_proba": [
+    0.9890905482460783,
+    0.004658040984370105,
+    0.001203316275528845,
+    0.005048094494022717
+   ],
+   "sklearn_proba": [
+    0.9890905558585651,
+    0.004658104847826889,
+    0.0012033583304978523,
+    0.0050479809631102926
+   ]
+  },
+  {
+   "text": "Researcher, Disinformation and Elections, Accra-based civic tech nonprofit. Monitor coordinated inauthentic behaviour and paid influencer campaigns, and publish public reports.",
+   "json_proba": [
+    0.9778490488503669,
+    0.006519550211225,
+    0.002802340588752509,
+    0.012829060349655494
+   ],
+   "sklearn_proba": [
+    0.9778487565555785,
+    0.006519606532793553,
+    0.002802404386966617,
+    0.012829232524661276
+   ]
+  },
+  {
+   "text": "Social Media Executive (Bengaluru). Manage our verified brand handles, coordinate influencer collaborations with clear #ad disclosures, and track campaign analytics. CTC ₹4–6 LPA, PF, health insurance.",
+   "json_proba": [
+    0.9044174180908732,
+    0.063301909001707,
+    0.0036690189937540864,
+    0.02861165391366586
+   ],
+   "sklearn_proba": [
+    0.9044199079222579,
+    0.06330042088008622,
+    0.0036690069069752708,
+    0.028610664290680474
+   ]
+  },
+  {
+   "text": "Hum Delhi mein customer support executive hire kar rahe hain. Offer letter, PF, ESI. Interview office mein. Hum kabhi koi fees nahi lete.",
+   "json_proba": [
+    0.9011682330034906,
+    0.07215946531264653,
+    0.015631896584242473,
+    0.011040405099620404
+   ],
+   "sklearn_proba": [
+    0.9011595639188534,
+    0.0721672763957428,
+    0.015632013142469776,
+    0.011041146542934071
+   ]
+  },
+  {
+   "text": "Electricians for Qatar through an eMigrate-registered recruiting agent (RA licence displayed in office). Emigration clearance and work visa before departure. Service charge per government cap, with receipt.",
+   "json_proba": [
+    0.989354131849361,
+    0.006605035212391091,
+    0.0028221318015168024,
+    0.0012187011367310219
+   ],
+   "sklearn_proba": [
+    0.9893537586522608,
+    0.006605252579958335,
+    0.002822246685358593,
+    0.0012187420824221694
+   ]
+  },
+  {
+   "text": "Lowongan Admin Media Sosial di Jakarta Selatan. Mengelola akun resmi brand, membuat konten, membalas pesan pelanggan. BPJS, gaji UMR+, interview di kantor. Tidak ada biaya.",
+   "json_proba": [
+    0.8433935879369866,
+    0.03519153364767639,
+    0.07955254436396594,
+    0.04186233405137099
+   ],
+   "sklearn_proba": [
+    0.8433895058801482,
+    0.03519299749978735,
+    0.07955425354436342,
+    0.04186324307570125
+   ]
+  },
+  {
+   "text": "Penempatan pekerja ke Taiwan melalui P3MI resmi terdaftar di KP2MI. Visa kerja, perjanjian kerja, dan pelatihan sebelum berangkat.",
+   "json_proba": [
+    0.8495811380402444,
+    0.008149884120042307,
+    0.1204905194798357,
+    0.021778458359877545
+   ],
+   "sklearn_proba": [
+    0.8495824879677072,
+    0.008149655961375376,
+    0.12048920262418758,
+    0.021778653446729898
+   ]
+  },
+  {
+   "text": "Analista de Social Media, agência em São Paulo. Gestão dos perfis oficiais de clientes, relatórios e identificação de publi. CLT, VR, plano de saúde.",
+   "json_proba": [
+    0.9685897732965024,
+    0.009138031316946127,
+    0.00872091617080623,
+    0.013551279215745268
+   ],
+   "sklearn_proba": [
+    0.9685891543616096,
+    0.009137513113269,
+    0.008721163682344681,
+    0.013552168842776663
+   ]
+  },
+  {
+   "text": "Moderador de contenido en español (Guadalajara). Revisión de publicaciones según las políticas de la plataforma, incluida la detección de cuentas falsas. Prestaciones de ley, apoyo psicológico.",
+   "json_proba": [
+    0.9902176778673726,
+    0.003940435156369302,
+    0.002155079596964919,
+    0.0036868073792932035
+   ],
+   "sklearn_proba": [
+    0.9902173302100942,
+    0.003940516061554517,
+    0.0021550853913857968,
+    0.0036870683369656008
+   ]
+  },
+  {
+   "text": "Periodista verificador para un medio digital en Bogotá. Verificar contenidos virales y explicar la metodología al público.",
+   "json_proba": [
+    0.9635245331033313,
+    0.003421615311778129,
+    0.021848325139590036,
+    0.011205526445300498
+   ],
+   "sklearn_proba": [
+    0.9635225724644384,
+    0.003421886422459235,
+    0.02184925375671128,
+    0.011206287356391068
+   ]
+  },
+  {
+   "text": "Chargé(e) de communication, ONG de santé à Dakar. Gestion des pages officielles de l'ONG, rédaction des communiqués. CDI. Aucun frais de recrutement.",
+   "json_proba": [
+    0.5429598702165264,
+    0.32249796368648126,
+    0.022015929613005195,
+    0.11252623648398713
+   ],
+   "sklearn_proba": [
+    0.5429775308223147,
+    0.32247746341576494,
+    0.02201481454162736,
+    0.11253019122029295
+   ]
+  },
+  {
+   "text": "Campaign Volunteer Coordinator for a registered political party. Organise door-to-door canvassing and run the party's official social accounts with Authorised by notices. Volunteers sign a code of conduct.",
+   "json_proba": [
+    0.8342657206680137,
+    0.023197265551588853,
+    0.0029224825900233623,
+    0.13961453119037398
+   ],
+   "sklearn_proba": [
+    0.8342711365427081,
+    0.023195606905424045,
+    0.0029223009500770657,
+    0.13961095560179076
+   ]
+  },
+  {
+   "text": "Data Annotator (remote). Label text and images for AI safety research through our platform. Weekly pay to your bank. No fees, ever. Use only your own single account.",
+   "json_proba": [
+    0.483435818388761,
+    0.5033552328187452,
+    0.0040316341234918765,
+    0.009177314669001948
+   ],
+   "sklearn_proba": [
+    0.4834439411845799,
+    0.5033468009624102,
+    0.004031615697503824,
+    0.009177642155505924
+   ]
+  },
+  {
+   "text": "Virtual Assistant for a Canadian real estate agent. Schedule posts on the agent's own pages, manage email and calendar. Paid via Wise. Contract through a freelancing platform.",
+   "json_proba": [
+    0.237838106644888,
+    0.6762511183560448,
+    0.011820770561407387,
+    0.07409000443765983
+   ],
+   "sklearn_proba": [
+    0.23785137501618067,
+    0.6762322361372317,
+    0.011821013327259393,
+    0.0740953755193282
+   ]
+  },
+  {
+   "text": "Brand Ambassador program: post honest reviews of our skincare from your personal account; each post must say Paid partnership. We never provide accounts.",
+   "json_proba": [
+    0.4858711013638845,
+    0.03634340024471109,
+    0.0021806394616490318,
+    0.47560485892975546
+   ],
+   "sklearn_proba": [
+    0.48587100049155424,
+    0.03634421548215469,
+    0.0021806655652257833,
+    0.4756041184610652
+   ]
+  },
+  {
+   "text": "Hotel Staff for Dubai, DMW-accredited employer. Employment visa processed before departure; OEC required. Never pay through personal e-wallets. Verify our job order at the DMW website.",
+   "json_proba": [
+    0.9683125811709189,
+    0.019066507431995162,
+    0.010090193882231258,
+    0.0025307175148546915
+   ],
+   "sklearn_proba": [
+    0.9683137822042227,
+    0.019066114137780952,
+    0.010089431663607895,
+    0.002530671994388508
+   ]
+  },
+  {
+   "text": "Factory workers for Malaysia: Department of Foreign Employment approved demand letter, labour permit issued before departure, free-visa free-ticket scheme as per government policy.",
+   "json_proba": [
+    0.9824928336682681,
+    0.0026366882547063813,
+    0.01280382394787747,
+    0.002066654129148088
+   ],
+   "sklearn_proba": [
+    0.9824929313498948,
+    0.002636704663858157,
+    0.012803749718335618,
+    0.002066614267911565
+   ]
+  },
+  {
+   "text": "Externalisation of labour: licensed company (Ministry of Gender, Labour and Social Development licence displayed) recruiting security guards for Qatar; contract attested before travel.",
+   "json_proba": [
+    0.9317596289284824,
+    0.05442883830408243,
+    0.007053850162145059,
+    0.006757682605290017
+   ],
+   "sklearn_proba": [
+    0.9317598452343819,
+    0.05442778507939201,
+    0.007054375587904129,
+    0.0067579940983220335
+   ]
+  },
+  {
+   "text": "Trust and Safety Analyst: investigate influence operations and remove fake account networks. Remote. Background in OSINT preferred.",
+   "json_proba": [
+    0.8842981184308499,
+    0.09377273052172029,
+    0.004178639496033605,
+    0.017750511551396238
+   ],
+   "sklearn_proba": [
+    0.8843009859519104,
+    0.09376967552389372,
+    0.004178618053551362,
+    0.017750720470644625
+   ]
+  },
+  {
+   "text": "sales rep. / lighting engineer tnt consulting pc operates in greece from august 2013 promoting the idea of ​​saving and the rational use of energy, specializing in lighting. tnt provides both specialized solutions for the creation of 'green' buildings through lighting and integrated lighting studies combining elegance and sustainability through its proposals. with respect to the natural environment we offer apart from our solutions, the necessary training for proper use. tnt is the sole partner in greece of aura light (#url_c43b08b9e51082b5eb129a97b2506d9ecb8edf63077cf5ec3deec6f120a1abb3#).aura light sweden was founded in 1930 in stockholm, sweden, and has subsidiaries in the following countries: denmark, finland, france, germany, italy, norway, portugal, sweden, spain, the uk and china. with manpower, that consists of more than 250 lighting specialists, aura light offers high quality, cost-effective, and long-term \"green\" products. tnt consulting, a sustainable lighting company and the sole partner in greece of aura light, is looking for lighting experts, to recruit on its b2b sales department.the company provides a professional, target based working environment, with ample bonuses for accomplishment. the candidates must be able to conduct the whole sales process. ability to conduct a sustainability and lighting study is a plus. at least three years experience in salesfamiliarity with lighting programs such as dialuxelectrical engineering degree or similar is a plusexcellent command of english",
+   "json_proba": [
+    0.9940010792828049,
+    0.005296850932360957,
+    0.0001707433387894972,
+    0.0005313264460446855
+   ],
+   "sklearn_proba": [
+    0.9940007526261935,
+    0.005297143525248741,
+    0.0001707603522957371,
+    0.0005313434962620371
+   ]
+  },
+  {
+   "text": "account manager (mumbai role, singapore company) eatads is a global platform business, like #url_21e7f703da8e28a4edd962a114e1af7ba244609a9ccd3760ae493e9f447c25fe# or #url_5b04abc806bc1d9e9b9491c41c8b2d7557455714849cfbdd9401b1094f5be684#, but instead for the global out-of-home media industry. we're based in sinagpore and india and we're growing fast. the founders are all experienced entrepreneurs, backed by some of the most experienced digital investors in india and singapore. this $33b industry has been lacking a platform, and thus we help both buyers and sellers leverage the benefits of a platform for the first time. we're initially focussing on south asia and south-east asia although already have users from outside these regions.eatads is similar to #url_f012da9e26184dad52230f43da2d165067791f2b862a7742876a8d0d5a208119# (usa), #url_3613edc46487e81246859966aee52388d9ea323d632a9cb699c3aa877db2cf9a# (singapore) or #url_21e7f703da8e28a4edd962a114e1af7ba244609a9ccd3760ae493e9f447c25fe# (india); both in model and technology. eatads not only provides vendors a platform to list their sites, but also a raft of workflow solutions to manage their inventory, undertake mobile site monitoring and many more. all of these process have been occurring manually until now. for buyer we create a more efficient process to discover, plan, research, buy and sell out-of-home (ooh) media. eatads is subscription model. in addition to a listing and lead generation platform eatads also provides (either directly or via integration) a raft of cloud-based workflow solutions for all stages of the out-of-home media value chain. we take no commission and are designed for fast growth. eatads is a cloud software platform business, like #url_21e7f703da8e28a4edd962a114e1af7ba244609a9ccd3760ae493e9f447c25fe# or #url_5b04abc806bc1d9e9b9491c41c8b2d7557455714849cfbdd9401b1094f5be684#, but instead for the global ooh media industry. we're based in sinagpore and india and we're growing fast. the founders are all experienced entrepreneurs, backed by some of the most experienced digital investors in india and singapore. our first focus market is india.we are seeking an experienced, committed and passionate account manager as we prepare to rapidly scale our user-base and expand our products both in india and internationally. experience in ooh media buying and/or selling is a prerequisite. you will be a part of a high energy team that enjoys working hard and having fun. you will also learn about how software products are made and how transformative they can bring about change in industry. ooh (out-of-home) media (billboards, transit media, bus shelters, airport media etc.) is a large but very disorganized industry globally. it has been very late in adopting similar web tools that have brought great efficiency to almost all other industries. the $33 billion industry is most disorganized in the emerging economies.location: mumbai (full-time)experience / proficiency(ideally) demonstrated success in selling saas and/or media solutions (manditory) demonstrated success ooh media buying and/or selling in mumbaibachelor (4-year) degree or equivalent minimum 3 years of sales experience with demonstrated success must have used salesforce tools or equivalent crm tools must have worked in a sales team (with at least one other person) must be a self-starter, and one who demonstrates superior verbal and communication skills experience / proficiency(ideally) demonstrated success in selling saas and/or media solutions (manditory) demonstrated success ooh media buying and/or selling in mumbaibachelor (4-year) degree or equivalent minimum 3 years of sales experience with demonstrated success must have used salesforce tools or equivalent crm tools must have worked in a sales team (with at least one other person) must be a self-starter, and one who demonstrates superior verbal and communication skills we are happy to pay for high performers. we want the best.",
+   "json_proba": [
+    0.9998033297552038,
+    0.00018043709105983755,
+    5.647432439836703e-06,
+    1.058572129662698e-05
+   ],
+   "sklearn_proba": [
+    0.9998033183563684,
+    0.00018044799680183395,
+    5.647674220488179e-06,
+    1.0585972609250721e-05
+   ]
+  },
+  {
+   "text": "level 1 tech support specialist telecentrix inc. is a leading provider of business management solutions for companies across the country. we work closely with some of the most notable companies in the world, creating innovative ways to enhance the relationships they have with their customers.the incredible success we’ve had is thanks to the nearly 30,000 employees that use the training they have received here to manage millions of customer interactions every year.we are always looking to add motivated, talented individuals to our team. as a technical support specialist you will provide assistance to end-users with regard to special technologies. when it comes to helping an end-user in a certain matter, you will play a vital role in supporting and go through the entire process of solving a request. also, if you have fulfilled all the steps and yet the issue is not solved, you shall address the case to the next level support team available. job duties:answers incoming callsresponds to customer inquiries via phone, email, and live chatenters information into crm databasetalks customers through steps to resolving issueskeeps tracks and logs customer issues mandatory skills:basic computer skillsability to pay great attention to detailstrong communication and teamwork skillsability to learn database systems (training provided)ability to learn crm systems (training provided) 401kpaid holidays",
+   "json_proba": [
+    0.9936502248517635,
+    0.005906707468861842,
+    0.00013828349201195237,
+    0.00030478418736268955
+   ],
+   "sklearn_proba": [
+    0.993650229652237,
+    0.005906711777195069,
+    0.00013827528917541746,
+    0.00030478328139238366
+   ]
+  },
+  {
+   "text": "system analyst valleysoft is a fast growing global it services & solutions company based in silicon valley, usa . at valleysoft, we strongly believe that excellence in services to client is not a singular act, but a habit. we make earnest effort in our constant endeavor to redefine this habit and take it to the next higher level. our long standing, time tested experience, which span across domains, is a source of strength as it helps us effectively leverage our experience to add value to our clients' business needs and processes. our growth has been powered by our consultative approach, our deep understanding of business and technology, our passion for innovation - and above all, our integrity. the candidate should be proficient in the following: should have strong healthcare domain experience with work experience as system analyst. interacting with clients, understanding system and domain requirements, experience in .net will be additional advantage. good communication - mandatory offshore coordination - mandatory skill vb.net 9.0location bloomfield, cttotal experience 7 yrs.max salary $ doe per houremployment type direct jobs (full time)domain any",
+   "json_proba": [
+    0.989504218653261,
+    0.010073970315375795,
+    0.00015785569469588685,
+    0.0002639553366674372
+   ],
+   "sklearn_proba": [
+    0.989504226739231,
+    0.010073987843190982,
+    0.0001578498687944846,
+    0.00026393554878349296
+   ]
+  },
+  {
+   "text": "digital marketing coordinator, singapore as our digital marketing specialist, you will join our digital team. we're a bunch of creative, business-minded people that live and love digital. being an international group, we feel passionate about helping our clients conquer new frontiers in the employer branding space with their communication strategies, especially through social media.in this role, you will get great exposure to different elements of communication solutions, employer branding practices, business development and you will work with top employers across industries.main responsibilities:concept development: develop creative concepts with the team from content creation to creative execution.project management: pro-actively coordinate project lifecycles, managing different aspects and various internal stakeholders, as well as vendors and clients, ensuring high quality project deliveries.account management: manage client contact and relationship on a day-to day basis and report account performance and progress to management on regular basis.team player: support the team with ad hoc activities, such as desk research, developing successful case studies, preparing pitches and other exciting things as and when they come up. bachelor’s or master’s degree in communications, marketing or advertising preferredminimum 2 years experience with proven track record of working with clientspassionate about all things digital and social mediaentrepreneurial spirit, independent, not afraid to take on new challengescreative and capable of thinking outside the boxtarget-driven and solution-oriented with high energy levelexcellent command of microsoft office, especially powerpoint and excelexcellent command of english and great communication skillsplus, as the “dream” candidate you will bring with you one or more of the following:excellent copywriting skillsfluency in additional south east asian languagecommand of adobe design software (e.g. photoshop, indesign etc.)",
+   "json_proba": [
+    0.9998243873233865,
+    0.00012670021943487477,
+    6.1969740991359194e-06,
+    4.271548307942346e-05
+   ],
+   "sklearn_proba": [
+    0.9998243861757811,
+    0.00012670165681973551,
+    6.197127244659279e-06,
+    4.2715040154575086e-05
+   ]
+  },
+  {
+   "text": "senior ux & ui designer joy aether is a leading provider of mobile business solutions, based on iphone, android, ipad, and other platforms. we focus in design and development of mobile and web application software for businesses. our customer base includes multi- national corporations such as pfizer, ubm, dbs bank, haemonetics, galderma, pccw, etc. joy aether is a leading provider of mobile business solutions, based on iphone, android, ipad, and otherplatforms. we focus in design and development of mobile and web application software for businesses.our customer base includes multi-­national corporations such as pfizer, ubm, haemonetics, galderma,pccw, etc.job responsibilities:conceptualize emotionally-­charged designs for mobile appsturn business requirements into design prototypes / mockups with great user experience (ux)design user journeys and represent them in wireframescreate graphic designs for marketing campaign and align with brand messageproduce game graphics according to the direction of our game designer job requirements:solid 3 years+ working experience in graphics design, especially for web and mobileproficient in adobe photoshop & illustratorcapability from layout concept to artwork production, including some researchexperience in ux design for softwarecss and html is a plusvideo editing using affect effects or premiere is an asset benefits:gain experience in a fast growing industry with huge potential5-­day work weekopportunities to lead and contribute your opinions.gym with swimming poolplease apply via #email_be7db6125da67ddf5903c01b161d4f0cd3254d1e3f20782802026c14e5b00a8b# with (1) portfolio;; and (2) expected salary range.",
+   "json_proba": [
+    0.996266850415352,
+    0.0035166582286976483,
+    8.439747545169598e-05,
+    0.00013209388049867835
+   ],
+   "sklearn_proba": [
+    0.9962668894728864,
+    0.0035166160267466953,
+    8.439977104284824e-05,
+    0.00013209472932391105
+   ]
+  },
+  {
+   "text": "senior front-end software engineer fleetio is improving the way companies manage vehicle-based operations. we're a fast-growing, profitable saas company with tens of thousands of users in over 30 countries. and we're just getting started. fleetio (#url_570817262652772291a2ea501ba37910cc70b4e037bfd12112d162b765d025b5#) is changing the way companies manage their vehicles and equipment. we're a growing, bootstrapped & profitable saas company with hundreds of paying customers and thousands of users around the world. we're a small company of doers with big-time goals.we're hardcore believers in easy-to-use software. crafting a delightful user experience is hard work, but we welcome the challenge and are looking for team members who share our ambition.our current stack includes ruby/rails, angularjs, bootstrap, postgres, herokucoming up on our roadmap is a big refresh of the current ui. when we say you'll have significant impact on the product right off the bat, we mean it. master of frontend web technologies: html, css, javascriptdeep knowledge of ruby, rails, angular and other web technologies like json, ajax, etc.understand the balance between scrappiness and long-term code maintainabilitycompelled to make things look beautiful and work flawlesslytake pride in abstracting and refactoringcreative, ambitious and get things donebrownie points!! it would be great if you also...know a thing or two about cars and engineshave used a variety of frameworks (server side, browser side, or for desktop software)know extension languages like haml, sass, coffeescripthave a technical background: a degree in cs, ee, math, physics, etc.got mad user-experience (ux) & design skillz competitive salary and meaningful equity.open vacation policy. we don't count days.macbook pro and whatever tools you need. we love macs.flexible hours and location. work from wherever you want.health care reimbursement.",
+   "json_proba": [
+    0.9996390003913638,
+    0.00028592700284260853,
+    1.8523348670601433e-05,
+    5.65492571230508e-05
+   ],
+   "sklearn_proba": [
+    0.9996390055338475,
+    0.00028591982787862057,
+    1.852502502860825e-05,
+    5.654961324540714e-05
+   ]
+  },
+  {
+   "text": "market development / inside sales specialist built from the ground up to help customers improve clinical, financial and human outcomes, wellcentive’s population health management technology is cloud-based, scalable, and customized to meet the needs of providers, health organizations and payers. wellcentive’s technology, insight and services help care teams measure and report performance and implement actionable workflow to drive value-based reimbursement and the transition from volume to value. wellcentive has gained recognition as a leader in population health management in reports recently released by idc health, klas and chilmark. wellcentive aggregates data from more than 3,000 interfaces, and its solutions improve outcomes for over 23 million lives. wellcentive is growing our market development team with the addition of an inside sales and lead generation specialist. the primary functions of this role are to proactively identify new sales leads in the assigned territory and account base, manage inbound lead activity, qualify active buying interest in prospect accounts and nurture buying interests in very early awareness, research and consideration stages. the inside sales specialist collaborates with the wellcentive direct sales team to understand territory development goals, determine target contacts and organizations that require research, and engage in outbound prospecting activities. in the existing customer base, the inside sales specialist will also collaborate with the implementation, support and account management teams to help manage the customer lifecycle and capture upsell, cross-sell and renewal opportunities.prospect, educate, qualify, and develop inbound leads and target accounts to convert to sales-ready opportunitiesdemonstrate effective understanding of target audience including industry knowledge, key business issues, industry trends, wellcentive solutions and services, and competitionwork directly with regional sales directors to build their pipeline and exceed strategic goalscommunicate with customer and prospect executives at all levels including c-suitecreate effective call and email campaigns and regional activities to generate, nurture and convert leadsbecome a trusted resource and develop superior relationships with prospects, customers, and across the wellcentive sales, marketing, solution, technology and service delivery teamsestablish social media presence and contribute to a regional social media strategyconsistently achieve established goals for prospecting and nurture activities, sales accepted leads, upsell opportunities, and renewalsmanage leads, contacts, accounts, opportunities and sales forecasting using pardot and #url_8d92932a488fb7e172d73a0f6813d06d464f1f03705d2825f86b2c7947d60a86#complete research, analysis, and data management projects to drive sales programs a ‘hunter’ mentality, comfortable prospecting, cold calling, and following up on incoming leadsexperience in healthcare information technology solutions, specifically with physician practice management, ehr systems or quality reporting initiatives, a significant plusoutstanding written, verbal, telephone, and web meeting / webinar communication skillsexcellent listening skillsprior successful inside sales, sales, demand generation or lead qualification experience with history of achieving and exceeding assigned goalsproven ability to manage multiple priorities and meet sales objectivesability and enthusiasm to learn in a rapidly evolving healthcare it segment lead by a fast growing population health management solution providerproficient with standard corporate productivity tools: email, voicemail, ms office (word, excel and powerpoint) and google (gmail, calendars, google drive) applicationsprior experience with #url_8d92932a488fb7e172d73a0f6813d06d464f1f03705d2825f86b2c7947d60a86# and/or pardot preferredsocial media skills a plus4-year college degree requiredatlanta based to work in the wellcentive alpharetta office competitive base salary plus incentive program, full time position with benefits package*************************built from the ground up to help customers improve clinical, financial and human outcomes, wellcentive’s population health management technology is cloud-based, scalable, and customized to meet the needs of providers, health organizations and payers. wellcentive’s technology, insight and services help care teams measure and report performance and implement actionable workflow to drive value-based reimbursement and the transition from volume to value. wellcentive has gained recognition as a leader in population health management in reports recently released by idc health, klas and chilmark. wellcentive aggregates data from more than 3,000 interfaces, and its solutions improve outcomes for over 23 million lives.",
+   "json_proba": [
+    0.9987893168856834,
+    0.0011254804669488772,
+    2.1940555234265608e-05,
+    6.326209213344536e-05
+   ],
+   "sklearn_proba": [
+    0.9987893113943963,
+    0.0011254830308192458,
+    2.1940459759686536e-05,
+    6.326511502476797e-05
+   ]
+  },
+  {
+   "text": "front end developer front end developers needed for an awesome, series a funded, fintech startup in london, #url_5e795cd0cd3fd2672ff08e938e135fc4d2fdf03fc5c01fc3c09edf82b919fd72#we are looking for a front end developer who wants to get their hands dirty designing, developing, and deploying awesome technology to help change the way young people save and spend money.as a brief summary, osper is a mobile-first financial services company that supplies an app and prepaid card for children aged 8-18. we aim to build a profitable business that earns more as young people learn more, whether they do that by saving for a bicycle or spending all their pocket money on minecraft skins.due to recent successes and investment we are now looking to expand our small team of developers. in this role you will work closely with the design and product team on both our mobile app and website, joining a small group of smart and highly skilled engineers with plenty of chances to learn new skills and experiment.our front end developers love playing with early releases of libraries, though that can be challenging. one of the great things about this role is you will have a say in everything and have the chance to influence the end result.technologyour hybrid app is built using backbone and cordova, our website in bootstrap, coffee, less, and backbone. most of our testing is done using karma, mocha, chai, sinon, selenium, and appium. we use tools like grunt and jenkins to build and deploy. we are looking for an experienced front end developer who can not only translate design briefs into working mobile and web products, but also question and improve the brief to help us keep developing consumer experiences.we will expect you to be able to demonstrate:a good eye for design and understanding of design processesexcellent coding ability (ideally in a javascript environment)passion and interest in helping young people save and spend betterunderstanding of mvc and inheritance programming principlesthe ideal applicant will have experience coding across a range of front-end languages: javascript, html5, etc. and will have used libraries including backbone, bootstrap, cordova and less. it would be great if you also have experience with grunt, jenkins, karma, mocha, chai, sinon, selenium and appium. we will consider all applicants and if you are interested in these technologies but have yet to use them, we are more than happy to help you learn. osper has an innovative and collaborative environment that gives each member of the team a real chance to influence the products and projects you are working on every day. you will be working with a team of experienced and passionate developers that will help you learn and grow as the company does. you can expect all of the benefits of working in a small startup that is growing quickly and successfully - a flexible approach to work, breakfast and snacks, regular outings and a fun team.we also offer new joiners:relocation help to london if you are overseas (eu visa required)build your own environment (personal computer budget)yearly training budget (get paid to learn, go to conferences, and enjoy hackathons)options (all members of the team have ownership in the osper business)",
+   "json_proba": [
+    0.9997537598656491,
+    0.00022094095896584834,
+    9.456526234052775e-06,
+    1.5842649150951074e-05
+   ],
+   "sklearn_proba": [
+    0.9997537588649211,
+    0.0002209424463100171,
+    9.456220142733143e-06,
+    1.5842468626021884e-05
+   ]
+  },
+  {
+   "text": "ancillary revenue executive ryanair is europe’s favourite low fares airline, operating more than 1,600 daily flights (over 500,000 per year) from 69 bases, across 1,600 low fare routes, connecting 186 destinations in 30 countries and operating a fleet of 300 new boeing 737-800 aircraft. ryanair has recently announced firm orders for a further 180 new boeing aircraft, which will be delivered between 2014 and 2018. ryanair currently has a team of more than 9,500 highly skilled professionals, will carry 86 million customers this year and has an outstanding 30-year safety record. ryanair is europe’s only ultra-low cost carrier (ulcc), operating more than 1,600 daily flights (over 500,000 per year) from 57 bases, across 1,600 low fare routes, connecting 180 destinations in 29 countries and operating a fleet of 303 new boeing 737-800 aircraft. ryanair has recently announced firm orders for a further 175 new boeing aircraft, which will be delivered between 2014 and 2018. ryanair currently has a team of more than 8,500 highly skilled professionals, will carry over 81.5 million passengers this year and has an outstanding 29-year safety record ryanair is looking to hire an ancillary revenue & analytics executive to join our commercial department. the successful candidate for this role will report to the head of ancillary revenue. this position will be based in our corporate head office, dublin. #url_2f58065b34b1f9f5698cd1c23f53f636ebae87309b6b173eaf3c1b97a40b9f29# has over 30 million unique visitors a month. in this role, the successful candidate will be responsible for a portfolio of key commercial partnerships and will have the scope to develop ancillary current and new revenue streams. this role will also include responsibility for the performance analysis of all ancillary revenues using the data analytics tool and the subsequent presentation of both findings and recommendations to the wider ancillary team. the role presents an excellent opportunity for the successful candidate to play a central role in the growth of ryanair’s ancillary revenues and for career progression. duties & responsibilities identify and conclude commercial contracts with new ancillary partners.maintain and develop existing relationships with our current partners base.seek out new commercial opportunities that will compliment #url_2f58065b34b1f9f5698cd1c23f53f636ebae87309b6b173eaf3c1b97a40b9f29# proving insightful and actionable recommendations with clear justification and rationale. plan short to long term ancillary strategy for you partnership portfolio.use web data analysis tools to understand what features, functionality and content resonate with users.identify patterns trends and relationships and present findings to internal colleagues including senior management.measure the impact of all changes made though effective testing and analysis and maintain a continuous plan of change implementation delivering performance improvement over time. 3 - 4 year experience with demonstrable commercial experience preferably with a strong appreciation for digital and mobile consumer behaviour.ability to prioritise effectively, separating out the 80% of requests that matter less and focus on the 20% that will truly be impactful.relevant third level business qualification or commensurate commercial experience.excellent communication, presentation, influencing and interpersonal skills1-2 years’ experience using data analytics tools and knowledge of crm and customer lifecycle would be advantageous.it skills: web development, excel, databases.fluent english and a second european language would be beneficial.self-starter with the ability to quickly learn, influence others and drive changedemonstrated problem solving and troubleshooting skillsability to work and prioritize multiple projects simultaneouslyexperience of working in a fast-paced, demanding, high growth organizationmost importantly, we required an experienced candidate capable of making an immediate commercial impact by engaging with our 35m monthly #url_2f58065b34b1f9f5698cd1c23f53f636ebae87309b6b173eaf3c1b97a40b9f29# website visitors and 81.5m annual customers, delivering cohesive business strategies and maximizing the ancillary revenue potential of the ryanair brand.we are interested in you if you are looking for career progression where hard work, initiative and enthusiasm are part of the daily routine. if you have a strong statistical, consulting, product development and/or e-commerce background, we want to hear from you.this position offers unlimited potential for the right candidate. you will be offered a competitive salary, bonus and travel benefits.closing date: 17th of december 2014. please email full curriculum vitae with cover letter (quoting reference frare04) to danny king at #email_a24482424fda6497a407e3cc953ed7744dd0e6d9c01ed4e501ab62aa03b20d20#",
+   "json_proba": [
+    0.9981027176528189,
+    0.001866302473483114,
+    9.108240523410608e-06,
+    2.1871633174648855e-05
+   ],
+   "sklearn_proba": [
+    0.9981029797534889,
+    0.0018660423079494511,
+    9.108015885089393e-06,
+    2.1869922676422418e-05
+   ]
+  },
+  {
+   "text": "analyst programmer (boxi, oracle) european dynamics (#url_c66532ffa1ce76ab447da6774719060c42c584edbf44d74cdb94fc4ac219ca45#) is a leading european software, information and communication technologies company, operating internationally (athens, brussels, luxembourg, copenhagen, berlin, rome, stockholm, london, nicosia, helsinki, valetta, etc). the company employs over 600 engineers and it experts. we design and develop software applications using integrated, state-of-the-art technology. our current it and telecoms projects have a value exceeding 250 million euro. european dynamics is a renowned supplier of it services to european union institutions, international organizations, european agencies and national government administrations all over europe. we currently have a vacancy for an analyst programmer fluent in english, to offer his/her services as an expert who will be based in brussels. the work will be carried out either in the company’s premises or on site at customer premises. in the context of the first assignment, the successful candidate will be integrated in the development team of the company that will closely cooperate with a major client’s it team on site. your tasks:provide assistance and advice in enterprise architecture field including the implementation of data extraction, data mining, data visualisation as well as analysis of organisational structures;provide assistance and advice in is requirement analysis filed including data analysis and analysis of user requirements, data modelling, production and implementation of models;provide assistance and advice in is specific studies filed including technical studies and evaluations;participate in technical working groups and progress meetings. your skills:university degree with minimum 4 years of professional experience in it or non-university degree with minimum 8 years of experience in it ;minimum of 2 years of experience in it consulting and in the production of studies in the field of requirement analysis, technical domain or quality and security;proven experience with oracle 11g, pl/sql, sql developer, toad ,business objects xi,sas etl, rational team concert, peregrine and xml;in depth knowledge of modelling and design tools (enterprise architect);knowledge of prince2 and/or itil will be considered an asset;fluency in both oral and written english, understanding of french. our offer: if you are seeking a career in an exciting and dynamic company, where you will offer your services as part of a team of a major european institution, operating in an international, multilingual and multicultural environment where you can expect real chances to make a difference, please send us your detailed cv in english, quoting reference: (bap/08/14), to the following e-mail address: #email_e8efcf62a68b682bfb8fcc86c8c05ec5b0b8c9afa3310079ab513dbf73ccfd25#. we offer a competitive remuneration (either on contract basis or remuneration with full benefits package), based on qualifications and experience. all applications will be treated as confidential.you may also consider all our other open vacancies by visiting the career section of our web site (#url_c66532ffa1ce76ab447da6774719060c42c584edbf44d74cdb94fc4ac219ca45#) and follow us on twitter (@eurodyn_careers) and linkedin.",
+   "json_proba": [
+    0.9996845704309484,
+    0.00029210632903250126,
+    7.746099434135854e-06,
+    1.557714058486607e-05
+   ],
+   "sklearn_proba": [
+    0.9996845786691109,
+    0.00029209796557794394,
+    7.746414185903678e-06,
+    1.5576951125290653e-05
+   ]
+  },
+  {
+   "text": "sr. php developer we at techindyeah are a fun filled startup. we celebrate our work and we enjoy it at the fullest. while maintaining work ambiance, we also make sure that we keep our environment open to ideas to nurture our in-house talent. we are a fresh and new team with pragmatic approach to technology. we adapt ourselves to the future, invest in technologies and we are here to transform and build a better india. so life is fiercely energetic at techindyeah with a team brimming with knowledge. we are all in progressive state. so from newbies to experts, we have them all at techindyeah. we foster growth and transform our people into seasoned professionals who can combat stiff competition. each day is a new sunshine for us and gives us new opportunities for us to grow as we learn. we know that our life here is all about tackling risks and fighting new obstacles on our way. yes, we are par excellence & coolwe are tech-ing india!!™ and we are loving it… we are looking for a php developer who is dedicated to his craft, writes code that is proud of and can hit the ground running. we need you to write beautiful, fast php to a high standard, in a timely and scalable way that improves the code-base of our products in meaningful ways.you will be a part of a creative team that is responsible for all aspects of the ongoing software development from the initial specification, through to developing, testing and launching. 1+ years of software development experience in phpunderstanding of open source projects like joomla, drupal, wikis, oscommerce, wordpress, etcdemonstrable knowledge of web technologies including html, css, javascript, ajax etcgood knowledge of relational databases, version control tools and of developing web servicesexperience in common third-party apis (google, facebook, ebay etc)passion for best design and coding practices and a desire to develop new bold ideasbs/ms degree in computer science, engineering or a related subject",
+   "json_proba": [
+    0.9995407794523027,
+    0.000421017962443464,
+    9.564583794874124e-06,
+    2.8638001459022284e-05
+   ],
+   "sklearn_proba": [
+    0.9995407664627491,
+    0.00042103000671131794,
+    9.565543046755815e-06,
+    2.863798749270601e-05
+   ]
+  },
+  {
+   "text": "full-time job coach united cerebral palsy of oregon & sw washington (ucp) supports adults with all kinds of developmental disabilities (not just cerebral palsy), so that they can live the life of their dreams.we're growing, so you will see lots of exciting job openings in the next few months!why work for ucp?as an employee of ucp, you'll be proud of the work you do, every day! our employees assist the people we support to live independently in their own homes and apartments, find and keep their dream jobs, make community connections, serve as their own advocates, and make their own choices. you'll get the chance to work for one of the 100 best non-profit employers in oregon. we're fun and flexible, and there's plenty of room for advancement and growth. united cerebral palsy (ucp) is a unique, empowering and exciting place to work! and we’re growing. we are currently seeking a new full-time job coach who will work in our supported employment program.as a job coach, you will work one-on-one with a small caseload of adults who experience various disabilities, supporting them in paid community-based jobs, volunteer positions, and college classes. this a fun and challenging job, with lots of variety and room for growth. duties: assist your caseload to build new skills and learn new tasks.interface successfully with your caseload’s employers, supervisors and co-workers.document your daily interactions and activities.generate monthly status reports about each customer on your caseload.work as part of a team to develop and update each customer’s individual support plan.provide some personal support for certain customers, including providing assistance in the bathroom and with eating.provide transportation for some customers to their jobsites, meetings and/or interviews. hours and location: usual schedule is monday-friday daytime hours (roughly 9-6).rare weekend or evening work will also be required, depending on customers’ work schedules.your time will primarily be spent in the community, at job sites in multnomah and clackamas counties.about 25% of your time will be spent at our office (located in the gateway neighborhood). to apply: no calls, please.this position does not have a close date, so you are encouraged to apply quickly.apply by sending a resume and cover letter via this link: link.ucp is an equal opportunity employer, and actively seeks applicants from diverse backgrounds. be able to drive on the job, which requires you to have a reliable personal vehicle, a valid driver’s license, at least 3 years’ driving experience, and a relatively clean driving record.be at least 21 years old (a requirement of our auto insurance program).must pass a physical with a lifting test of 75lbs, drug screen, reference check, and criminal history background check.must have ability to work a changing schedule.previous coaching or mentoring experience is preferred. $11.00/hour, with 5% increase to $11.55/hour after successful 90-day trial service period.great medical benefits (including medical, alternative, and vision benefits) for employee, spouse/domestic partner, and children.3 weeks paid time off, with an additional day off granted after each of your first five years at ucp.8 paid holidays.401k plan with company match up to 3%.mileage reimbursement.on-going paid training.",
+   "json_proba": [
+    0.999227592821756,
+    0.0007560153224246232,
+    5.8376604674548235e-06,
+    1.055419535187584e-05
+   ],
+   "sklearn_proba": [
+    0.9992276025653926,
+    0.0007560061983196216,
+    5.837457151983297e-06,
+    1.0553779136014416e-05
+   ]
+  },
+  {
+   "text": "pizza delivery drivers - harrogate take out brands is a food franchise business with a #url_4524df5c91ce800c4ba16ef1406d622db7d51d37105a7fcee27521e61854615e# difference being we want you to genuinely enjoy your workiing experience with us. we hire cheerful, honest and hard-working people - and then treat them well - offering the chance to learn and develop wherever possible.with 7 franchises already live, this young business is run by people you can trust. our focus currently is on papa john's - one of the largest pizza companies in the world, with more than 4,300 stores worldwide delivering: better ingredients, better pizza.rapidly growing in the uk, there are now over 200 papa johns outlets in the uk - with take out brands ltd already operating stores in aberdeen, durham, harrogate, leeds and liverpool. and with up to 30 more planned across the north of england and scotland in the next 2 years,there'll be plenty of opportunity for career progression along the way. the business is headed up by ex british army major dan wilkinson, who lives with his young family in yorkshire. \"this is a people business - and though we love selling worlld class pizza, building a team of good people is crucial to our success. we are keen to support all of our staff well, so they can provide great service to our customers.\" here's dan celebrating the recent opening of our harrogate papa john's franchise with the local mayor. papa john’s is one of the world’s biggest and best pizza franchises. we’re now looking for delivery drivers for our recently opened starbeck store - with a range of evening / weekend shifts available (usually starting between 5 & 7pm).your job sounds simple enough: to safely deliver beautiful,hot pizza to our customers’ homes - and to help your colleagues in the store. to do it you'll need to stay alert - with the common sense to check orders for accuracy before setting off safely, then delivering to our customers and taking payment for orders. and provide service with a smile - as very often you'll be the \"face\" of papa john's to our customers!you'll also be willing to cover your team mates' workstations - including end of shift cleaning - and also to maintain health & safety and food hygiene standards for customers and colleagues alike. all in all - a chance to work with some great people - and of course to make some money using your car - instead of it just costing you money every day! if it's an in-store role you would prefer, please apply via #url_ddb08bb858f0383d26e72c2b72f8572464baab83642d8c7f14e0088bee5ec1f1# you must be 19 years old or above – and will need a valid driving licence, an acceptable driving record, proof of insurance and a satisfactory vehicle.you'll have common sense, good manners, honesty, reliability – and a willing smile. remember you'll often be the \"face\" of papa john's to our customers!we’ll have a variety of flexible shifts – but the nature of the business means you must be willing to work late into the evening, including weekends. pay rates will be £6.31 / hour (21 and over) additional holiday pay accrued in accordance with hours worked£1 per delivery to cover fuel costs insurance provided.",
+   "json_proba": [
+    0.9937298143886963,
+    0.006169736900173631,
+    4.3458586117536236e-05,
+    5.6990125012526455e-05
+   ],
+   "sklearn_proba": [
+    0.9937299763332625,
+    0.006169573934868187,
+    4.345875367036192e-05,
+    5.699097819891639e-05
+   ]
+  },
+  {
+   "text": "senior digital producer searching for the perfect creative agent or mission? inside job agency finds out the details you need to know in order to complete your search.big picture expertise, and detailed insight are just some of the services inside job agency provides having been fortunate enough to partner on successful recruiting missions nearly within creative, marketing and technology for over 13 years. we specialize in the advertising, brand, technology/consumer digital and marketing space in los angeles. knowing what it takes to make a digital product, campaign, brand or the technology that runs it, from a 360 perspective we can quickly team build for special ops or full time roles.please reach out to us if you are looking to make a great career move, find amazing talent to tackle your companies’ objectives, or if you just want to network with someone who has a great overview of the job market!areas of expertise: art direction, creative direction, design, copy, marketing, ia, ux, product development and management, mobile design and development, application and web development, ui and front end developers, software engineers, qa, business analysts, content strategists, account planners, branding, account service, media, motion graphics and other fine areas of the trade. senior digital producerlooking to work with one of the sharpest full service digital teams in la when it comes to digital product creation, as well as first to market marketing and advertising campaigns?we have a 6 month contract open with just such a firm working on an enterprise level consumer product facing site (auto is the category) as well as on a music streaming service site build.both project require having worked on large sites from strategy through to launch as you will be working closely with developers, ux, creative and strategy on these projects.this is a client facing role and any experience with workamajig.the position could extend to full time! at least 7 to 10 years of 360 digital producing experience.experience working with a full strategy and production team through development.",
+   "json_proba": [
+    0.9996362258295851,
+    0.0003417099369691257,
+    6.3100658191952595e-06,
+    1.5754167626558418e-05
+   ],
+   "sklearn_proba": [
+    0.9996362185618732,
+    0.00034171835676213,
+    6.309968388880857e-06,
+    1.575311297559827e-05
+   ]
+  },
+  {
+   "text": "hiring csr abroad! ⭐ passport lang ang kailangan. walang placement fee. customer service sa crypto at online casino. hindi ka pwedeng lumabas ng compound. libre ang flight, pagkain at tirahan chat sa whatsapp",
+   "json_proba": [
+    0.00023235835526480702,
+    0.00031767120978659787,
+    0.999263122203173,
+    0.0001868482317756399
+   ],
+   "sklearn_proba": [
+    0.00023235616044970387,
+    0.00031765517456343404,
+    0.9992631588347155,
+    0.0001868298302714824
+   ]
+  },
+  {
+   "text": "vaga: moderador de conteúdo ✅ ✅ remover contas falsas e desinformação segundo as políticas da plataforma ✅ processo seletivo com entrevista presencial, sem nenhuma taxa ✅ gestão dos perfis oficiais da marca ✅ conteúdo patrocinado sempre identificado como publicidade envie seu currículo para o rh.",
+   "json_proba": [
+    0.998645445556656,
+    0.00031788708544800863,
+    0.00044958401335359855,
+    0.0005870833445423861
+   ],
+   "sklearn_proba": [
+    0.9986455120446598,
+    0.00031787609901922964,
+    0.0004495989759205765,
+    0.0005870128804005484
+   ]
+  },
+  {
+   "text": "career opportunity 👉 hr assistant – cebu it park hmo upon regularization fresh graduates may apply apply on our linkedin page.",
+   "json_proba": [
+    0.9977539060168543,
+    0.001117140587515547,
+    0.0003907514261415825,
+    0.0007382019694884191
+   ],
+   "sklearn_proba": [
+    0.9977539739572174,
+    0.0011170946157613895,
+    0.0003907517643818607,
+    0.000738179662639503
+   ]
+  },
+  {
+   "text": "good news! you have been selected for our online job. follow online shops and get paid per follow. earn $50 to $300 per day. we need your gcash or maya account and pin for your salary. click this link to chat with hr. hurry, only 3 slots left!",
+   "json_proba": [
+    0.00011405873088946204,
+    0.9997481483288373,
+    3.559302284943866e-05,
+    0.00010219991742385267
+   ],
+   "sklearn_proba": [
+    0.0001140525919889226,
+    0.9997481586782386,
+    3.5592138754023734e-05,
+    0.0001021965910184353
+   ]
+  },
+  {
+   "text": "nafasi za kazi nje ya nchi ✅ utasafiri kwa visa ya utalii, kibali cha kazi kitashughulikiwa huko huduma kwa wateja, mshahara usd 1,000 tiketi ya ndege bure, chakula na malazi bure ukiulizwa uwanja wa ndege, sema unaenda likizo kampuni itashika pasipoti yako tuma nakala ya pasipoti.",
+   "json_proba": [
+    0.00017354204384024407,
+    1.8874288357212432e-05,
+    0.9997751450826681,
+    3.243858513444572e-05
+   ],
+   "sklearn_proba": [
+    0.00017351734200369884,
+    1.887092398143447e-05,
+    0.9997751774150816,
+    3.243431893315818e-05
+   ]
+  },
+  {
+   "text": "i-send ang otp para ma-verify ang gcash mo. hello po! hiring kami ng part-time, ₱3,000 kada araw, cellphone lang kailangan. may bayad na ₱2,500 para sa training kit. message sa telegram para sa task. mag-top up muna bago ma-withdraw ang kita.",
+   "json_proba": [
+    6.310055556240759e-05,
+    0.9995301264813354,
+    0.00017605241037935151,
+    0.00023072055272273955
+   ],
+   "sklearn_proba": [
+    6.309806131652853e-05,
+    0.9995301092830682,
+    0.00017605995063075343,
+    0.00023073270498447524
+   ]
+  },
+  {
+   "text": "social media editor zenith analytics inc. posts must never be labeled as sponsored or paid. create a page that looks like a local news outlet. write breaking news posts for our network of pages. ₱300 per day for 3–4 hours. comment \"interested\" and we will message you.",
+   "json_proba": [
+    0.001440753843645254,
+    0.00024226084802223788,
+    2.1833013053343375e-05,
+    0.9982951522952792
+   ],
+   "sklearn_proba": [
+    0.001440639095261495,
+    0.00024226439106891687,
+    2.18318538243974e-05,
+    0.9982952646598451
+   ]
+  },
+  {
+   "text": "cashier needed! get paid instantly via gcash. pay for your starter kit first. offer valid today only. hurry, only 3 slots left!",
+   "json_proba": [
+    5.876229444352225e-05,
+    0.9997839843234354,
+    0.00012656565378953892,
+    3.0687728331477376e-05
+   ],
+   "sklearn_proba": [
+    5.8758498619872864e-05,
+    0.9997839996402522,
+    0.00012655612476429088,
+    3.068573636363966e-05
+   ]
+  },
+  {
+   "text": "cashier needed! get paid instantly via gcash. pay a ₱3,000 registration fee to activate your account. a refundable security deposit of ₱350 is required. 100% guaranteed income. a refundable deposit of $50 is needed for the training laptop.",
+   "json_proba": [
+    6.857861411840086e-06,
+    0.9999876801970721,
+    1.2718962920357873e-06,
+    4.190045224106504e-06
+   ],
+   "sklearn_proba": [
+    6.857752281807905e-06,
+    0.9999876805817842,
+    1.2718238782403975e-06,
+    4.189842055594356e-06
+   ]
+  },
+  {
+   "text": "online encoder needed! withdraw anytime. pay a ₱3,000 registration fee to activate your account. training fee of ₱350 before you start. hurry, only 3 slots left! ngn 5,000 form fee is required before screening.",
+   "json_proba": [
+    4.586524651499749e-05,
+    0.9998382349903213,
+    8.474322449980152e-05,
+    3.115653866401103e-05
+   ],
+   "sklearn_proba": [
+    4.586396985204161e-05,
+    0.9998382322468833,
+    8.47488339114425e-05,
+    3.115494935340003e-05
+   ]
+  },
+  {
+   "text": "vacante: gestor de comunidad digital ⭐. crear páginas que parezcan medios de noticias independientes. no digas a nadie que te pagan por publicar. pago de 20 pesos por comentario manda tu perfil por inbox.",
+   "json_proba": [
+    0.001751502266506951,
+    0.0014038087036685571,
+    0.0005858861000385383,
+    0.9962588029297859
+   ],
+   "sklearn_proba": [
+    0.0017514016297625118,
+    0.0014036860470643868,
+    0.000585888555891581,
+    0.9962590237672816
+   ]
+  },
+  {
+   "text": "work abroad! 📲 customer care specialist | myawaddy, myanmar ✅ no experience needed ✅ visa and ticket provided ✅ visa on arrival only, no need for a work visa interview today via telegram 👉",
+   "json_proba": [
+    7.678737638640924e-06,
+    6.31554881649752e-05,
+    0.9999285124512979,
+    6.533228984398904e-07
+   ],
+   "sklearn_proba": [
+    7.678606270922156e-06,
+    6.315604026242376e-05,
+    0.9999285120391292,
+    6.533143373285546e-07
+   ]
+  },
+  {
+   "text": "magbayad lang ng ₱1,000 registration fee para ma-activate ang account mo. message sa telegram para sa task. hello po! hiring kami ng part-time, ₱5,000 kada araw, cellphone lang kailangan.",
+   "json_proba": [
+    0.00018714778824180655,
+    0.9981129690156475,
+    0.0009164518797718224,
+    0.0007834313163388417
+   ],
+   "sklearn_proba": [
+    0.00018715402068283525,
+    0.9981128692807272,
+    0.0009164973128924522,
+    0.0007834793856975508
+   ]
+  },
+  {
+   "text": "open-source investigator kairos tech asia | davao city what you will do: * publish methodology and corrections openly * track paid political content during the election period * write fact-checks of viral claims following ifcn standards * monitor disinformation narratives and troll networks on social media salary: ₱22,000–₱28,000 per month. benefits: laptop provided, paid leave, 13th month pay, hybrid work setup. apply on our linkedin page.",
+   "json_proba": [
+    0.9990729777769891,
+    0.0002575217023544228,
+    0.00017367627437923035,
+    0.000495824246277226
+   ],
+   "sklearn_proba": [
+    0.9990729558717305,
+    0.0002575327755437658,
+    0.00017366933644993139,
+    0.0004958420162756838
+   ]
+  },
+  {
+   "text": "now hiring ✅ accounting staff – alabang * with government-mandated benefits * fresh graduates may apply * no fees will be collected from applicants apply on jobstreet.",
+   "json_proba": [
+    0.9983415782511893,
+    0.0009328858027504278,
+    0.0004775723616385146,
+    0.00024796358442189827
+   ],
+   "sklearn_proba": [
+    0.9983416352094586,
+    0.0009328542295658672,
+    0.00047754449152219257,
+    0.0002479660694532561
+   ]
+  },
+  {
+   "text": "Earn ₱5,000 DAILY!!! 💰💰 Message us on 𝗪𝗵𝗮𝘁𝘀𝗔𝗽𝗽 &amp; Telegram",
+   "json_proba": [
+    0.000283187703152842,
+    0.988125916809213,
+    0.0021452947643728014,
+    0.009445600723261328
+   ],
+   "sklearn_proba": [
+    0.0002831804367950283,
+    0.9881256183071252,
+    0.0021453691069268097,
+    0.009445832149153182
+   ]
+  },
+  {
+   "text": "<p>Social&nbsp;Media <b>Manager</b></p> — Makati &lt;hybrid&gt;",
+   "json_proba": [
+    0.9341090747814623,
+    0.01708371180692006,
+    0.004951172998029033,
+    0.043856040413588517
+   ],
+   "sklearn_proba": [
+    0.9341102859196385,
+    0.01708291375447546,
+    0.0049508650666426094,
+    0.04385593525924334
+   ]
+  },
+  {
+   "text": "फर्जी अकाउंट चलाने होंगे, हर पोस्ट के पैसे मिलेंगे",
+   "json_proba": [
+    0.3077937753133914,
+    0.06024799735457692,
+    0.021877637712955877,
+    0.6100805896190757
+   ],
+   "sklearn_proba": [
+    0.3078083152260095,
+    0.06024417162420952,
+    0.021877812015124308,
+    0.6100697011346567
+   ]
+  },
+  {
+   "text": "ＦＵＬＬＷＩＤＴＨ customer service job in Ｃａｍｂｏｄｉａ",
+   "json_proba": [
+    0.02227235402236858,
+    0.6115295902963448,
+    0.36093269902036673,
+    0.005265356660919914
+   ],
+   "sklearn_proba": [
+    0.022271466586440174,
+    0.6115152805935167,
+    0.3609478580888099,
+    0.005265394731233246
+   ]
+  },
+  {
+   "text": "Ça va? Atención al cliente en Tailândia, passagem paga!",
+   "json_proba": [
+    0.3995477340003113,
+    0.01447888603720331,
+    0.5526792895901094,
+    0.03329409037237602
+   ],
+   "sklearn_proba": [
+    0.3995345874526457,
+    0.014478893866496284,
+    0.55269265027999,
+    0.03329386840086804
+   ]
+  },
+  {
+   "text": "",
+   "json_proba": null,
+   "sklearn_proba": null
+  },
+  {
+   "text": "!!!",
+   "json_proba": null,
+   "sklearn_proba": null
+  },
+  {
+   "text": "ok",
+   "json_proba": [
+    0.6897697335888623,
+    0.2083559306816684,
+    0.0364994730120486,
+    0.06537486271742068
+   ],
+   "sklearn_proba": [
+    0.6897776290184325,
+    0.20834720880724045,
+    0.03649981043124973,
+    0.06537535174307728
+   ]
+  }
+ ]
+}

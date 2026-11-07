@@ -1,0 +1,8 @@
+{
+  "No shared employer groups across EMSCAD splits": true,
+  "No challenge-set text in any training data": true,
+  "Every class present in training": true,
+  "Probabilities finite and sum to 1": true,
+  "JSON export matches sklearn (max diff < 2e-3)": true,
+  "Save/reload preserves scores": true
+}

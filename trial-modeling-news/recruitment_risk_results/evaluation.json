@@ -1,0 +1,245 @@
+{
+  "cv_results": [
+    {
+      "C": 10,
+      "synthetic_weight": 1,
+      "AP scam": 0.8699967737550587,
+      "AP scam (synthetic recipes only)": 0.8848479845157675,
+      "AP trafficking": 0.9196804811230318,
+      "AP trafficking (synthetic recipes only)": 0.9204563814975837,
+      "AP influence": 0.8890356943801606,
+      "AP influence (synthetic recipes only)": 0.8893562846200278,
+      "AP any-risk": 0.9475826306323114,
+      "macro risk AP": 0.892904316419417
+    },
+    {
+      "C": 10,
+      "synthetic_weight": 3,
+      "AP scam": 0.8713201972975326,
+      "AP scam (synthetic recipes only)": 0.8883142933772389,
+      "AP trafficking": 0.9173668065625685,
+      "AP trafficking (synthetic recipes only)": 0.9185719514671229,
+      "AP influence": 0.8895707892326855,
+      "AP influence (synthetic recipes only)": 0.8900525993675792,
+      "AP any-risk": 0.9498062255224841,
+      "macro risk AP": 0.8927525976975955
+    },
+    {
+      "C": 30,
+      "synthetic_weight": 1,
+      "AP scam": 0.8742812954771046,
+      "AP scam (synthetic recipes only)": 0.8915233943576891,
+      "AP trafficking": 0.9254486786164625,
+      "AP trafficking (synthetic recipes only)": 0.9263755373561404,
+      "AP influence": 0.8914012352693101,
+      "AP influence (synthetic recipes only)": 0.8919499639113496,
+      "AP any-risk": 0.9451728827194221,
+      "macro risk AP": 0.8970437364542926
+    },
+    {
+      "C": 30,
+      "synthetic_weight": 3,
+      "AP scam": 0.8534702522829631,
+      "AP scam (synthetic recipes only)": 0.8649296976281119,
+      "AP trafficking": 0.9066093190179828,
+      "AP trafficking (synthetic recipes only)": 0.9080377667920343,
+      "AP influence": 0.8806811283766312,
+      "AP influence (synthetic recipes only)": 0.8812307536742515,
+      "AP any-risk": 0.9431239395638471,
+      "macro risk AP": 0.8802535665591923
+    }
+  ],
+  "selected": {
+    "C": 30.0,
+    "synthetic_weight": 1.0
+  },
+  "thresholds": {
+    "scam": {
+      "medium": 0.08988110094286712,
+      "high": 0.5481554522339708,
+      "oof_medium": {
+        "precision": 0.5,
+        "recall": 0.9321589205397302,
+        "rule": "lowest threshold meeting the precision target"
+      },
+      "oof_high": {
+        "precision": 0.851024208566108,
+        "recall": 0.6851574212893553,
+        "rule": "lowest threshold meeting the precision target"
+      }
+    },
+    "trafficking": {
+      "medium": 0.01602511918527033,
+      "high": 0.20979753217101157,
+      "oof_medium": {
+        "precision": 0.5,
+        "recall": 0.9898678414096916,
+        "rule": "lowest threshold meeting the precision target"
+      },
+      "oof_high": {
+        "precision": 0.8502650176678446,
+        "recall": 0.8480176211453745,
+        "rule": "lowest threshold meeting the precision target"
+      }
+    },
+    "influence": {
+      "medium": 0.03135494606078887,
+      "high": 0.43875538061528413,
+      "oof_medium": {
+        "precision": 0.5,
+        "recall": 0.9795238095238096,
+        "rule": "lowest threshold meeting the precision target"
+      },
+      "oof_high": {
+        "precision": 0.8503755054881571,
+        "recall": 0.700952380952381,
+        "rule": "lowest threshold meeting the precision target"
+      }
+    },
+    "any_risk_review": {
+      "value": 0.17020524714216267,
+      "oof_precision": 0.6001838235294118,
+      "oof_recall": 0.8081683168316832,
+      "rule": "lowest threshold meeting the precision target (EMSCAD + India rows, like model-testing1.py)"
+    }
+  },
+  "evaluation": {
+    "us_test": {
+      "model_only": {
+        "rows": 3213,
+        "risky_rows": 203,
+        "accuracy": 0.9673202614379085,
+        "precision": 0.8181818181818182,
+        "recall": 0.6206896551724138,
+        "caught": 126,
+        "missed": 77,
+        "false_alarms": 28,
+        "average_precision": 0.7198458033959931
+      },
+      "with_scam_rules": {
+        "rows": 3213,
+        "risky_rows": 203,
+        "accuracy": 0.9673202614379085,
+        "precision": 0.8181818181818182,
+        "recall": 0.6206896551724138,
+        "caught": 126,
+        "missed": 77,
+        "false_alarms": 28,
+        "average_precision": 0.7198458033959931
+      }
+    },
+    "india_heldout": {
+      "model_only": {
+        "rows": 120,
+        "risky_rows": 75,
+        "accuracy": 0.9333333333333333,
+        "precision": 0.9036144578313253,
+        "recall": 1.0,
+        "caught": 75,
+        "missed": 0,
+        "false_alarms": 8,
+        "average_precision": 0.9928617056903668
+      },
+      "with_scam_rules": {
+        "rows": 120,
+        "risky_rows": 75,
+        "accuracy": 0.9333333333333333,
+        "precision": 0.9036144578313253,
+        "recall": 1.0,
+        "caught": 75,
+        "missed": 0,
+        "false_alarms": 8,
+        "average_precision": 0.9928617056903668
+      }
+    },
+    "challenge": {
+      "rows": 120,
+      "accuracy_4class": 0.775,
+      "macro_f1_4class": 0.7795307438097254,
+      "per_class": {
+        "legit": {
+          "precision": 0.5869565217391305,
+          "recall": 0.9,
+          "f1": 0.7105263157894737
+        },
+        "scam": {
+          "precision": 0.8064516129032258,
+          "recall": 0.8333333333333334,
+          "f1": 0.819672131147541
+        },
+        "trafficking": {
+          "precision": 1.0,
+          "recall": 0.7666666666666667,
+          "f1": 0.8679245283018868
+        },
+        "influence": {
+          "precision": 0.9,
+          "recall": 0.6,
+          "f1": 0.72
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "legit",
+          "scam",
+          "trafficking",
+          "influence"
+        ],
+        "rows_true_cols_pred": [
+          [
+            27,
+            3,
+            0,
+            0
+          ],
+          [
+            3,
+            25,
+            0,
+            2
+          ],
+          [
+            5,
+            2,
+            23,
+            0
+          ],
+          [
+            11,
+            1,
+            0,
+            18
+          ]
+        ]
+      },
+      "any_risk": {
+        "precision": 0.9340659340659341,
+        "recall": 0.9444444444444444,
+        "false_alarms_on_legit": 6,
+        "legit_rows": 30
+      },
+      "by_language_accuracy": {
+        "en": 0.726027397260274,
+        "es": 0.6666666666666666,
+        "fil": 1.0,
+        "fr": 1.0,
+        "hi": 0.8,
+        "id": 1.0,
+        "pt": 0.6666666666666666,
+        "sw": 1.0,
+        "taglish": 0.8571428571428571
+      }
+    }
+  },
+  "export_mb": 2.649256,
+  "parity_max_abs_diff": 2.817825298251364e-05,
+  "sklearn_version": "1.9.1",
+  "counts": {
+    "emscad_train": 10237,
+    "emscad_test": 3213,
+    "india_train": 477,
+    "india_test": 120,
+    "synthetic": 9198,
+    "challenge": 120
+  }
+}
