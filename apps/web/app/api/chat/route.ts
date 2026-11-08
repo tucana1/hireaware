@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { describeAnswers, getStep, searchFaq } from '@hireaware/engine';
+import { STEPS, describeAnswers, getStep, searchFaq } from '@hireaware/engine';
 import { answerDuringCheck, claudeConfigured, streamClaudeAnswer } from '@/lib/claude';
 
 const Body = z.object({
@@ -15,9 +15,9 @@ const NO_MATCH = 'I don\'t have a good answer for that yet. Try asking about tou
 /**
  * Free-text messages in the chatbot. Nothing is stored.
  *
- * - While the risk check is waiting on a question (`pendingStep`), returns JSON `{ reply, answerIds }`:
- *   Claude reads the text as a possible answer, so the check moves on. Without a key, the local FAQ
- *   answers and `answerIds` is empty.
+ * - While the risk check is waiting on a question (`pendingStep`), returns JSON `{ reply, answers }`:
+ *   Claude reads the text as an answer to that question and to any later ones it fully covers, so the
+ *   check moves on and skips those. Without a key, the local FAQ answers and `answers` is empty.
  * - Otherwise streams plain text: Claude with ANTHROPIC_API_KEY set, else the best local FAQ answer.
  */
 export async function POST(request: Request) {
@@ -34,13 +34,18 @@ export async function POST(request: Request) {
     if (!step) return new Response('Bad request', { status: 400 });
     if (claudeConfigured()) {
       try {
-        const turn = await answerDuringCheck(messages, { prompt: step.prompt, kind: step.kind, options: step.options }, describeAnswers(answers ?? {}));
+        const done = answers ?? {};
+        // The question on screen first, then every other unanswered one (later answers can make
+        // conditional questions relevant, so all are offered).
+        const steps = [step, ...STEPS.filter((st) => st.id !== step.id && !done[st.id])]
+          .map(({ id, prompt, kind, options }) => ({ id, prompt, kind, options: options.map(({ id: oid, label }) => ({ id: oid, label })) }));
+        const turn = await answerDuringCheck(messages, steps, describeAnswers(done));
         return Response.json(turn, { headers: { ...headers, 'X-Answer-Source': 'claude' } });
       } catch (error) {
         console.error('chat: Claude check turn failed', error instanceof Error ? error.message : error);
       }
     }
-    return Response.json({ reply: localAnswer(question), answerIds: [] }, { headers: { ...headers, 'X-Answer-Source': 'faq' } });
+    return Response.json({ reply: localAnswer(question), answers: {} }, { headers: { ...headers, 'X-Answer-Source': 'faq' } });
   }
 
   const text = { ...headers, 'Content-Type': 'text/plain; charset=utf-8' };

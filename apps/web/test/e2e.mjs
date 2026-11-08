@@ -32,9 +32,17 @@ const claude = await listen(async (req, res) => {
     // Free text typed during the risk check: structured JSON saying which option it answers.
     if (body.output_config?.format) {
       const typed = body.messages.at(-1).content;
-      const turn = typed.includes('Both at home and in person')
-        ? { answer_ids: ['local'], reply: 'Got it: partly from home and partly in person. I counted it as an office in your own country.' }
-        : { answer_ids: [], reply: 'A real employer will tell you this in writing. When you are ready, pick an option below.' };
+      const props = Object.keys(body.output_config.format.schema.properties.answers.properties);
+      const answers = Object.fromEntries(props.map((id) => [id, []]));
+      let reply = 'A real employer will tell you this in writing. When you are ready, pick an option below.';
+      if (typed.includes('Both at home and in person')) {
+        answers.where = ['local'];
+        reply = 'Got it: partly from home and partly in person. I counted it as an office in your own country.';
+      } else if (typed.includes('accounts with other names')) {
+        Object.assign(answers, { posting: ['yes'], accounts: ['provided'] });
+        reply = 'I recorded that the job involves posting, from accounts they give you under other names.';
+      }
+      const turn = { answers, reply };
       res.writeHead(200, { 'Content-Type': 'application/json' });
       return res.end(JSON.stringify({ id: 'msg_check', type: 'message', role: 'assistant', model: 'claude-sonnet-5-5', stop_reason: 'end_turn', stop_sequence: null,
         usage: { input_tokens: 10, output_tokens: 20 }, content: [{ type: 'text', text: JSON.stringify(turn) }] }));
@@ -147,7 +155,8 @@ try {
   await log.getByText('I counted it as an office in your own country.').waitFor({ timeout: 10000 });
   await log.getByText('Will the job involve posting').waitFor();
   const turn = sentToClaude.at(-1).body;
-  assert.ok(turn.messages.at(-1).content.includes('Waiting for: "Where would you do the work?"'));
+  assert.ok(turn.messages.at(-1).content.includes('WAITING ON where (pick one): Where would you do the work?'));
+  assert.ok(!('situation' in turn.output_config.format.schema.properties.answers.properties), 'answered questions are not offered again');
   assert.ok(turn.messages.at(-1).content.includes("I've already started the job"), 'earlier answers are sent as context');
   assert.equal(turn.output_config.format.type, 'json_schema');
   assert.ok(!(await log.innerText()).includes('Back to the check'));
@@ -157,7 +166,12 @@ try {
   await log.getByText('pick an option below').waitFor({ timeout: 10000 });
   await page.getByRole('button', { name: 'Yes', exact: true }).waitFor();
   assert.ok(!(await log.innerText()).includes('Back to the check'));
-  console.log('✔ chatbot: typed replies answer the question on screen ("kenya" locally, "both at home and in person" via Claude)');
+  // One message that answers this question and the next skips straight past both.
+  await page.fill('#q', 'they gave me 5 facebook accounts with other names');
+  await page.getByRole('button', { name: 'Ask' }).click();
+  await log.getByText('What would you post or comment about?').waitFor({ timeout: 10000 });
+  assert.ok(!(await log.innerText()).includes('Whose accounts would you use?'), 'the accounts question is skipped');
+  console.log('✔ chatbot: typed replies answer the question on screen ("kenya" locally, "both at home and in person" via Claude) and skip questions already covered');
 
   // Scanner.
   await page.goto(BASE + '/scan');

@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
-import { assess, matchStepAnswer, nextStep, type Answers, type AssessmentResult, type Category, type Step } from '@hireaware/engine';
+import { assess, getStep, matchStepAnswer, nextStep, type Answers, type AssessmentResult, type Category, type Step } from '@hireaware/engine';
 import { ArrowRight, ArrowUp, Check, Lock, RotateCcw, ShieldAlert, ShieldCheck, TriangleAlert } from 'lucide-react';
 import { CATEGORY_NAME, ContactList, LevelMeter } from './ui';
 import { LogoMark } from './Logo';
@@ -22,6 +22,18 @@ function summarise(r: AssessmentResult): string {
   const parts = (['influence', 'trafficking', 'scam'] as Category[]).map((c) => `${CATEGORY_NAME[c]}: ${r.levels[c]}`);
   const reasons = Object.values(r.reasons).flat().slice(0, 6);
   return `${parts.join('; ')}. Country: ${r.country?.name ?? 'not given'}. Reasons: ${reasons.join(' ') || 'none'}${r.urgent ? ' The person may be in danger now.' : ''}`;
+}
+
+/** Answers from the server, kept only for unanswered steps and real option ids. */
+function validAnswers(raw: Answers | undefined, already: Answers): Answers {
+  const out: Answers = {};
+  for (const [id, ids] of Object.entries(raw ?? {})) {
+    const st = getStep(id);
+    if (!st || already[id] || !Array.isArray(ids)) continue;
+    const valid = ids.filter((x) => st.options.some((o) => o.id === x));
+    if (valid.length) out[id] = st.kind === 'single' ? valid.slice(0, 1) : valid;
+  }
+  return out;
 }
 
 function promptFor(step: Step): Msg {
@@ -47,14 +59,24 @@ export function RiskChat() {
   }, [messages, step]);
 
   /** Records an answer and shows the next question (or the result). `shown` is false when the person typed it. */
-  function answer(stepToAnswer: Step, ids: string[], shown = true, base: Answers = answers) {
+  function answer(stepToAnswer: Step, ids: string[], shown = true) {
     if (!ids.length) return;
     const labels = stepToAnswer.options.filter((o) => ids.includes(o.id)).map((o) => o.label).join(', ');
-    const next = { ...base, [stepToAnswer.id]: ids };
     if (shown) setMessages((m) => [...m, { from: 'user', kind: 'text', text: labels }]);
+    record({ [stepToAnswer.id]: ids }, answers, stepToAnswer);
+  }
+
+  /**
+   * Adds answers (possibly to several questions at once) and moves to the first question still
+   * unanswered, skipping any the person already covered, or shows the result when none are left.
+   */
+  function record(given: Answers, base: Answers, waiting: Step) {
+    const next = { ...base, ...given };
     setSelected([]);
     const following = nextStep(next);
-    if (following) {
+    if (following?.id === waiting.id) {
+      // The question on screen is still open: its buttons are already showing.
+    } else if (following) {
       setMessages((m) => [...m, promptFor(following)]);
     } else {
       const r = assess(next);
@@ -90,7 +112,7 @@ export function RiskChat() {
 
     // A reply that plainly names an option ("Kenya", "no") answers the question on screen.
     const plain = step && matchStepAnswer(step, question);
-    if (step && plain) return answer(step, plain, false);
+    if (step && plain) return record({ [step.id]: plain }, answers, step);
 
     const thisRun = run.current;
     const pending = step;
@@ -109,14 +131,15 @@ export function RiskChat() {
       });
       if (!res.ok || !res.body) throw new Error();
       if (pending) {
-        // While the check is waiting on a question, the reply may also answer it.
-        const turn = await res.json() as { reply: string; answerIds: string[] };
+        // While the check is waiting on a question, the reply may answer it, and later questions too.
+        const turn = await res.json() as { reply: string; answers: Answers };
         if (run.current !== thisRun) return;
-        const ids = turn.answerIds.filter((id) => pending.options.some((o) => o.id === id));
+        const given = validAnswers(turn.answers, answeredSoFar);
         if (turn.reply) setReply(turn.reply);
         else setMessages((m) => m.slice(0, -1));
-        if (ids.length) answer(pending, ids, false, answeredSoFar);
-        else if (res.headers.get('X-Answer-Source') !== 'claude') {
+        if (Object.keys(given).length) record(given, answeredSoFar, pending);
+        if (given[pending.id]) return;
+        if (res.headers.get('X-Answer-Source') !== 'claude') {
           // The local FAQ answer doesn't know about the check, so bring the question back.
           setMessages((m) => [...m, { from: 'bot', kind: 'text', text: `Back to the check: ${pending.prompt}` }]);
         }

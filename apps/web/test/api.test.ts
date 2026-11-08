@@ -38,7 +38,7 @@ describe('/api/chat during the risk check, without an API key', () => {
     const res = await chatPost(json('http://x/api/chat', { messages: [{ role: 'user', content: 'Is a tourist visa ok for work?' }], pendingStep: 'visa', answers: { where: ['abroad'] } }));
     const body = await res.json();
     expect(res.headers.get('X-Answer-Source')).toBe('faq');
-    expect(body.answerIds).toEqual([]);
+    expect(body.answers).toEqual({});
     expect(body.reply).toMatch(/work visa/i);
   });
   it('rejects an unknown step', async () => {

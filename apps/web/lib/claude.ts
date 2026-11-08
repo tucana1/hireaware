@@ -113,33 +113,42 @@ export async function* streamClaudeAnswer(turns: ChatTurn[], context?: string): 
   }
 }
 
-// Free text typed while the risk check is waiting on a question. Claude both replies and says which
-// option(s), if any, the text answers, so the check moves on instead of asking the same question again.
-const CHECK_TURN = `The person is partway through the risk check, and the check is waiting for their answer to one question (shown in their last message, with the option ids). Their newest message may be an answer to it, a question of their own, or both.
+// Free text typed while the risk check is waiting on a question. Claude replies and says which questions
+// the text answers: the one on screen and any later ones it fully covers, so the check can skip those
+// instead of asking them again.
+const CHECK_TURN = `The person is partway through the risk check. Their last message lists the check's remaining questions with option ids; the check is waiting on the first one. Their newest message may answer it, answer later questions as well, ask something of their own, or a mix.
 
 Return JSON:
-- answer_ids: the option ids their message answers. For a single-choice question give exactly one id; if several fit, pick the one that matters most for their safety (abroad over an office at home, over remote work) and say so in the reply. For a pick-all-that-apply question give every id that fits. Give [] if the message does not answer the question, or if you cannot tell which option fits.
-- reply: what the chat shows them. If you gave answer_ids, one short sentence saying how you recorded it (in their words where possible), plus a brief answer only if they also asked something. Nothing else: no extra advice (the check gives advice at the end), no offer to change the answer later (the check cannot go back), no invitation to pick an option, and do not repeat the check's question or ask the next one: the chat shows the next question by itself. If you gave [], answer their message briefly and, if they seemed to be answering but it was unclear, ask one short question that tells the options apart. Otherwise end by inviting them to pick an option below when ready.`;
+- answers: for every question id, the option ids their message answers, or [] if it does not answer that question.
+  - The waiting question: for a single-choice question give exactly one id; if several fit, pick the one that matters most for their safety (abroad over an office at home, over remote work) and say so in the reply. For a pick-all-that-apply question give every id that fits. Give [] if the message does not answer it or you cannot tell which option fits.
+  - Later questions: fill one only when the message clearly and fully answers it, so the check can skip it. Never guess, and never infer "none of these" from what they did not mention. A pick-all-that-apply question about a description (such as what kind of work it is or what they would post about) is answered when the message describes it. A pick-all-that-apply checklist of warning signs (what they were told, asked for, or what is happening now) stays [] unless the message covers the whole list, because not mentioning a sign does not mean it is absent.
+- reply: what the chat shows them. If you recorded any answers, one short sentence saying what you recorded (in their words where possible), plus a brief answer only if they also asked something. Nothing else: no extra advice (the check gives advice at the end), no offer to change answers later (the check cannot go back), no invitation to pick an option, and do not ask the next question: the chat shows it by itself. If you recorded nothing, answer their message briefly and, if they seemed to be answering but it was unclear, ask one short question that tells the options apart. Otherwise end by inviting them to pick an option below when ready.`;
 
-export interface PendingStep {
+export interface CheckStep {
+  id: string;
   prompt: string;
   kind: 'single' | 'multi';
   options: Array<{ id: string; label: string }>;
 }
 
 export interface CheckTurn {
-  answerIds: string[];
+  /** Step id → chosen option ids, only for the steps the message answered. */
+  answers: Record<string, string[]>;
   reply: string;
 }
 
-/** One Claude call: a reply plus the option ids (if any) that the typed text answers. Throws on failure. */
-export async function answerDuringCheck(turns: ChatTurn[], step: PendingStep, answersSoFar: string): Promise<CheckTurn> {
-  const ids = step.options.map((o) => o.id);
+/**
+ * One Claude call: a reply plus the answers the typed text gives. `steps[0]` is the question on screen;
+ * the rest are the check's other unanswered questions. Throws on failure.
+ */
+export async function answerDuringCheck(turns: ChatTurn[], steps: CheckStep[], answersSoFar: string): Promise<CheckTurn> {
   const last = turns.at(-1)!;
-  const framed = `[Risk check so far:\n${answersSoFar || '(nothing yet)'}\n\nWaiting for: "${step.prompt}" (${step.kind === 'single' ? 'pick one' : 'pick all that apply'})\nOptions:\n${step.options.map((o) => `- ${o.id}: ${o.label}`).join('\n')}]\n\nMy message: ${last.content}`;
+  const listed = steps.map((st, i) => `${i === 0 ? 'WAITING ON ' : ''}${st.id} (${st.kind === 'single' ? 'pick one' : 'pick all that apply'}): ${st.prompt}\n${st.options.map((o) => `  - ${o.id}: ${o.label}`).join('\n')}`).join('\n\n');
+  const framed = `[Risk check so far:\n${answersSoFar || '(nothing yet)'}\n\nRemaining questions:\n${listed}]\n\nMy message: ${last.content}`;
+  const properties = Object.fromEntries(steps.map((st) => [st.id, { type: 'array', items: { type: 'string', enum: st.options.map((o) => o.id) } }]));
   const response = await getClient().beta.messages.create({
     model: MODEL,
-    max_tokens: 1500,
+    max_tokens: 2000,
     betas: ['server-side-fallback-2026-07-01'],
     fallbacks: 'default',
     output_config: {
@@ -149,10 +158,10 @@ export async function answerDuringCheck(turns: ChatTurn[], step: PendingStep, an
         schema: {
           type: 'object',
           properties: {
-            answer_ids: { type: 'array', items: { type: 'string', enum: ids } },
+            answers: { type: 'object', properties, required: steps.map((st) => st.id), additionalProperties: false },
             reply: { type: 'string' },
           },
-          required: ['answer_ids', 'reply'],
+          required: ['answers', 'reply'],
           additionalProperties: false,
         },
       },
@@ -164,16 +173,23 @@ export async function answerDuringCheck(turns: ChatTurn[], step: PendingStep, an
     messages: [...turns.slice(0, -1).map((t) => ({ role: t.role, content: t.content })), { role: 'user', content: framed }],
   }, { timeout: 20_000, maxRetries: 1 });
   if (response.stop_reason === 'refusal') {
-    return { answerIds: [], reply: 'I can\'t help with that here. For urgent help, see the Get help page for hotlines in your country.' };
+    return { answers: {}, reply: 'I can\'t help with that here. For urgent help, see the Get help page for hotlines in your country.' };
   }
   if (response.stop_reason !== 'end_turn') throw new Error(`check turn stopped: ${response.stop_reason}`);
   const text = response.content.flatMap((b) => (b.type === 'text' ? [b.text] : [])).join('');
-  const parsed = JSON.parse(text) as { answer_ids?: unknown; reply?: unknown };
-  const chosen = Array.isArray(parsed.answer_ids) ? [...new Set(parsed.answer_ids.filter((x): x is string => typeof x === 'string' && ids.includes(x)))] : [];
-  // "None of these" only counts on its own; a single-choice question takes one id.
-  const cleaned = chosen.length > 1 ? chosen.filter((x) => x !== 'none') : chosen;
-  return {
-    answerIds: step.kind === 'single' ? cleaned.slice(0, 1) : cleaned,
-    reply: typeof parsed.reply === 'string' ? parsed.reply.replace(/\*\*/g, '').trim() : '',
-  };
+  const parsed = JSON.parse(text) as { answers?: Record<string, unknown>; reply?: unknown };
+  return { answers: cleanAnswers(steps, parsed.answers ?? {}), reply: typeof parsed.reply === 'string' ? parsed.reply.replace(/\*\*/g, '').trim() : '' };
+}
+
+/** Keeps only real option ids: one for a single-choice step, and "none" only when it stands alone. */
+export function cleanAnswers(steps: CheckStep[], raw: Record<string, unknown>): Record<string, string[]> {
+  const out: Record<string, string[]> = {};
+  for (const st of steps) {
+    const given = raw[st.id];
+    if (!Array.isArray(given)) continue;
+    const valid = [...new Set(given.filter((x): x is string => typeof x === 'string' && st.options.some((o) => o.id === x)))];
+    const ids = valid.length > 1 ? valid.filter((x) => x !== 'none') : valid;
+    if (ids.length) out[st.id] = st.kind === 'single' ? ids.slice(0, 1) : ids;
+  }
+  return out;
 }
