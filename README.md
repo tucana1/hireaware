@@ -79,7 +79,7 @@ PLAN.md                Original build plan (India-first), kept for history; see 
   `https://<domain>/api/whatsapp`, and set `TWILIO_AUTH_TOKEN` (requests are signature-checked).
 - **WhatsApp, production:** Meta WhatsApp Cloud API. Callback `https://<domain>/api/whatsapp/meta`;
   set `WHATSAPP_VERIFY_TOKEN`, `META_APP_SECRET`, `WHATSAPP_ACCESS_TOKEN` and `WHATSAPP_PHONE_NUMBER_ID`.
-- **Claude answers in the chatbot:** set `ANTHROPIC_API_KEY` (model `claude-opus-5-5` by default).
+- **Claude answers in the chatbot:** set `ANTHROPIC_API_KEY` (model `claude-sonnet-5-5` by default).
 
 ## Privacy and safety
 

@@ -5,7 +5,7 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { knowledgeText, REGION_GUIDES } from '@hireaware/engine';
 
-export const MODEL = process.env.ANTHROPIC_MODEL || 'claude-opus-5-5';
+export const MODEL = process.env.ANTHROPIC_MODEL || 'claude-sonnet-5-5';
 
 export function claudeConfigured(): boolean {
   return Boolean(process.env.ANTHROPIC_API_KEY);

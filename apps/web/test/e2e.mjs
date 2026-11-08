@@ -29,7 +29,7 @@ const claude = await listen(async (req, res) => {
   const ev = (type, data) => `event: ${type}\ndata: ${JSON.stringify({ type, ...data })}\n\n`;
   res.writeHead(200, { 'Content-Type': 'text/event-stream' });
   res.end([
-    ev('message_start', { message: { id: 'msg_test', type: 'message', role: 'assistant', model: 'claude-opus-5-5', content: [], stop_reason: null, stop_sequence: null, usage: { input_tokens: 10, output_tokens: 0 } } }),
+    ev('message_start', { message: { id: 'msg_test', type: 'message', role: 'assistant', model: 'claude-sonnet-5-5', content: [], stop_reason: null, stop_sequence: null, usage: { input_tokens: 10, output_tokens: 0 } } }),
     ev('content_block_start', { index: 0, content_block: { type: 'text', text: '' } }),
     ev('content_block_delta', { index: 0, delta: { type: 'text_delta', text: 'No. A real job abroad needs a work visa ' } }),
     ev('content_block_delta', { index: 0, delta: { type: 'text_delta', text: 'arranged before you fly.' } }),
@@ -103,7 +103,7 @@ try {
   await page.getByRole('button', { name: 'Ask' }).click();
   await log.getByText('arranged before you fly.').waitFor({ timeout: 10000 });
   const call = sentToClaude.at(-1);
-  assert.equal(call.body.model, 'claude-opus-5-5');
+  assert.equal(call.body.model, 'claude-sonnet-5-5');
   assert.equal(call.body.fallbacks, 'default');
   assert.equal(call.body.stream, true);
   assert.equal(call.body.output_config.effort, 'low');
@@ -111,7 +111,7 @@ try {
   assert.ok(call.beta.includes('server-side-fallback-2026-07-01'));
   assert.ok(call.body.messages[0].content.includes('[Context from my risk check'));
   assert.ok(!('temperature' in call.body));
-  console.log('✔ chatbot question → Claude request (opus 5.5, fallbacks, caching, risk-check context) streamed back into the chat');
+  console.log('✔ chatbot question → Claude request (Sonnet 5.5, fallbacks, caching, risk-check context) streamed back into the chat');
 
   // Scanner.
   await page.goto(BASE + '/scan');

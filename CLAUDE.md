@@ -26,7 +26,7 @@ Read this before changing anything. `README.md` is the human-facing overview.
 - **Never tune on `risk_data/challenge_v2.csv`.** It is the honest held-out set. Write a fresh set for any new claim.
 - **Hotlines:** only mark `verified: true` if the number was seen on an official site; keep sources in `docs/research`.
 - **Privacy:** never log or store message text, chatbot answers or phone numbers.
-- **Claude API code** (`apps/web/lib/claude.ts`): default model `claude-opus-5-5`; no `temperature` or `budget_tokens`; keep refusal handling and `fallbacks: "default"`.
+- **Claude API code** (`apps/web/lib/claude.ts`): default model `claude-sonnet-5-5`; no `temperature` or `budget_tokens`; keep refusal handling and `fallbacks: "default"`.
 - Subagents for this project run on Sonnet; keep research narrow.
 
 ---
