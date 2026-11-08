@@ -5,6 +5,7 @@ Every figure shown on the website, the source it comes from, and where that sour
 
 | Where on the site | Claim | Source (as recorded) | Status |
 |---|---|---|---|
+| Home | 71,653 suspicious recruitment accounts and job posts taken down (50,220 Facebook, 21,433 TikTok) by the Philippine DMW | Gulf News, 22 Jan 2025, quoting Secretary Hans Leo Cacdac (facts.md "Channels"); article re-checked 8 Nov 2026. No time period given, so the site says "reported Jan 2025" | Matches |
 | Home | 300,000+ people in scam operations in Southeast Asia, from at least 66 countries | UN News on the OHCHR report, 20 Feb 2026 (facts.md §1.1) | Matches |
 | Home, Learn, FAQ | Organised social-media manipulation in 81 countries; private firms in 48; ~US$60M spent since 2009 | Oxford Internet Institute press release, 13 Jan 2021 (§1.2) | Matches |
 | Home, FAQ | ₱500–3,000 a day to paid commenters | Freedom on the Net 2017 via Philstar (§1.3) | Matches |
