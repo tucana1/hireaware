@@ -62,9 +62,9 @@ function showPanel(html: string, css: string) {
   host.style.cssText = 'position:fixed;top:16px;right:16px;z-index:2147483647;width:360px;max-height:80vh;';
   const root = host.attachShadow({ mode: 'open' });
   root.innerHTML = `<style>${css}
-    .box{background:#fff;border:1px solid #e3e7e5;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.18);padding:14px;max-height:80vh;overflow:auto}
+    .box{background:#fff;border:1px solid #e4e7ec;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.18);padding:14px;max-height:80vh;overflow:auto}
     .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font:600 14px system-ui}
-    button{border:0;background:none;font-size:18px;cursor:pointer;color:#5b6662}</style>
+    button{border:0;background:none;font-size:18px;cursor:pointer;color:#5a6273}</style>
     <div class="box"><div class="top"><span>Parakh</span><button aria-label="Close">×</button></div>${html}</div>`;
   root.querySelector('button')?.addEventListener('click', () => host.remove());
   document.documentElement.appendChild(host);

@@ -47,6 +47,46 @@ const SIGNS = [
 
 export const metadata: Metadata = { title: 'Warning signs', description: 'How troll-farm and scam-compound recruitment works, the warning signs, and real cases.' };
 
+type Harm = { text: string; source: string; url: string };
+const HARMS: Array<{ title: string; intro: string; items: Harm[] }> = [
+  {
+    title: 'People trafficked into scam compounds',
+    intro: 'They arrive expecting an office job and are held until they pay or escape.',
+    items: [
+      { text: 'Shifts of 15 to 20 hours, beatings for missed quotas, passports and phones taken, and workers "sold" between compounds.', source: 'IJM; Asia News Network, Feb 2025', url: 'https://www.ijm.org/our-work/trafficking-slavery/forced-scamming' },
+      { text: 'Every survivor the UN interviewed had their pay cut by "deductions". One faced a target of about US$9,500 a day.', source: 'UN Human Rights Office, Feb 2026', url: 'https://www.ohchr.org/en/press-releases/2026/02/un-report-details-grave-abuses-against-those-trafficked-scam-centres' },
+      { text: 'Families pay ransoms to get them out: ₱270,000 in one Philippine case, US$10,000 in a Bangladeshi one.', source: 'Asia News Network, Feb 2025; bdnews24, Oct 2026', url: 'https://asianews.network/?p=188579' },
+      { text: 'Getting home can mean a criminal record: Vietnam charged 346 people deported from Cambodia, and 39 Kenyans were jailed in Myanmar for a year.', source: 'Viet Nam News, Apr 2026; Daily Nation, Mar 2026', url: 'https://vietnamnews.vn/society/1779832/prosecution-launched-against-346-suspects-involved-in-cambodia-based-scams.html' },
+    ],
+  },
+  {
+    title: 'People sent to war on a job offer',
+    intro: '"Security", "driver" or "helper" jobs in Russia have ended on the front line.',
+    items: [
+      { text: 'Ghana says 272 of its citizens were lured into the war since 2022, mostly with promises of civilian work, and about 55 were killed.', source: 'Africanews, Feb 2026', url: 'https://www.africanews.com/amp/2026/02/27/ghana-says-at-least-55-citizens-killed-fighting-for-russia-in-ukraine/' },
+      { text: '27 Ugandans recruited by Russia are dead or presumed dead.', source: 'Reuters via Daily Sabah, Oct 2026', url: 'https://www.dailysabah.com/world/europe/27-ugandans-recruited-by-russia-killed-or-presumed-dead-in-ukraine' },
+    ],
+  },
+  {
+    title: 'Troll-farm workers themselves',
+    intro: 'Low-paid account operators carry the risk while the clients stay hidden.',
+    items: [
+      { text: 'Workers run up to 200 fake personas each, across shifts, posting whatever the client\'s narrative needs that day.', source: 'GMA News, Feb 2019', url: 'https://www.gmanetwork.com/news/topstories/nation/686376/ph-online-troll-earns-between-p30-000-p70-000-a-month-leader-bares/story/' },
+      { text: 'When the Ghana operation was raided, workers say they were held at gunpoint, interrogated and had their phones taken. Many had thought they worked for an NGO.', source: 'Graphic Online, citing CNN, Mar 2020', url: 'https://www.graphic.com.gh/news/general-news/russia-using-ghanaians-nigerians-to-meddle-in-us-elections-cnn.html' },
+      { text: 'Researchers found most were drawn in by money worries, and kept day jobs while their names and numbers sat behind accounts that platforms later remove.', source: 'Ong & Cabañes, 2018', url: 'https://www.leeds.ac.uk/news/article/4184/fake_news_production_and_social_media_trolls' },
+    ],
+  },
+  {
+    title: 'Everyone on the receiving end',
+    intro: 'The work is aimed at real people: voters, critics and savers.',
+    items: [
+      { text: 'In Kenya, paid hashtag campaigns targeted judges, journalists and activists, and some of them began to censor themselves.', source: 'Mozilla Foundation, 2021', url: 'https://www.mozillafoundation.org/en/blog/fellow-research-inside-the-shadowy-world-of-disinformation-for-hire-in-kenya/' },
+      { text: 'During the 2025 Philippine midterms, one study found fake profiles behind about a third of the election-related X profiles it sampled.', source: 'Cyabra via The Star/Reuters, Apr 2025', url: 'https://thestar.com.my/aseanplus/aseanplus-news/2025/04/15/duterte-praise-philippine-election-spin-driven-by-fake-accounts-study' },
+      { text: 'Scams run from these compounds cost people in East and Southeast Asia, Australia and New Zealand an estimated US$88 to 114 billion in 2025.', source: 'UNODC, Jul 2026', url: 'https://www.unodc.org/unodc/en/press/releases/2026/July/new-unodc-report-reveals-scale-of-south-east-asias-ever-more-interconnected-criminal-economy.html' },
+    ],
+  },
+];
+
 const CASES = [
   {
     title: 'Philippines: the "architects" of networked disinformation (2018)',
@@ -107,6 +147,26 @@ export default function LearnPage() {
           </section>
         ))}
       </div>
+
+      <h2>What it does to people</h2>
+      <p>These jobs harm the people who take them, and then the people they are aimed at.</p>
+      <div className="not-prose mt-6 grid gap-x-10 gap-y-10 md:grid-cols-2">
+        {HARMS.map((h) => (
+          <section key={h.title}>
+            <h3 className="font-semibold">{h.title}</h3>
+            <p className="mt-1 text-[15px] text-muted">{h.intro}</p>
+            <ul className="mt-4 space-y-4">
+              {h.items.map((it) => (
+                <li key={it.text} className="border-l-2 border-high/60 pl-3.5">
+                  <p className="text-[15px] leading-relaxed text-ink-soft">{it.text}</p>
+                  <a href={it.url} target="_blank" rel="noopener noreferrer" className="mt-1 inline-block text-[13px] text-faint underline decoration-line-strong underline-offset-[3px] hover:text-accent">{it.source}</a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
+      <p className="mt-8">If any of this is happening to you or someone you know, see <Link href="/help">Get help</Link>. People forced to scam are victims, and UN guidance says they should not be punished for it.</p>
 
       <h2>How people get drawn in without knowing</h2>
       <p>

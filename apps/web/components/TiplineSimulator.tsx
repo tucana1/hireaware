@@ -39,7 +39,7 @@ export function TiplineSimulator() {
 
   return (
     <div className="w-full max-w-md overflow-hidden rounded-xl border border-line-strong">
-      <div className="flex items-center justify-between gap-2 bg-[#0b5d4f] px-4 py-3 text-white">
+      <div className="flex items-center justify-between gap-2 bg-accent px-4 py-3 text-white">
         <div>
           <p className="font-medium">Parakh tipline</p>
           <p className="text-xs text-white/70">Demo: the same replies WhatsApp users get</p>

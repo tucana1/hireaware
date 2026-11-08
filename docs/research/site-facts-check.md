@@ -21,6 +21,13 @@ Every figure shown on the website, the source it comes from, and where that sour
 | FAQ, Get help | Forced-scam victims should not be punished (non-punishment principle) | OHCHR, 20 Feb 2026; IOM explainer (§6) | Matches |
 | Regions | About 7,000 Indians rescued from scam compounds since 2022 | regions-02_south_asia.md [SA-2] | Matches |
 | Regions | Kenya election August 2027 | regions-03a_africa_east_horn.md [AFE-40] | Matches |
+| Warning signs, "What it does to people" | 15–20 hour shifts, beatings, passports/phones taken, workers sold between compounds | IJM forced-scamming page; Asia News Network, 12 Feb 2025 (facts.md §2B) | Matches |
+| Warning signs | Every UN-interviewed survivor had pay cut by deductions; one faced a ~US$9,500/day target | OHCHR press release, 20 Feb 2026 (facts.md §1.1, §2B) | Matches |
+| Warning signs | Ransoms of ₱270,000 (Philippines) and US$10,000 (Bangladesh) | ANN, 12 Feb 2025 (facts.md §2B); bdnews24, 21 Oct 2026 [SA-34] | Matches |
+| Warning signs | Vietnam charged 346 deportees from Cambodia; 39 Kenyans jailed in Myanmar for a year | Viet Nam News, 21 Apr 2026 [SEA-30]; Daily Nation, 22 Mar 2026 [AFE-14] | Matches |
+| Warning signs | Ghana: 272 lured into the Russia–Ukraine war since 2022, ~55 killed; 27 Ugandans dead or presumed dead | Africanews, 27 Feb 2026 [AFW-40]; Reuters via Daily Sabah, 30 Oct 2026 [AFE-21] | Matches |
+| Warning signs | Ghana EBLA raid: workers held at gunpoint, interrogated, phones taken | Graphic Online reproducing CNN, 13 Mar 2020 [AFW-2] | Matches |
+| Warning signs | US$88.3–114.1bn scam losses in 2025 (East/Southeast Asia, Australia, NZ) | UNODC, Jul 2026 (facts.md §1.1) | Matches |
 | About | Model accuracy figures | Read live from `packages/engine/model/risk-model.json` | Generated |
 
 ## Help directory
