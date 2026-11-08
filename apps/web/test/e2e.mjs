@@ -58,8 +58,6 @@ const browser = await chromium.launch({ headless: true });
 const page = await browser.newPage();
 const errors = [];
 page.on('pageerror', (e) => errors.push(e.message));
-// Keep the quick-exit destination offline.
-await page.route('https://www.google.com/**', (route) => route.fulfill({ status: 200, contentType: 'text/html', body: '<title>weather</title>weather' }));
 try {
   // Every page renders.
   for (const p of ['/', '/check', '/scan', '/learn', '/regions', '/help', '/tipline', '/about']) {
@@ -68,16 +66,9 @@ try {
   }
   console.log('✔ all 8 pages render');
 
-  // Leave quickly: button and Esc twice.
+  // The header has no quick-exit button.
   await page.goto(BASE + '/help');
-  await page.getByRole('button', { name: 'Leave quickly' }).click();
-  await page.waitForURL(/google\.com/, { timeout: 5000 });
-  assert.match(page.url(), /google\.com\/search\?q=weather/);
-  await page.goto(BASE + '/learn');
-  await page.keyboard.press('Escape');
-  await page.keyboard.press('Escape');
-  await page.waitForURL(/google\.com/, { timeout: 5000 });
-  console.log('✔ "Leave quickly" works by button and by pressing Esc twice');
+  assert.equal(await page.getByRole('button', { name: 'Leave quickly' }).count(), 0);
 
   // Risk-check chatbot: a Filipino job seeker offered a social media job with provided accounts.
   await page.goto(BASE + '/check');

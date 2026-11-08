@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from 'next';
 import Link from 'next/link';
 import './globals.css';
 import { NAV, SITE } from '@/lib/site';
-import { QuickExit } from '@/components/QuickExit';
 
 export const metadata: Metadata = {
   title: { default: `${SITE.name}: ${SITE.tagline}`, template: `%s · ${SITE.name}` },
@@ -28,7 +27,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <Link key={n.href} href={n.href} className="hover:text-ink">{n.label}</Link>
               ))}
             </nav>
-            <div className="ml-auto"><QuickExit /></div>
           </div>
         </header>
         <main id="main" className="flex-1">{children}</main>

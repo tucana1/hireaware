@@ -85,7 +85,6 @@ PLAN.md                Original build plan (India-first), kept for history; see 
 
 - Nothing typed into the risk check, scanner or tipline is stored or logged.
 - The extension never sends page content anywhere.
-- The site has a "Leave quickly" button (or press Esc twice).
 - Every hotline and link shown was confirmed on an official government site; numbers that couldn't be confirmed were left out (see `docs/research/site-facts-check.md`).
 - Guidance only, not legal advice. Forced-scam victims are victims: the site says so, and says to beware of
   paid "rescuers".
