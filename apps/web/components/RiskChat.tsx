@@ -3,14 +3,20 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import { assess, nextStep, type Answers, type AssessmentResult, type Category, type Step } from '@hireaware/engine';
-import { CATEGORY_NAME, ContactList, LEVEL_LABEL, Pill, levelTone } from './ui';
+import { ArrowRight, ArrowUp, Check, Lock, RotateCcw, ShieldAlert, ShieldCheck, TriangleAlert } from 'lucide-react';
+import { CATEGORY_NAME, ContactList, LevelMeter } from './ui';
+import { LogoMark } from './Logo';
 
 type Msg =
   | { from: 'bot'; kind: 'text'; text: string }
   | { from: 'user'; kind: 'text'; text: string }
   | { from: 'bot'; kind: 'result'; result: AssessmentResult };
 
-const OVERALL = { high: { label: 'High risk', tone: 'high' as const }, caution: { label: 'Be careful', tone: 'caution' as const }, low: { label: 'No common red flags', tone: 'low' as const } };
+const OVERALL = {
+  high: { label: 'High risk', icon: ShieldAlert, box: 'bg-high-soft', text: 'text-high' },
+  caution: { label: 'Be careful', icon: TriangleAlert, box: 'bg-caution-soft', text: 'text-caution' },
+  low: { label: 'No common red flags', icon: ShieldCheck, box: 'bg-low-soft', text: 'text-low' },
+} as const;
 
 function summarise(r: AssessmentResult): string {
   const parts = (['influence', 'trafficking', 'scam'] as Category[]).map((c) => `${CATEGORY_NAME[c]}: ${r.levels[c]}`);
@@ -29,12 +35,14 @@ export function RiskChat() {
   const [input, setInput] = useState('');
   const [streaming, setStreaming] = useState(false);
   const [result, setResult] = useState<AssessmentResult | null>(null);
-  const bottom = useRef<HTMLDivElement>(null);
+  const log = useRef<HTMLDivElement>(null);
   const step: Step | null = useMemo(() => (result ? null : nextStep(answers)), [answers, result]);
 
+  // Keep the newest message in view by scrolling the chat itself, not the page.
   useEffect(() => {
-    bottom.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
-  }, [messages]);
+    const el = log.current;
+    if (el) el.scrollTo({ top: el.scrollHeight, behavior: 'smooth' });
+  }, [messages, step]);
 
   function answer(stepToAnswer: Step, ids: string[]) {
     if (!ids.length) return;
@@ -100,110 +108,124 @@ export function RiskChat() {
   }
 
   return (
-    <div className="rounded-2xl border border-line bg-card flex flex-col h-[min(78vh,760px)]">
-      <div className="flex items-center justify-between border-b border-line px-4 py-3">
-        <div>
-          <p className="font-semibold">Risk check</p>
-          <p className="text-xs text-muted">Answers stay in your browser. Type a question at any time.</p>
+    <div className="flex h-[min(80vh,760px)] flex-col overflow-hidden rounded-xl border border-line-strong bg-white">
+      <div className="flex items-center justify-between gap-3 border-b border-line px-4 py-3">
+        <div className="flex items-center gap-3">
+          <LogoMark className="size-7" />
+          <div>
+            <p className="font-medium leading-tight">HireAware assistant</p>
+            <p className="flex items-center gap-1 text-xs text-faint"><Lock className="size-3" />Answers stay in your browser</p>
+          </div>
         </div>
-        <button type="button" onClick={restart} className="text-sm text-muted hover:text-ink">Start over</button>
+        <button type="button" onClick={restart} className="inline-flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-sm text-muted hover:bg-paper hover:text-ink">
+          <RotateCcw className="size-3.5" />Start over
+        </button>
       </div>
 
-      <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3" role="log" aria-live="polite">
+      <div ref={log} className="flex-1 space-y-4 overflow-y-auto bg-paper px-4 py-5 sm:px-5" role="log" aria-live="polite">
         {messages.map((m, i) => m.kind === 'result'
           ? <ResultCard key={i} result={m.result} />
-          : (
-            <div key={i} className={`flex ${m.from === 'user' ? 'justify-end' : ''}`}>
-              <div className={`max-w-[85%] whitespace-pre-wrap rounded-2xl px-4 py-2.5 text-[15px] leading-relaxed ${m.from === 'user' ? 'bg-accent text-white rounded-br-sm' : 'bg-paper border border-line rounded-bl-sm'}`}>
-                {m.text || <span className="text-muted">…</span>}
+          : m.from === 'user' ? (
+            <div key={i} className="flex justify-end">
+              <div className="max-w-[80%] whitespace-pre-wrap rounded-xl rounded-br-sm bg-accent px-3.5 py-2.5 text-[15px] leading-relaxed text-white">{m.text}</div>
+            </div>
+          ) : (
+            <div key={i} className="flex">
+              <div className="max-w-[85%] whitespace-pre-wrap rounded-xl rounded-bl-sm border border-line bg-white px-3.5 py-2.5 text-[15px] leading-relaxed">
+                {m.text || <span className="inline-flex gap-1 py-1" aria-label="Typing">{[0, 1, 2].map((d) => <span key={d} className="size-1.5 animate-pulse rounded-full bg-faint" style={{ animationDelay: `${d * 150}ms` }} />)}</span>}
               </div>
             </div>
           ))}
-        <div ref={bottom} />
       </div>
 
       {step && (
-        <div className="border-t border-line px-4 py-3">
+        <div className="border-t border-line bg-white px-4 py-4 sm:px-5">
+          {step.kind === 'multi' && <p className="mb-2.5 text-xs font-medium text-faint">Pick all that apply</p>}
           <div className="flex flex-wrap gap-2">
-            {step.options.map((o) => step.kind === 'single' ? (
-              <button key={o.id} type="button" onClick={() => answer(step, [o.id])}
-                className="rounded-full border border-accent/40 bg-accent-soft px-3 py-1.5 text-sm text-accent hover:bg-accent hover:text-white">{o.label}</button>
-            ) : (
-              <button key={o.id} type="button" onClick={() => toggle(o.id)} aria-pressed={selected.includes(o.id)}
-                className={`rounded-full border px-3 py-1.5 text-sm ${selected.includes(o.id) ? 'bg-accent text-white border-accent' : 'border-line hover:border-accent'}`}>{o.label}</button>
-            ))}
+            {step.options.map((o) => {
+              const on = selected.includes(o.id);
+              return step.kind === 'single' ? (
+                <button key={o.id} type="button" onClick={() => answer(step, [o.id])}
+                  className="rounded-lg border border-line-strong px-3 py-2 text-left text-sm text-ink transition-colors hover:border-accent hover:bg-accent-soft">{o.label}</button>
+              ) : (
+                <button key={o.id} type="button" onClick={() => toggle(o.id)} aria-pressed={on}
+                  className={`inline-flex items-center gap-1.5 rounded-lg border px-3 py-2 text-left text-sm transition-colors ${on ? 'border-accent bg-accent-soft text-accent-strong' : 'border-line-strong text-ink hover:border-accent'}`}>
+                  {on && <Check className="size-3.5" />}{o.label}
+                </button>
+              );
+            })}
           </div>
           {step.kind === 'multi' && (
             <button type="button" onClick={() => answer(step, selected)} disabled={!selected.length}
-              className="mt-3 rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white disabled:opacity-40">Continue</button>
+              className="mt-3.5 inline-flex items-center gap-1.5 rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-accent-strong disabled:bg-faint/40">
+              Continue<ArrowRight className="size-4" />
+            </button>
           )}
         </div>
       )}
 
-      <form onSubmit={ask} className="border-t border-line p-3 flex gap-2">
+      <form onSubmit={ask} className="flex items-center gap-2 border-t border-line bg-white p-3">
         <label htmlFor="q" className="sr-only">Ask a question</label>
         <input id="q" value={input} onChange={(e) => setInput(e.target.value)} maxLength={1000}
           placeholder={result ? 'Ask a follow-up question…' : 'Or type a question, e.g. "Is a tourist visa OK?"'}
-          className="flex-1 rounded-lg border border-line px-3 py-2 focus:border-accent focus:outline-none" />
-        <button type="submit" disabled={streaming || !input.trim()} className="rounded-lg border border-accent px-4 py-2 text-sm font-semibold text-accent disabled:opacity-40">Ask</button>
+          className="flex-1 rounded-lg border border-line-strong px-3.5 py-2.5 text-[15px] placeholder:text-faint focus:border-ink focus:outline-none" />
+        <button type="submit" disabled={streaming || !input.trim()} aria-label="Ask"
+          className="grid size-10 place-items-center rounded-lg bg-accent text-white transition-colors hover:bg-accent-strong disabled:bg-faint/40">
+          <ArrowUp className="size-4.5" />
+        </button>
       </form>
     </div>
   );
 }
 
+function ResultSection({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <div>
+      <p className="font-semibold">{title}</p>
+      <div className="mt-2.5">{children}</div>
+    </div>
+  );
+}
+
+function Bullets({ items, color = 'bg-accent' }: { items: string[]; color?: string }) {
+  return <ul className="space-y-2">{items.map((s) => <li key={s} className="flex gap-2.5 text-[14.5px] leading-relaxed"><span className={`mt-2 size-1.5 shrink-0 rounded-full ${color}`} />{s}</li>)}</ul>;
+}
+
 function ResultCard({ result }: { result: AssessmentResult }) {
   const o = OVERALL[result.overall];
+  const Icon = o.icon;
+  const reasons = (['trafficking', 'influence', 'scam'] as Category[]).flatMap((c) => result.reasons[c]);
   return (
-    <div className="rounded-xl border border-line bg-paper p-4 space-y-4">
+    <div className="space-y-6 rounded-xl border border-line bg-white p-5 sm:p-6">
       {result.urgent && (
-        <div className="rounded-lg bg-high-soft border border-high/40 p-3 text-high font-medium">
-          You may be in danger. Only use your phone when it is safe. Hotlines are below, and your embassy can help.
+        <div className="flex gap-3 rounded-lg bg-high px-4 py-3 text-white">
+          <ShieldAlert className="size-5 shrink-0" />
+          <p className="text-sm font-medium">You may be in danger. Only use your phone when it is safe. Hotlines are below, and your embassy can help.</p>
         </div>
       )}
       <div>
-        <Pill tone={o.tone}>{o.label}</Pill>
-        <div className="mt-3 grid gap-2 sm:grid-cols-3">
-          {(['influence', 'trafficking', 'scam'] as Category[]).map((c) => (
-            <div key={c} className="rounded-lg border border-line bg-card px-3 py-2">
-              <div className="text-xs text-muted">{CATEGORY_NAME[c]}</div>
-              <Pill tone={levelTone(result.levels[c])}>{LEVEL_LABEL[result.levels[c]]}</Pill>
-            </div>
+        <p className={`flex items-center gap-2 rounded-lg px-4 py-3 text-lg font-semibold ${o.box} ${o.text}`}><Icon className="size-5" strokeWidth={2} />{o.label}</p>
+        <div className="mt-5 grid gap-5 sm:grid-cols-3">
+          {(['influence', 'trafficking', 'scam'] as Category[]).map((c) => <LevelMeter key={c} label={CATEGORY_NAME[c]} level={result.levels[c]} />)}
+        </div>
+      </div>
+      {reasons.length > 0 && <ResultSection title="What worried us"><Bullets items={reasons} color="bg-high" /></ResultSection>}
+      <ResultSection title="What to do"><Bullets items={result.nextSteps} /></ResultSection>
+      {result.saferIf.length > 0 && <ResultSection title="It would look safer if"><Bullets items={result.saferIf} color="bg-low" /></ResultSection>}
+      <ResultSection title="Ask them, and get it in writing">
+        <ol className="space-y-2.5">
+          {result.questions.map((q, i) => (
+            <li key={q.id} className="flex gap-3 text-[14.5px] leading-snug">
+              <span className="w-5 shrink-0 font-semibold tabular-nums text-faint">{i + 1}.</span>{q.text}
+            </li>
           ))}
-        </div>
-      </div>
-      {Object.values(result.reasons).some((r) => r.length) && (
-        <div>
-          <p className="font-semibold">What worried us</p>
-          <ul className="list-disc pl-5 text-sm space-y-1 mt-1">
-            {(['trafficking', 'influence', 'scam'] as Category[]).flatMap((c) => result.reasons[c]).map((r) => <li key={r}>{r}</li>)}
-          </ul>
-        </div>
-      )}
-      <div>
-        <p className="font-semibold">What to do</p>
-        <ul className="list-disc pl-5 text-sm space-y-1 mt-1">{result.nextSteps.map((s) => <li key={s}>{s}</li>)}</ul>
-      </div>
-      {result.saferIf.length > 0 && (
-        <div>
-          <p className="font-semibold">It would look safer if…</p>
-          <ul className="list-disc pl-5 text-sm space-y-1 mt-1">{result.saferIf.map((s) => <li key={s}>{s}</li>)}</ul>
-        </div>
-      )}
-      <div>
-        <p className="font-semibold">Ask them, and get it in writing</p>
-        <ol className="list-decimal pl-5 text-sm space-y-1 mt-1">{result.questions.map((q) => <li key={q.id}>{q.text}</li>)}</ol>
-      </div>
-      {result.guide && (
-        <div>
-          <p className="font-semibold">Worth knowing in {result.guide.name}</p>
-          <ul className="list-disc pl-5 text-sm space-y-1 mt-1">{result.guide.points.slice(0, 3).map((p) => <li key={p}>{p}</li>)}</ul>
-        </div>
-      )}
-      <div>
-        <p className="font-semibold mb-1">Help{result.country ? ` in ${result.country.name}` : ''}</p>
+        </ol>
+      </ResultSection>
+      {result.guide && <ResultSection title={`Worth knowing in ${result.guide.name}`}><Bullets items={result.guide.points.slice(0, 3)} /></ResultSection>}
+      <ResultSection title={`Help${result.country ? ` in ${result.country.name}` : ''}`}>
         <ContactList contacts={result.help} />
-      </div>
-      <p className="text-sm">
+      </ResultSection>
+      <p className="border-t border-line pt-4 text-sm text-muted">
         <Link href="/scan" className="link">Paste the actual message into the scanner</Link> for a second look. You decide what to do; this is guidance, not a verdict.
       </p>
     </div>

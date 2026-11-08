@@ -115,8 +115,8 @@ try {
 
   // Scanner.
   await page.goto(BASE + '/scan');
-  await page.getByRole('button', { name: 'Customer service abroad (Kenya)' }).click();
-  await page.getByText('High risk: this looks like trafficking').waitFor();
+  await page.getByRole('button', { name: 'Customer service abroad, Kenya' }).click();
+  await page.getByText('This looks like trafficking').waitFor();
   console.log('✔ scanner: Kenyan "Thailand jobs" example → high trafficking risk');
 
   // Tipline simulator.

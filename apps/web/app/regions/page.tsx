@@ -7,8 +7,8 @@ export const metadata: Metadata = { title: 'By region', description: 'What job s
 
 export default function RegionsPage() {
   return (
-    <div className="mx-auto max-w-4xl px-4 py-10">
-      <PageHeader eyebrow="The Global South" title="What's different where you live">
+    <div className="mx-auto max-w-4xl px-5 sm:px-8 py-12">
+      <PageHeader label="The Global South" title="What's different where you live">
         The lures are similar everywhere, but the routes, money apps, election calendars, recruitment rules and the risk of
         being treated as a suspect afterwards differ. Pick your region.
       </PageHeader>

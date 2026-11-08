@@ -1,7 +1,49 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { QUESTIONS } from '@hireaware/engine';
-import { Card, PageHeader } from '@/components/ui';
+import { PlaneTakeoff, VenetianMask, Wallet } from 'lucide-react';
+import { PageHeader } from '@/components/ui';
+
+const SIGNS = [
+  {
+    icon: VenetianMask, title: 'Troll farm or propaganda work',
+    aka: 'Often called social media specialist, digital ambassador, engagement associate, online volunteer or page admin.',
+    signs: [
+      "You'll use accounts under other names, or create them",
+      "You get scripts, talking points or hashtags to post as your own views",
+      "The client is secret, or you're told not to say posts are paid",
+      "You're asked to reply to, report or swarm critics, journalists or rivals",
+      'Pay is per comment or share, with daily quotas',
+      "You'll post as people from another country, often behind a VPN",
+      "You'll run independent-looking news or fan pages for a hidden client",
+    ],
+  },
+  {
+    icon: PlaneTakeoff, title: 'Trafficking into scam compounds',
+    aka: 'Often called customer service, chat support, data entry, IT or digital sales executive.',
+    signs: [
+      'Work in, or through Thailand to, Myanmar, Cambodia or Laos',
+      'Travel on a tourist or visit visa, with papers "sorted on arrival"',
+      'Someone tells you what to say at immigration',
+      'High pay for entry-level work, free flights, no experience needed',
+      'No licensed agency; recruited by chat app or by a friend abroad',
+      'Contract only after you arrive; passport or phone held',
+      'Driven across a border by car or boat after landing',
+    ],
+  },
+  {
+    icon: Wallet, title: 'Job scams',
+    aka: 'Easy work for high pay, where money or control flows from you to them.',
+    signs: [
+      'Fees to apply, train, "activate" or reserve a slot',
+      'Paid to like, follow or rate, then deposits to "unlock" tasks',
+      'Requests for one-time codes, PINs or e-wallet logins',
+      '"Renting" or opening a bank account, e-wallet or SIM for them',
+      'Guaranteed job, no interview, big daily pay',
+      'Hiring only in WhatsApp or Telegram, under time pressure',
+    ],
+  },
+];
 
 export const metadata: Metadata = { title: 'Warning signs', description: 'How troll-farm and scam-compound recruitment works, the warning signs, and real cases.' };
 
@@ -46,49 +88,24 @@ const CASES = [
 export default function LearnPage() {
   const byCat = (c: 'influence' | 'trafficking' | 'scam' | 'any') => QUESTIONS.filter((q) => q.category === c);
   return (
-    <div className="mx-auto max-w-4xl px-4 py-10 prose-simple">
-      <PageHeader eyebrow="Know the pattern" title="Warning signs">
-        The job titles sound ordinary. What gives these jobs away is <em>how</em> they ask you to work, travel and pay.
+    <div className="mx-auto max-w-4xl px-5 sm:px-8 py-12 prose-simple">
+      <PageHeader label="Know the pattern" title="Warning signs">
+        The job titles sound ordinary. What gives these jobs away is how they ask you to work, travel and pay.
       </PageHeader>
 
-      <div className="grid gap-4 sm:grid-cols-2 not-prose">
-        <Card>
-          <p className="font-semibold text-lg">📢 Troll farm or propaganda work</p>
-          <p className="text-sm text-muted mt-1">Often called &quot;social media specialist&quot;, &quot;digital ambassador&quot;, &quot;engagement associate&quot;, &quot;online volunteer&quot; or &quot;page admin&quot;.</p>
-          <ul className="list-disc pl-5 mt-3 space-y-1.5 text-[15px]">
-            <li>You&apos;ll use accounts under <b>other names</b>, or create them</li>
-            <li>You get <b>scripts, talking points or hashtags</b> to post as your own views</li>
-            <li>The <b>client is secret</b>, or you&apos;re told not to say posts are paid</li>
-            <li>You&apos;re asked to <b>reply to, report or swarm</b> critics, journalists or rivals</li>
-            <li>Pay is <b>per comment or share</b>, with daily quotas</li>
-            <li>You&apos;ll post as people from <b>another country</b>, often behind a VPN</li>
-            <li>You&apos;ll run &quot;independent&quot; <b>news or fan pages</b> for a hidden client</li>
-          </ul>
-        </Card>
-        <Card>
-          <p className="font-semibold text-lg">✈️ Trafficking into scam compounds</p>
-          <p className="text-sm text-muted mt-1">Often called &quot;customer service&quot;, &quot;chat support&quot;, &quot;data entry&quot;, &quot;IT&quot; or &quot;digital sales executive&quot;.</p>
-          <ul className="list-disc pl-5 mt-3 space-y-1.5 text-[15px]">
-            <li>Work in, or <b>through Thailand to</b>, Myanmar, Cambodia or Laos</li>
-            <li>Travel on a <b>tourist or visit visa</b>; papers &quot;sorted on arrival&quot;</li>
-            <li>Someone tells you <b>what to say at immigration</b></li>
-            <li>High pay for entry-level work, <b>free flights</b>, no experience needed</li>
-            <li><b>No licensed agency</b>; recruited by chat app or by a friend abroad</li>
-            <li>Contract only <b>after you arrive</b>; passport or phone held</li>
-            <li>Driven <b>across a border</b> by car or boat after landing</li>
-          </ul>
-        </Card>
-        <Card className="sm:col-span-2">
-          <p className="font-semibold text-lg">💸 Job scams</p>
-          <ul className="list-disc pl-5 mt-2 space-y-1.5 text-[15px] sm:columns-2">
-            <li>Fees to apply, train, &quot;activate&quot; or reserve a slot</li>
-            <li>Paid to like, follow or rate, then deposits to &quot;unlock&quot; tasks</li>
-            <li>Requests for OTP codes, PINs or e-wallet logins</li>
-            <li>&quot;Rent&quot; or open a bank account, e-wallet or SIM for them</li>
-            <li>Guaranteed job, no interview, big daily pay</li>
-            <li>Hiring only in WhatsApp or Telegram, under time pressure</li>
-          </ul>
-        </Card>
+      <div className="not-prose divide-y divide-line border-y border-line">
+        {SIGNS.map((g) => (
+          <section key={g.title} className="grid gap-4 py-8 md:grid-cols-[16rem_1fr] md:gap-10">
+            <div>
+              <g.icon className="size-5 text-accent" strokeWidth={1.75} />
+              <h2 className="mt-3 text-lg font-semibold">{g.title}</h2>
+              <p className="mt-1.5 text-sm leading-relaxed text-muted">{g.aka}</p>
+            </div>
+            <ul className="space-y-2.5 text-[15px] leading-relaxed text-ink-soft">
+              {g.signs.map((x) => <li key={x} className="flex gap-3"><span className="mt-2.5 h-px w-3 shrink-0 bg-high" />{x}</li>)}
+            </ul>
+          </section>
+        ))}
       </div>
 
       <h2>How people get drawn in without knowing</h2>
@@ -105,15 +122,15 @@ export default function LearnPage() {
       </p>
 
       <h2>Real cases</h2>
-      <div className="not-prose grid gap-3">
+      <ol className="not-prose divide-y divide-line border-y border-line">
         {CASES.map((c) => (
-          <Card key={c.title}>
-            <p className="font-semibold">{c.title}</p>
-            <p className="mt-1 text-[15px]">{c.text}</p>
-            <a href={c.url} target="_blank" rel="noopener noreferrer" className="mt-2 inline-block text-xs link text-muted">{c.source}</a>
-          </Card>
+          <li key={c.title} className="py-5">
+            <p className="font-medium">{c.title}</p>
+            <p className="mt-1.5 text-[15px] leading-relaxed text-ink-soft">{c.text}</p>
+            <a href={c.url} target="_blank" rel="noopener noreferrer" className="mt-2 inline-block text-[13px] text-faint underline decoration-line-strong underline-offset-[3px] hover:text-accent">{c.source}</a>
+          </li>
         ))}
-      </div>
+      </ol>
 
       <h2 id="questions">Questions to ask any recruiter</h2>
       <p>Be strict. A genuine employer can answer every one of these in writing. If they dodge, delay or get angry, treat it as a no.</p>

@@ -8,8 +8,8 @@ const REGION_ORDER = ['Southeast Asia', 'South Asia', 'Africa', 'Latin America',
 
 export default function HelpPage() {
   return (
-    <div className="mx-auto max-w-4xl px-4 py-10">
-      <PageHeader eyebrow="Free and confidential" title="Get help">
+    <div className="mx-auto max-w-4xl px-5 sm:px-8 py-12">
+      <PageHeader label="Free and confidential" title="Get help">
         If you or someone you know may be trapped, start with safety. Then use the official lines below. Real embassies,
         agencies and NGOs never charge to help you.
       </PageHeader>

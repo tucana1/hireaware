@@ -10,8 +10,8 @@ export default function AboutPage() {
   const s = model.evaluation_summary as unknown as { us_test_model_only: Summary; india_heldout_model_only: Summary; challenge_accuracy_4class: number; challenge_macro_f1_4class: number };
   const pct = (x: number) => `${(x * 100).toFixed(1)}%`;
   return (
-    <div className="mx-auto max-w-3xl px-4 py-10 prose-simple">
-      <PageHeader eyebrow="Methods, data and limits" title="How HireAware works" />
+    <div className="mx-auto max-w-3xl px-5 sm:px-8 py-12 prose-simple">
+      <PageHeader label="Methods, data and limits" title="How HireAware works" />
       <h2>Two layers</h2>
       <p><b>Red-flag rules</b> look for behaviours that matter (accounts under other names, scripts, a hidden client,
         tourist visas for work, coached answers for immigration, passports held, fees, OTP requests) in eight languages.

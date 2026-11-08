@@ -8,8 +8,8 @@ export const metadata: Metadata = { title: 'Tipline & extension', description: '
 export default function TiplinePage() {
   const wa = SITE.tiplineNumber.replace(/[^\d]/g, '');
   return (
-    <div className="mx-auto max-w-5xl px-4 py-10">
-      <PageHeader eyebrow="WhatsApp tipline" title="Forward it before you reply">
+    <div className="mx-auto max-w-5xl px-5 sm:px-8 py-12">
+      <PageHeader label="WhatsApp tipline" title="Forward it before you reply">
         Got a job offer on WhatsApp, Telegram or Facebook? Forward or paste it to the tipline. You&apos;ll get the red flags
         and a list of strict questions to put back to the recruiter, because a real employer can answer them.
       </PageHeader>
@@ -38,7 +38,7 @@ export default function TiplinePage() {
       </div>
 
       <section id="extension" className="mt-20 scroll-mt-6">
-        <PageHeader eyebrow="Browser extension" title="Check job posts while you browse">
+        <PageHeader label="Browser extension" title="Check job posts while you browse">
           The HireAware extension runs the same red-flag rules and classifier on your own computer. Nothing you read is sent anywhere.
         </PageHeader>
         <div className="grid gap-4 sm:grid-cols-3">

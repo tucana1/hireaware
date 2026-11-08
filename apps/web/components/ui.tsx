@@ -1,53 +1,77 @@
 import type { Contact } from '@hireaware/engine';
+import { ExternalLink, Phone } from 'lucide-react';
 
 export type Tone = 'high' | 'caution' | 'low' | 'neutral';
 
-const TONE: Record<Tone, string> = {
-  high: 'bg-high-soft text-high border-high/30',
-  caution: 'bg-caution-soft text-caution border-caution/30',
-  low: 'bg-low-soft text-low border-low/30',
-  neutral: 'bg-accent-soft text-accent border-accent/20',
-};
-
-export function Pill({ tone, children }: { tone: Tone; children: React.ReactNode }) {
-  return <span className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold ${TONE[tone]}`}>{children}</span>;
-}
-
-export function levelTone(level: 'low' | 'medium' | 'high'): Tone {
-  return level === 'high' ? 'high' : level === 'medium' ? 'caution' : 'low';
-}
-
 export const LEVEL_LABEL = { low: 'Low', medium: 'Medium', high: 'High' } as const;
 export const CATEGORY_NAME = {
-  influence: 'Covert influence / troll farm',
+  influence: 'Troll farm / covert influence',
   trafficking: 'Trafficking / forced scam work',
   scam: 'Job scam',
 } as const;
 
-export function PageHeader({ eyebrow, title, children }: { eyebrow?: string; title: string; children?: React.ReactNode }) {
+const LEVEL_TEXT = { low: 'text-low', medium: 'text-caution', high: 'text-high' } as const;
+const LEVEL_FILL = { low: 'bg-low', medium: 'bg-caution', high: 'bg-high' } as const;
+
+/** One risk category: name, level word and a three-step bar. */
+export function LevelMeter({ label, level }: { label: string; level: 'low' | 'medium' | 'high' }) {
+  const n = level === 'high' ? 3 : level === 'medium' ? 2 : 1;
   return (
-    <div className="mb-8">
-      {eyebrow && <p className="text-sm font-medium text-accent mb-1">{eyebrow}</p>}
-      <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight">{title}</h1>
-      {children && <div className="mt-3 text-lg text-muted max-w-3xl">{children}</div>}
+    <div>
+      <div className="flex items-baseline justify-between gap-3">
+        <span className="text-[13px] text-muted">{label}</span>
+        <span className={`text-[13px] font-semibold ${LEVEL_TEXT[level]}`}>{LEVEL_LABEL[level]}</span>
+      </div>
+      <div className="mt-1.5 grid grid-cols-3 gap-0.5" aria-hidden>
+        {[1, 2, 3].map((i) => <span key={i} className={`h-1 ${i <= n ? LEVEL_FILL[level] : 'bg-line'}`} />)}
+      </div>
+    </div>
+  );
+}
+
+export function PageHeader({ label, title, children }: { label?: string; title: string; children?: React.ReactNode }) {
+  return (
+    <div className="mb-10 max-w-3xl">
+      {label && <p className="text-sm font-medium text-accent">{label}</p>}
+      <h1 className="mt-2 text-3xl sm:text-[2.6rem] font-semibold leading-[1.1] tracking-[-0.025em] [text-wrap:balance]">{title}</h1>
+      {children && <div className="mt-4 text-[17px] leading-relaxed text-muted">{children}</div>}
+    </div>
+  );
+}
+
+export function SectionHeading({ title, children }: { title: string; children?: React.ReactNode }) {
+  return (
+    <div className="max-w-2xl">
+      <h2 className="text-2xl sm:text-[1.75rem] font-semibold tracking-[-0.02em]">{title}</h2>
+      {children && <p className="mt-2 text-muted leading-relaxed">{children}</p>}
     </div>
   );
 }
 
 export function Card({ children, className = '' }: { children: React.ReactNode; className?: string }) {
-  return <div className={`rounded-xl border border-line bg-card p-5 ${className}`}>{children}</div>;
+  return <div className={`rounded-xl border border-line bg-card p-6 ${className}`}>{children}</div>;
 }
 
 export function ContactList({ contacts }: { contacts: Contact[] }) {
   return (
-    <ul className="space-y-2">
+    <ul className="divide-y divide-line">
       {contacts.map((c) => (
-        <li key={c.name + (c.phone ?? c.url ?? '')} className="text-sm">
-          <span className="font-medium">{c.name}</span>
-          {c.phone && <> · <a className="link font-semibold" href={`tel:${c.phone.replace(/[^\d+*#]/g, '')}`}>{c.phone}</a></>}
-          {c.url && <> · <a className="link break-all" href={c.url} target="_blank" rel="noopener noreferrer">{c.url.replace(/^https?:\/\//, '')}</a></>}
-          {c.note && <span className="block text-muted">{c.note}</span>}
-          {!c.verified && <span className="block text-caution text-xs">Not confirmed on an official site: check before relying on it.</span>}
+        <li key={c.name + (c.phone ?? c.url ?? '')} className="py-2.5 first:pt-0 last:pb-0 text-sm">
+          <p className="font-medium text-ink">{c.name}</p>
+          <div className="mt-1 flex flex-wrap items-center gap-x-4 gap-y-1">
+            {c.phone && (
+              <a className="inline-flex items-center gap-1.5 font-semibold text-accent hover:text-accent-strong tabular-nums" href={`tel:${c.phone.replace(/[^\d+*#]/g, '')}`}>
+                <Phone className="size-3.5" strokeWidth={2} />{c.phone}
+              </a>
+            )}
+            {c.url && (
+              <a className="inline-flex items-center gap-1 text-muted hover:text-accent break-all" href={c.url} target="_blank" rel="noopener noreferrer">
+                {c.url.replace(/^https?:\/\//, '').replace(/\/$/, '')}<ExternalLink className="size-3 shrink-0" />
+              </a>
+            )}
+          </div>
+          {c.note && <p className="mt-1 text-muted">{c.note}</p>}
+          {!c.verified && <p className="mt-1 text-xs text-caution">Not confirmed on an official site. Check before relying on it.</p>}
         </li>
       ))}
     </ul>
