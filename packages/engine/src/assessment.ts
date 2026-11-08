@@ -235,6 +235,32 @@ export function getStep(id: string): Step | undefined {
   return STEP_BY_ID.get(id);
 }
 
+const norm = (s: string) => s.toLowerCase().normalize('NFKC').replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
+
+/**
+ * A typed reply that plainly names one option ("Kenya", "yes", "none of these"), or null. Anything less
+ * clear-cut is left to the website's Claude call, which sees the whole question.
+ */
+export function matchStepAnswer(step: Step, text: string): string[] | null {
+  const t = norm(text);
+  if (t.length < 2) return null;
+  const exact = step.options.filter((o) => norm(o.label) === t || o.id.toLowerCase() === t);
+  if (exact.length === 1) return [exact[0]!.id];
+  if (t.length < 3) return null;
+  const within = step.options.filter((o) => ` ${norm(o.label)} `.includes(` ${t} `));
+  return within.length === 1 ? [within[0]!.id] : null;
+}
+
+/** Short "question: answer" lines for the answers so far, so a free-text reply can be read in context. */
+export function describeAnswers(answers: Answers): string {
+  return Object.entries(answers).flatMap(([id, chosen]) => {
+    const step = STEP_BY_ID.get(id);
+    if (!step) return [];
+    const labels = step.options.filter((o) => chosen.includes(o.id)).map((o) => o.label);
+    return labels.length ? [`${step.prompt.replace(/^Hi, .*\. /, '')} ${labels.join('; ')}`] : [];
+  }).join('\n');
+}
+
 export interface AssessmentResult {
   levels: Record<Category, Level>;
   scores: Record<Category, number>;

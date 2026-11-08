@@ -32,6 +32,20 @@ describe('/api/chat without an API key', () => {
   });
 });
 
+describe('/api/chat during the risk check, without an API key', () => {
+  it('answers from the FAQ as JSON and records nothing', async () => {
+    vi.stubEnv('ANTHROPIC_API_KEY', '');
+    const res = await chatPost(json('http://x/api/chat', { messages: [{ role: 'user', content: 'Is a tourist visa ok for work?' }], pendingStep: 'visa', answers: { where: ['abroad'] } }));
+    const body = await res.json();
+    expect(res.headers.get('X-Answer-Source')).toBe('faq');
+    expect(body.answerIds).toEqual([]);
+    expect(body.reply).toMatch(/work visa/i);
+  });
+  it('rejects an unknown step', async () => {
+    expect((await chatPost(json('http://x/api/chat', { messages: [{ role: 'user', content: 'hi' }], pendingStep: 'nope' }))).status).toBe(400);
+  });
+});
+
 describe('/api/whatsapp (Twilio)', () => {
   const params = { From: 'whatsapp:+639171234567', Body: 'Hiring CSR in Cambodia! Tourist visa lang muna. If immigration asks, say you are on vacation.', NumMedia: '0' };
   const formRequest = (url: string, signature?: string) => new Request(url, {

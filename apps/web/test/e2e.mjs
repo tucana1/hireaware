@@ -29,6 +29,16 @@ const claude = await listen(async (req, res) => {
   sentToClaude.push({ url: req.url, beta: req.headers['anthropic-beta'], body });
   // Tipline replies are non-streaming: answer with a JSON message, or fail on request to test the fallback.
   if (!body.stream) {
+    // Free text typed during the risk check: structured JSON saying which option it answers.
+    if (body.output_config?.format) {
+      const typed = body.messages.at(-1).content;
+      const turn = typed.includes('Both at home and in person')
+        ? { answer_ids: ['local'], reply: 'Got it: partly from home and partly in person. I counted it as an office in your own country.' }
+        : { answer_ids: [], reply: 'A real employer will tell you this in writing. When you are ready, pick an option below.' };
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      return res.end(JSON.stringify({ id: 'msg_check', type: 'message', role: 'assistant', model: 'claude-sonnet-5-5', stop_reason: 'end_turn', stop_sequence: null,
+        usage: { input_tokens: 10, output_tokens: 20 }, content: [{ type: 'text', text: JSON.stringify(turn) }] }));
+    }
     const prompt = body.messages[0].content;
     if (prompt.includes('FORCE_AI_FAILURE')) return res.writeHead(500, { 'Content-Type': 'application/json' }).end('{"type":"error","error":{"type":"api_error","message":"test"}}');
     res.writeHead(200, { 'Content-Type': 'application/json' });
@@ -121,6 +131,33 @@ try {
   assert.ok(call.body.messages[0].content.includes('[Context from my risk check'));
   assert.ok(!('temperature' in call.body));
   console.log('✔ chatbot question → Claude request (Sonnet 5.5, fallbacks, caching, risk-check context) streamed back into the chat');
+
+  // Typed replies during the check count as answers instead of starting a separate conversation.
+  await page.goto(BASE + '/check');
+  await pick("I've already started the job");
+  const before = sentToClaude.length;
+  await page.fill('#q', 'kenya');
+  await page.getByRole('button', { name: 'Ask' }).click();
+  await log.getByText('What kind of work is it?').waitFor();
+  assert.equal(sentToClaude.length, before, 'a typed country name is matched locally, without Claude');
+  await pick('Social media, content');
+  await pick('Continue');
+  await page.fill('#q', 'Both at home and in person');
+  await page.getByRole('button', { name: 'Ask' }).click();
+  await log.getByText('I counted it as an office in your own country.').waitFor({ timeout: 10000 });
+  await log.getByText('Will the job involve posting').waitFor();
+  const turn = sentToClaude.at(-1).body;
+  assert.ok(turn.messages.at(-1).content.includes('Waiting for: "Where would you do the work?"'));
+  assert.ok(turn.messages.at(-1).content.includes("I've already started the job"), 'earlier answers are sent as context');
+  assert.equal(turn.output_config.format.type, 'json_schema');
+  assert.ok(!(await log.innerText()).includes('Back to the check'));
+  // A question that doesn't answer the step leaves it waiting, without re-asking it in a new bubble.
+  await page.fill('#q', 'Do they have to tell me who the client is?');
+  await page.getByRole('button', { name: 'Ask' }).click();
+  await log.getByText('pick an option below').waitFor({ timeout: 10000 });
+  await page.getByRole('button', { name: 'Yes', exact: true }).waitFor();
+  assert.ok(!(await log.innerText()).includes('Back to the check'));
+  console.log('✔ chatbot: typed replies answer the question on screen ("kenya" locally, "both at home and in person" via Claude)');
 
   // Scanner.
   await page.goto(BASE + '/scan');

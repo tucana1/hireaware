@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
-import { assess, nextStep, type Answers, type AssessmentResult, type Category, type Step } from '@hireaware/engine';
+import { assess, matchStepAnswer, nextStep, type Answers, type AssessmentResult, type Category, type Step } from '@hireaware/engine';
 import { ArrowRight, ArrowUp, Check, Lock, RotateCcw, ShieldAlert, ShieldCheck, TriangleAlert } from 'lucide-react';
 import { CATEGORY_NAME, ContactList, LevelMeter } from './ui';
 import { LogoMark } from './Logo';
@@ -36,6 +36,8 @@ export function RiskChat() {
   const [streaming, setStreaming] = useState(false);
   const [result, setResult] = useState<AssessmentResult | null>(null);
   const log = useRef<HTMLDivElement>(null);
+  // Bumped on "Start over", so a reply that arrives after a restart is dropped.
+  const run = useRef(0);
   const step: Step | null = useMemo(() => (result ? null : nextStep(answers)), [answers, result]);
 
   // Keep the newest message in view by scrolling the chat itself, not the page.
@@ -44,11 +46,12 @@ export function RiskChat() {
     if (el) el.scrollTo({ top: el.scrollHeight, behavior: 'smooth' });
   }, [messages, step]);
 
-  function answer(stepToAnswer: Step, ids: string[]) {
+  /** Records an answer and shows the next question (or the result). `shown` is false when the person typed it. */
+  function answer(stepToAnswer: Step, ids: string[], shown = true, base: Answers = answers) {
     if (!ids.length) return;
     const labels = stepToAnswer.options.filter((o) => ids.includes(o.id)).map((o) => o.label).join(', ');
-    const next = { ...answers, [stepToAnswer.id]: ids };
-    setMessages((m) => [...m, { from: 'user', kind: 'text', text: labels }]);
+    const next = { ...base, [stepToAnswer.id]: ids };
+    if (shown) setMessages((m) => [...m, { from: 'user', kind: 'text', text: labels }]);
     setSelected([]);
     const following = nextStep(next);
     if (following) {
@@ -66,6 +69,8 @@ export function RiskChat() {
   }
 
   function restart() {
+    run.current += 1;
+    setStreaming(false);
     setAnswers({});
     setMessages([promptFor(nextStep({})!)]);
     setResult(null);
@@ -81,29 +86,57 @@ export function RiskChat() {
       .slice(-8).map((m) => ({ role: m.from === 'user' ? 'user' as const : 'assistant' as const, content: m.text }));
     // The API needs a user message first.
     while (history.length && history[0]!.role !== 'user') history.shift();
-    setMessages((m) => [...m, { from: 'user', kind: 'text', text: question }, { from: 'bot', kind: 'text', text: '' }]);
+    setMessages((m) => [...m, { from: 'user', kind: 'text', text: question }]);
+
+    // A reply that plainly names an option ("Kenya", "no") answers the question on screen.
+    const plain = step && matchStepAnswer(step, question);
+    if (step && plain) return answer(step, plain, false);
+
+    const thisRun = run.current;
+    const pending = step;
+    const answeredSoFar = answers;
+    const setReply = (text: string) => setMessages((m) => [...m.slice(0, -1), { from: 'bot', kind: 'text', text }]);
+    setMessages((m) => [...m, { from: 'bot', kind: 'text', text: '' }]);
     setStreaming(true);
     try {
       const res = await fetch('/api/chat', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: [...history, { role: 'user', content: question }], context: result ? summarise(result) : undefined }),
+        body: JSON.stringify({
+          messages: [...history, { role: 'user', content: question }],
+          context: result ? summarise(result) : undefined,
+          ...(pending ? { pendingStep: pending.id, answers: answeredSoFar } : {}),
+        }),
       });
       if (!res.ok || !res.body) throw new Error();
+      if (pending) {
+        // While the check is waiting on a question, the reply may also answer it.
+        const turn = await res.json() as { reply: string; answerIds: string[] };
+        if (run.current !== thisRun) return;
+        const ids = turn.answerIds.filter((id) => pending.options.some((o) => o.id === id));
+        if (turn.reply) setReply(turn.reply);
+        else setMessages((m) => m.slice(0, -1));
+        if (ids.length) answer(pending, ids, false, answeredSoFar);
+        else if (res.headers.get('X-Answer-Source') !== 'claude') {
+          // The local FAQ answer doesn't know about the check, so bring the question back.
+          setMessages((m) => [...m, { from: 'bot', kind: 'text', text: `Back to the check: ${pending.prompt}` }]);
+        }
+        return;
+      }
       const reader = res.body.getReader();
       const decoder = new TextDecoder();
       let text = '';
       for (;;) {
         const { done, value } = await reader.read();
-        if (done) break;
+        if (done || run.current !== thisRun) break;
         text += decoder.decode(value, { stream: true });
-        setMessages((m) => [...m.slice(0, -1), { from: 'bot', kind: 'text', text }]);
+        setReply(text);
       }
     } catch {
-      setMessages((m) => [...m.slice(0, -1), { from: 'bot', kind: 'text', text: 'Sorry, I could not answer just now. The Warning signs and Get help pages have the key information.' }]);
+      if (run.current !== thisRun) return;
+      setReply('Sorry, I could not answer just now. The Warning signs and Get help pages have the key information.');
+      if (pending) setMessages((m) => [...m, { from: 'bot', kind: 'text', text: `Back to the check: ${pending.prompt}` }]);
     } finally {
-      setStreaming(false);
-      // Re-ask the pending step so the check can continue.
-      if (step) setMessages((m) => [...m, { from: 'bot', kind: 'text', text: `Back to the check: ${step.prompt}` }]);
+      if (run.current === thisRun) setStreaming(false);
     }
   }
 
@@ -139,7 +172,7 @@ export function RiskChat() {
       </div>
 
       {step && (
-        <div className="border-t border-line bg-white px-4 py-4 sm:px-5">
+        <div className={`border-t border-line bg-white px-4 py-4 transition-opacity sm:px-5 ${streaming ? 'pointer-events-none opacity-50' : ''}`} aria-busy={streaming}>
           {step.kind === 'multi' && <p className="mb-2.5 text-xs font-medium text-faint">Pick all that apply</p>}
           <div className="flex flex-wrap gap-2">
             {step.options.map((o) => {

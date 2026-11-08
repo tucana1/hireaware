@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { analyze, assess, countryFromPhone, handleTiplineMessage, nextStep, searchFaq, detectLanguage, type Answers } from '../src';
+import { analyze, assess, countryFromPhone, describeAnswers, getStep, handleTiplineMessage, matchStepAnswer, nextStep, searchFaq, detectLanguage, type Answers } from '../src';
 import { getDefaultClassifier } from '../src/default-classifier';
 
 const classifier = getDefaultClassifier();
@@ -71,6 +71,22 @@ describe('assessment chatbot', () => {
 
   it('skips abroad questions for local jobs', () => {
     expect(nextStep({ situation: ['considering'], country: ['KE'], work: ['chat'], where: ['local'] })?.id).toBe('posting');
+  });
+
+  it('matches typed replies that plainly name one option, and nothing vaguer', () => {
+    expect(matchStepAnswer(getStep('country')!, 'kenya')).toEqual(['KE']);
+    expect(matchStepAnswer(getStep('posting')!, 'No.')).toEqual(['no']);
+    expect(matchStepAnswer(getStep('money')!, 'none')).toEqual(['none']);
+    expect(matchStepAnswer(getStep('destination')!, 'Thailand')).toEqual(['th']);
+    expect(matchStepAnswer(getStep('where')!, 'Both at home and in person')).toBeNull();
+    expect(matchStepAnswer(getStep('visa')!, 'Is a tourist visa OK?')).toBeNull();
+    expect(matchStepAnswer(getStep('where')!, 'a')).toBeNull();
+  });
+
+  it('describes the answers so far as question and label', () => {
+    const text = describeAnswers({ situation: ['started'], where: ['home'] });
+    expect(text).toContain("What fits you best? I've already started the job");
+    expect(text).toContain('Where would you do the work? From home (remote)');
   });
 });
 
