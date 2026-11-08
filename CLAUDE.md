@@ -1,4 +1,4 @@
-# Agent guide: HireAware (whole repository)
+# Agent guide: Parakh (whole repository)
 
 Read this before changing anything. `README.md` is the human-facing overview.
 

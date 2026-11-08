@@ -1,5 +1,5 @@
 export const SITE = {
-  name: 'HireAware',
+  name: 'Parakh',
   tagline: 'Check the job behind the job offer.',
   description:
     'Free tools to spot job offers that recruit people into troll farms, propaganda work and scam compounds, before they say yes.',

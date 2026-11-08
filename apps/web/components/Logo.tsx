@@ -1,4 +1,4 @@
-/** HireAware mark: a shield with a check. */
+/** Parakh mark: a shield with a check. */
 export function LogoMark({ className = 'size-6' }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" className={className} aria-hidden="true">

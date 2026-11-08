@@ -1,6 +1,6 @@
-# HireAware
+# Parakh
 
-**Check the job behind the job offer.** HireAware helps job seekers across the Global South spot offers
+**Check the job behind the job offer.** Parakh helps job seekers across the Global South spot offers
 that would make them unknowing workers for troll farms and covert propaganda, traffic them into online-scam
 compounds, or simply scam them, before they say yes. Cutting off the supply of unwitting workers is a way
 to reduce misinformation at its source.
@@ -11,7 +11,7 @@ to reduce misinformation at its source.
 | **Risk-check chatbot** | Asks about the person's situation (job type, destination, visa, accounts, money, whether they're already inside) and returns risk levels, reasons, "it would look safer if…", strict questions and local hotlines. Answers typed questions from a local knowledge base, or with Claude when a key is set | `/check` |
 | **Message scanner** | Paste a job ad or recruiter message in 8 languages; see red flags, evidence and questions to ask | `/scan`, `POST /api/analyze` |
 | **WhatsApp tipline** | Forward a recruiter's message; get the risk, the reasons and strict questions to put back to the recruiter, plus hotlines for the sender's country | `/api/whatsapp` (Twilio), `/api/whatsapp/meta` (Meta Cloud API), simulator at `/tipline` |
-| **Browser extension** | "Scan this page", right-click "Check with HireAware", or paste text. The classifier runs locally; nothing is sent anywhere | `apps/extension` |
+| **Browser extension** | "Scan this page", right-click "Check with Parakh", or paste text. The classifier runs locally; nothing is sent anywhere | `apps/extension` |
 | **Classifier** | The team's TF-IDF + logistic-regression job-fraud model, fine-tuned into 4 classes (legit, scam, trafficking, influence) and exported to run in TypeScript | `trial-modeling-news/`, `packages/engine` |
 
 Everything works **without API keys**. Keys only switch on extras (Claude answers in the chatbot, real
@@ -79,7 +79,9 @@ PLAN.md                Original build plan (India-first), kept for history; see 
   `https://<domain>/api/whatsapp`, and set `TWILIO_AUTH_TOKEN` (requests are signature-checked).
 - **WhatsApp, production:** Meta WhatsApp Cloud API. Callback `https://<domain>/api/whatsapp/meta`;
   set `WHATSAPP_VERIFY_TOKEN`, `META_APP_SECRET`, `WHATSAPP_ACCESS_TOKEN` and `WHATSAPP_PHONE_NUMBER_ID`.
-- **Claude answers in the chatbot:** set `ANTHROPIC_API_KEY` (model `claude-sonnet-5-5` by default).
+- **Claude in the chatbot and tipline:** set `ANTHROPIC_API_KEY` (model `claude-sonnet-5-5` by default). Claude answers typed chatbot
+  questions and writes tipline replies in the sender's language. On the tipline, our rules and classifier still set the verdict and the
+  help numbers; Claude writes only the explanation and questions, with a 10-second limit and a templated fallback.
 
 ## Privacy and safety
 
@@ -94,5 +96,5 @@ PLAN.md                Original build plan (India-first), kept for history; see 
 - The trafficking and influence classes are trained on synthetic examples, because no public dataset of
   troll-farm or scam-compound job ads exists.
 - Challenge sets were written by the team. Real labelled examples are the most important next step.
-- Replies are in English for now. Detection works in 8 languages.
+- Without an Anthropic key, tipline replies are templated and in English. Detection works in 8 languages either way.
 - Voice notes and screenshots on the tipline are not read yet; the bot asks for pasted text.

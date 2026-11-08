@@ -1,7 +1,7 @@
 {
   "name": "hireaware",
   "private": true,
-  "description": "HireAware: check a job offer before it turns you into a troll-farm worker or a trafficking victim.",
+  "description": "Parakh: check a job offer before it turns you into a troll-farm worker or a trafficking victim.",
   "workspaces": [
     "packages/*",
     "apps/*"

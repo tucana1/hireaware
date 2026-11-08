@@ -47,7 +47,7 @@ const posting = (a: Answers) => any(a, 'posting', 'yes', 'unsure');
 export const STEPS: Step[] = [
   {
     id: 'situation', kind: 'single',
-    prompt: "Hi, I'm the HireAware assistant. I'll ask a few quick questions about a job and point out anything worrying. Nothing you answer is stored. What fits you best?",
+    prompt: "Hi, I'm the Parakh assistant. I'll ask a few quick questions about a job and point out anything worrying. Nothing you answer is stored. What fits you best?",
     options: [
       { id: 'considering', label: "I've been offered a job, or I'm about to apply" },
       { id: 'started', label: "I've already started the job" },

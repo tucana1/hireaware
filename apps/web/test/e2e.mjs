@@ -2,7 +2,7 @@
 // Run: npm run test:e2e (from apps/web; builds first).
 //
 // WhatsApp (Meta) and Claude need real keys, so this test points both at local stand-in servers that
-// record exactly what HireAware sends and reply the way the real APIs do. Twilio is tested with a
+// record exactly what Parakh sends and reply the way the real APIs do. Twilio is tested with a
 // correctly signed request over HTTP. Nothing leaves this machine.
 import { chromium } from 'playwright';
 import { createServer } from 'node:http';
@@ -25,7 +25,16 @@ const meta = await listen(async (req, res) => {
 // Stand-in for the Claude Messages API: records the request and streams a reply as server-sent events.
 const sentToClaude = [];
 const claude = await listen(async (req, res) => {
-  sentToClaude.push({ url: req.url, beta: req.headers['anthropic-beta'], body: JSON.parse(await bodyOf(req)) });
+  const body = JSON.parse(await bodyOf(req));
+  sentToClaude.push({ url: req.url, beta: req.headers['anthropic-beta'], body });
+  // Tipline replies are non-streaming: answer with a JSON message, or fail on request to test the fallback.
+  if (!body.stream) {
+    const prompt = body.messages[0].content;
+    if (prompt.includes('FORCE_AI_FAILURE')) return res.writeHead(500, { 'Content-Type': 'application/json' }).end('{"type":"error","error":{"type":"api_error","message":"test"}}');
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    return res.end(JSON.stringify({ id: 'msg_tip', type: 'message', role: 'assistant', model: 'claude-sonnet-5-5', stop_reason: 'end_turn', stop_sequence: null,
+      usage: { input_tokens: 10, output_tokens: 20 }, content: [{ type: 'text', text: 'Why\n- AI-WRITTEN BODY for this message.\n\nAsk them\n1. What visa will I travel on?\n\nNext\n- Do not travel yet.' }] }));
+  }
   const ev = (type, data) => `event: ${type}\ndata: ${JSON.stringify({ type, ...data })}\n\n`;
   res.writeHead(200, { 'Content-Type': 'text/event-stream' });
   res.end([
@@ -153,6 +162,22 @@ try {
   assert.ok(out.body.text.body.includes('HIGH RISK') && out.body.text.body.includes('troll-farm'), out.body.text.body.slice(0, 200));
   assert.ok(out.body.text.body.includes('1343'), 'Philippine hotline for a +63 sender');
   console.log(`✔ Meta webhook: handshake, signed message → ${sentToMeta.length} reply message(s) delivered to the Graph API with the right number, token and content`);
+
+  // Tipline replies written by Claude, with our verdict header and verified help footer around them.
+  const tip = await (await fetch(`${BASE}/api/tipline`, { method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ from: '+639171234567', text: 'Customer service in Cambodia, free flight. Travel on a tourist visa; if immigration asks, say you are on holiday.' }) })).json();
+  assert.equal(tip.writer, 'claude');
+  const tipText = tip.messages.join('\n');
+  assert.ok(tipText.startsWith('Parakh check: HIGH RISK'), 'verdict line comes from our code');
+  assert.ok(tipText.includes('AI-WRITTEN BODY') && tipText.includes('Help in Philippines') && tipText.includes('1343'));
+  const tipCall = sentToClaude.at(-1);
+  assert.equal(tipCall.body.stream, undefined);
+  assert.ok(tipCall.body.messages[0].content.includes('"verdict": "high"'), 'Claude is given our analysis');
+  const failed = await (await fetch(`${BASE}/api/tipline`, { method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ text: 'FORCE_AI_FAILURE Customer service in Cambodia, free flight. Travel on a tourist visa; if immigration asks, say you are on holiday.' }) })).json();
+  assert.equal(failed.writer, 'template');
+  assert.ok(failed.messages.join('\n').includes('Ask them, and insist on written answers'), 'falls back to the templated reply');
+  console.log('✔ tipline: Claude writes the body inside our verdict line and verified help footer; falls back to the template if Claude fails');
 
   assert.deepEqual(errors, [], 'no page errors');
   console.log('All website checks passed in Chromium');

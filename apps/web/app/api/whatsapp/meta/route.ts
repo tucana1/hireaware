@@ -1,7 +1,6 @@
 import { after } from 'next/server';
-import { handleTiplineMessage } from '@hireaware/engine';
-import { classifier, MAX_TEXT } from '@/lib/engine';
 import { SITE } from '@/lib/site';
+import { tiplineReply } from '@/lib/tipline';
 import { parseMetaWebhook, sendMetaMessages, verifyMeta } from '@/lib/whatsapp';
 
 /**
@@ -29,10 +28,10 @@ export async function POST(request: Request) {
   } catch {
     return new Response('Bad JSON', { status: 400 });
   }
-  // Acknowledge at once (Meta retries slow webhooks), then reply.
+  // Acknowledge at once (Meta retries slow webhooks), then write and send the reply.
   after(async () => {
     for (const m of incoming) {
-      const reply = handleTiplineMessage({ ...m, text: m.text.slice(0, MAX_TEXT), siteUrl: SITE.url }, { classifier });
+      const reply = await tiplineReply({ ...m, siteUrl: SITE.url });
       try {
         await sendMetaMessages(m.from, reply.messages);
       } catch (error) {

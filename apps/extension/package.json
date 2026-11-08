@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "HireAware browser extension: checks job posts and recruiter messages on the page, locally, with the recruitment-risk model.",
+  "description": "Parakh browser extension: checks job posts and recruiter messages on the page, locally, with the recruitment-risk model.",
   "scripts": {
     "dev": "wxt",
     "build": "wxt build",

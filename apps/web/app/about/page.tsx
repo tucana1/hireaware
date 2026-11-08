@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import model from '@hireaware/engine/model/risk-model.json';
 import { PageHeader } from '@/components/ui';
 
-export const metadata: Metadata = { title: 'How it works', description: 'Methods, data, accuracy and limits of the HireAware checks.' };
+export const metadata: Metadata = { title: 'How it works', description: 'Methods, data, accuracy and limits of the Parakh checks.' };
 
 type Summary = { accuracy: number; caught: number; risky_rows: number; false_alarms: number; rows: number };
 
@@ -11,7 +11,7 @@ export default function AboutPage() {
   const pct = (x: number) => `${(x * 100).toFixed(1)}%`;
   return (
     <div className="mx-auto max-w-3xl px-5 sm:px-8 py-12 prose-simple">
-      <PageHeader label="Methods, data and limits" title="How HireAware works" />
+      <PageHeader label="Methods, data and limits" title="How Parakh works" />
       <h2>Two layers</h2>
       <p><b>Red-flag rules</b> look for behaviours that matter (accounts under other names, scripts, a hidden client,
         tourist visas for work, coached answers for immigration, passports held, fees, OTP requests) in eight languages.
@@ -39,7 +39,7 @@ export default function AboutPage() {
         <li>The risk check runs in your browser. Answers are not sent or stored.</li>
         <li>Scanned text and tipline messages are analysed and discarded. Nothing is logged.</li>
         <li>The extension never sends page content anywhere.</li>
-        <li>With an AI key configured, typed chatbot questions are sent to Anthropic&apos;s Claude to answer and are not stored by us.</li>
+        <li>With an AI key configured, typed chatbot questions and tipline messages are sent to Anthropic&apos;s Claude to write the answer, and are not stored by us. For the tipline, our own checker still decides the risk level and the help numbers; Claude only writes the explanation and questions, in the sender&apos;s language.</li>
       </ul>
       <h2>Sources</h2>
       <p>Facts on this site come from UN agencies (OHCHR, UNODC, IOM), governments (Philippine DMW and others), platform

@@ -27,6 +27,8 @@ export interface TiplineReply {
   /** What the handler did, for logs and tests (never includes message text). */
   kind: 'welcome' | 'help' | 'questions' | 'privacy' | 'analysis' | 'media' | 'too_short';
   analysis?: Analysis;
+  /** Country guessed from the sender's number, for local help lines. */
+  country?: Country;
 }
 
 const MAX = 1500;
@@ -41,7 +43,7 @@ const COMMANDS: Record<string, TiplineReply['kind']> = {
 
 export function welcomeMessage(siteUrl?: string): string {
   return [
-    'This is the HireAware tipline.',
+    'This is the Parakh tipline.',
     'Forward me a job ad or a recruiter\'s message (paste the text) and I\'ll tell you what looks risky and what to ask them before you say yes.',
     'I look for signs of troll-farm work, trafficking into scam compounds and job scams. I don\'t store your messages.',
     'Reply HELP for hotlines, QUESTIONS for a checklist, PRIVACY for how your data is handled.',
@@ -70,7 +72,7 @@ function questionsMessage(): string {
     'A real employer can answer all of them. If they dodge, delay or get angry, treat it as a no.'].join('\n');
 }
 
-const PRIVACY = 'Privacy: I don\'t store the messages you forward. Each one is checked and then discarded. Your number is only used to choose local hotlines and is not saved.';
+const PRIVACY = 'Privacy: I don\'t store the messages you forward. Each one is checked and then discarded. To write a reply, the message may be processed by our AI provider, which does not keep it for us. Your number is only used to choose local hotlines and is not saved.';
 
 function splitMessages(text: string): string[] {
   if (text.length <= MAX) return [text];
@@ -86,18 +88,35 @@ function splitMessages(text: string): string[] {
   return parts.flatMap((p) => (p.length > MAX ? p.match(new RegExp(`[\\s\\S]{1,${MAX}}`, 'g')) ?? [] : [p]));
 }
 
-export function formatAnalysis(a: Analysis, country?: Country): string {
+/** First block of an analysis reply: the verdict, always set by our code. */
+export function tiplineHeader(a: Analysis): string {
+  return `Parakh check: ${BADGE[a.verdict]}\n${a.summary}`;
+}
+
+/** Last block: local help (verified numbers only) and the disclaimer, always set by our code. */
+export function tiplineFooter(country?: Country): string {
+  const local = country?.help[0];
+  return `${local ? `Help in ${country!.name}: ${local.name}${local.phone ? ` ${local.phone}` : ''}. ` : ''}Reply HELP for hotlines. This is an automated check, not a final verdict.`;
+}
+
+/** The middle of the reply, written from our templates (used when AI-written replies are off or fail). */
+export function templatedBody(a: Analysis): string {
   const blocks: string[] = [];
-  const head = `HireAware check: ${BADGE[a.verdict]}\n${a.summary}`;
-  blocks.push(head);
   if (a.redFlags.length) blocks.push(['Why:', ...a.redFlags.slice(0, 4).map((f) => `• ${f.title}`)].join('\n'));
   if (a.reassuring.length && a.verdict !== 'high') blocks.push(['In its favour:', ...a.reassuring.slice(0, 2).map((f) => `• ${f.title}`)].join('\n'));
   blocks.push(['Ask them, and insist on written answers:', ...a.questions.slice(0, 6).map((q, i) => `${i + 1}. ${q.text}`),
     'If they dodge, delay or get angry, treat it as a no.'].join('\n'));
   blocks.push(['Next:', ...a.nextSteps.slice(0, 3).map((s) => `• ${s}`)].join('\n'));
-  const local = country?.help[0];
-  blocks.push(`${local ? `Help in ${country!.name}: ${local.name}${local.phone ? ` ${local.phone}` : ''}. ` : ''}Reply HELP for hotlines. This is an automated check, not a final verdict.`);
   return blocks.join('\n\n');
+}
+
+/** Assembles header + body + footer and splits it into WhatsApp-sized messages. */
+export function composeTiplineReply(a: Analysis, body: string, country?: Country): string[] {
+  return splitMessages([tiplineHeader(a), body.trim(), tiplineFooter(country)].join('\n\n'));
+}
+
+export function formatAnalysis(a: Analysis, country?: Country): string {
+  return [tiplineHeader(a), templatedBody(a), tiplineFooter(country)].join('\n\n');
 }
 
 export function handleTiplineMessage(input: TiplineInput, deps: { classifier?: RiskClassifier | null } = {}): TiplineReply {
@@ -123,5 +142,5 @@ export function handleTiplineMessage(input: TiplineInput, deps: { classifier?: R
     return { kind: 'too_short', messages: [`That's a bit short to check. Paste the whole job ad or recruiter message.\n\n${welcomeMessage(input.siteUrl).split('\n\n').slice(-2).join('\n\n')}`] };
   }
   const analysis = analyze(text, { classifier: deps.classifier, maxQuestions: 6 });
-  return { kind: 'analysis', analysis, messages: splitMessages(formatAnalysis(analysis, country)) };
+  return { kind: 'analysis', analysis, country, messages: composeTiplineReply(analysis, templatedBody(analysis), country) };
 }

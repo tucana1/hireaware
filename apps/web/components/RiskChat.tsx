@@ -113,7 +113,7 @@ export function RiskChat() {
         <div className="flex items-center gap-3">
           <LogoMark className="size-7" />
           <div>
-            <p className="font-medium leading-tight">HireAware assistant</p>
+            <p className="font-medium leading-tight">Parakh assistant</p>
             <p className="flex items-center gap-1 text-xs text-faint"><Lock className="size-3" />Answers stay in your browser</p>
           </div>
         </div>

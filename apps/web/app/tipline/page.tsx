@@ -26,12 +26,12 @@ export default function TiplinePage() {
           </Card>
           <Card>
             <p className="font-semibold">Privacy</p>
-            <p className="mt-1 text-muted">Messages are checked and discarded, never stored. Your number is only used to pick hotlines for your country.
+            <p className="mt-1 text-muted">Messages are checked and discarded, never stored by us. To write the reply, the message is also sent to Anthropic&apos;s Claude. Your number is only used to pick hotlines for your country.
               Voice notes and images aren&apos;t read yet: paste the text instead.</p>
           </Card>
           <Card>
             <p className="font-semibold">Languages</p>
-            <p className="mt-1 text-muted">Red flags are recognised in English, Filipino/Taglish, Bahasa Indonesia, Hindi/Hinglish, Swahili, Spanish, Portuguese and French. Replies are in English for now.</p>
+            <p className="mt-1 text-muted">Red flags are recognised in English, Filipino/Taglish, Bahasa Indonesia, Hindi/Hinglish, Swahili, Spanish, Portuguese and French, and the reply comes back in the language you write in.</p>
           </Card>
         </div>
         <TiplineSimulator />
@@ -39,11 +39,11 @@ export default function TiplinePage() {
 
       <section id="extension" className="mt-20 scroll-mt-6">
         <PageHeader label="Browser extension" title="Check job posts while you browse">
-          The HireAware extension runs the same red-flag rules and classifier on your own computer. Nothing you read is sent anywhere.
+          The Parakh extension runs the same red-flag rules and classifier on your own computer. Nothing you read is sent anywhere.
         </PageHeader>
         <div className="grid gap-4 sm:grid-cols-3">
           <Card><p className="font-semibold">Scan this page</p><p className="mt-1 text-muted">One click checks the job post you&apos;re reading on LinkedIn, JobStreet, Indeed, Facebook or any site.</p></Card>
-          <Card><p className="font-semibold">Check selected text</p><p className="mt-1 text-muted">Highlight a message, right-click, and choose &quot;Check with HireAware&quot;.</p></Card>
+          <Card><p className="font-semibold">Check selected text</p><p className="mt-1 text-muted">Highlight a message, right-click, and choose &quot;Check with Parakh&quot;.</p></Card>
           <Card><p className="font-semibold">Paste anything</p><p className="mt-1 text-muted">Open the popup and paste a WhatsApp or Telegram message to check it.</p></Card>
         </div>
         <Card className="mt-4">
