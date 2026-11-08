@@ -33,3 +33,5 @@ trial-modeling-news/risk_data/downloads/
 # ── OS / editor
 .DS_Store
 .output-e2e/
+.vercel
+.env*

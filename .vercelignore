@@ -1,0 +1,12 @@
+# Only the website (apps/web) and the shared engine (packages/engine) are needed to build Parakh on Vercel.
+hireaware/
+trial-modeling-news/
+docs/
+apps/extension/.output/
+apps/extension/.output-e2e/
+apps/extension/.wxt/
+**/node_modules/
+**/.next/
+**/.env.local
+.claude/
+*.log
